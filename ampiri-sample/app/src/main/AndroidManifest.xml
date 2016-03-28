@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest package="com.ampiri.demo"
+          xmlns:android="http://schemas.android.com/apk/res/android"
+          xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-sdk tools:overrideLibrary="com.mopub.volley"/>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/app_icon"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        tools:ignore="GoogleAppIndexingWarning">
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".StandardBannerActivity"
+            android:label="@string/ad_banner_standard"/>
+        <activity
+            android:name=".BigBannerActivity"
+            android:label="@string/ad_banner_big"/>
+        <activity
+            android:name=".InterstitialActivity"
+            android:label="@string/ad_interstitial"/>
+        <activity
+            android:name=".VideoActivity"
+            android:label="@string/ad_video"/>
+        <activity
+            android:name=".NativeActivity"
+            android:label="@string/ad_native"/>
+    </application>
+
+</manifest>

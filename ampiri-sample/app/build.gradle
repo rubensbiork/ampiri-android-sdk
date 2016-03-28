@@ -1,0 +1,71 @@
+apply plugin: 'com.android.application'
+apply from: rootProject.file('config/quality.gradle')
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.2"
+
+    defaultConfig {
+        targetSdkVersion 23
+
+        applicationId "com.ampiri.demo"
+        versionName "1.0"
+    }
+    signingConfigs {
+        debug {
+            storeFile file("debug.keystore")
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.debug
+        }
+    }
+    lintOptions {
+        abortOnError false
+        checkAllWarnings true
+        warningsAsErrors true
+        disable 'AllowBackup', 'InvalidPackage'
+    }
+    productFlavors {
+        flavor15 {
+            minSdkVersion 15
+            versionCode 151 // minSdkVersion 15 + versionCode 1
+        }
+        flavor9 {
+            minSdkVersion 9
+            versionCode 91 // minSdkVersion 9 + versionCode 1
+        }
+    }
+}
+
+repositories {
+    flatDir {
+        dirs 'libs'
+    }
+}
+
+dependencies {
+    compile 'com.android.support:support-annotations:23.2.1'
+    compile 'com.google.android.gms:play-services-ads:8.4.0'
+    compile 'com.google.code.gson:gson:2.6.2'
+    compile 'org.jooq:joor:0.9.5'
+    compile 'com.mopub.volley:mopub-volley:1.1.0@aar', {
+        transitive = true
+    }
+    compile 'com.squareup.picasso:picasso:2.5.2'
+
+    compile(name: 'ampiri-sdk', version: '3.0.0', ext: 'aar')
+    compile(name: 'ampiri-sdk-mediation', version: '3.0.0', ext: 'aar')
+    compile(name: 'ampiri-sdk-mediation-adcolony', version: '3.0.0', ext: 'aar')
+    compile(name: 'ampiri-sdk-mediation-admob', version: '3.0.0', ext: 'aar')
+    compile(name: 'ampiri-sdk-mediation-chartboost', version: '3.0.0', ext: 'aar')
+    compile(name: 'ampiri-sdk-mediation-applifier', version: '3.0.0', ext: 'aar')
+    compile(name: 'ampiri-sdk-mediation-vungle', version: '3.0.0', ext: 'aar')
+    compile(name: 'ampiri-sdk-mediation-nativex', version: '3.0.0', ext: 'aar')
+    compile(name: 'unity-ads', version: '1.5.6', ext: 'aar')
+
+    flavor15Compile(name: 'ampiri-sdk-mediation-facebook', version: '3.0.0', ext: 'aar')
+}

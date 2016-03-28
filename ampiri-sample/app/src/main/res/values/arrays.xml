@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="ad_types">
+        <item>@string/ad_banner_standard</item>
+        <item>@string/ad_banner_big</item>
+        <item>@string/ad_interstitial</item>
+        <item>@string/ad_video</item>
+        <item>@string/ad_native</item>
+    </string-array>
+</resources>
