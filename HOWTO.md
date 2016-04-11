@@ -398,8 +398,7 @@ In order to gather information about whether the app was installed as a result o
 `AndroidManifest.xml`:
 
 ```xml
-<receiver android:name="com.ampiri.insights.AmpiriReceiver"
-          android:process=":dsservice" >
+<receiver android:name="com.ampiri.insights.AmpiriReceiver">
     <intent-filter>
         <action android:name="com.android.vending.INSTALL_REFERRER" />
     </intentfilter>

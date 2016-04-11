@@ -32,7 +32,6 @@ The Ampiri SDK is available via:
 Add follow rows in your _app_ module `build.gradle` file:
 
 ```
-#!groovy
 repositories {
   maven { url "http://dl.bintray.com/ampiri/maven" }
 }
@@ -60,7 +59,6 @@ Save the `aar` files under _app_ module's `libs` folder (eg: `<project>/<app>/li
 Then add follow rows in your _app_ module `build.gradle` file:
 
 ```
-#!groovy
 repositories {
   flatDir {
     dirs 'libs'
@@ -137,7 +135,6 @@ Since the audience network library from facebook sdk supports API 11 (Android 3.
 different builds for your application. You can use flavors for that. Please add this code in your gradle config in android section:
 
 ```
-#!groovy
 productFlavors {
   flavor11 {
      minSdkVersion 11
@@ -152,7 +149,6 @@ productFlavors {
 In dependencies section of gralde config add:
 
 ```
-#!groovy
 flavor11Compile(name: 'ampiri-sdk-mediation-facebook', version: '3.0.0', ext: 'aar')
 ```
 
