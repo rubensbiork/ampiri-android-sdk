@@ -16,11 +16,44 @@ as required by Google. Failing to correctly use the `Android Advertising ID` may
 
 Be sure that you have obtained all the crucial data provided by Ampiri:
 
-* *adSpaceId* - for each distinguished ad space placement in the app
+*adSpaceId* - for each distinguished ad space placement in the app
 
 Please ask your account manager for further details. In case of using the values provided in the examples, no reward can be paid for the efforts of your company.
 
 ## Initialization ##
+
+The Ampiri SDK is available via:
+
+1. jCenter AAR (**Recommended**)
+2. Zipped AAR
+
+### Gradle Integration ###
+
+Add follow rows in your _app_ module `build.gradle` file:
+
+```
+#!groovy
+repositories {
+  maven { url "http://dl.bintray.com/ampiri/maven" }
+}
+
+depedencies {
+  compile 'com.ampiri.sdk:ampiri-sdk:3.0.0'
+  compile 'com.ampiri.sdk:ampiri-sdk-mediation:3.0.0'
+  compile 'com.ampiri.sdk:ampiri-sdk-mediation-adcolony:3.0.0'
+  compile 'com.ampiri.sdk:ampiri-sdk-mediation-admob:3.0.0'
+  compile 'com.ampiri.sdk:ampiri-sdk-mediation-applifier:3.0.0'
+  compile 'com.ampiri.sdk:ampiri-sdk-mediation-chartboost:3.0.0'
+  compile 'com.ampiri.sdk:ampiri-sdk-mediation-facebook:3.0.0'
+  compile 'com.ampiri.sdk:ampiri-sdk-mediation-mopub:3.0.0'
+  compile 'com.ampiri.sdk:ampiri-sdk-mediation-nativex:3.0.0'
+  compile 'com.ampiri.sdk:ampiri-sdk-mediation-vungle:3.0.0'
+
+  compile 'com.google.android.gms:play-services-ads:8.3.0'
+}
+```
+
+### Including the local .aar libraries ###
 
 Save the `aar` files under _app_ module's `libs` folder (eg: `<project>/<app>/libs`)
 
@@ -35,21 +68,21 @@ repositories {
 }
 
 dependencies {
-    compile(name: 'ampiri-sdk', version:'2.2.0', ext: 'aar')
-    compile(name: 'ampiri-sdk-mediation', version:'2.2.0', ext: 'aar')
-    compile(name: 'ampiri-sdk-mediation-adcolony', version:'2.2.0', ext: 'aar')
-    compile(name: 'ampiri-sdk-mediation-admob', version:'2.2.0', ext: 'aar')
-    compile(name: 'ampiri-sdk-mediation-applifier', version:'2.2.0', ext: 'aar')
-    compile(name: 'ampiri-sdk-mediation-chartboost', version:'2.2.0', ext: 'aar')
-    compile(name: 'ampiri-sdk-mediation-facebook', version:'2.2.0', ext: 'aar')
-    compile(name: 'ampiri-sdk-mediation-mopub', version:'2.2.0', ext: 'aar')
-    compile(name: 'ampiri-sdk-mediation-nativex', version:'2.2.0', ext: 'aar')
-    compile(name: 'ampiri-sdk-mediation-vungle', version:'2.2.0', ext: 'aar')
-    compile(name: 'unity-ads', ext: 'aar')
+  compile(name: 'ampiri-sdk', version:'3.0.0', ext: 'aar')
+  compile(name: 'ampiri-sdk-mediation', version:'3.0.0', ext: 'aar')
+  compile(name: 'ampiri-sdk-mediation-adcolony', version:'3.0.0', ext: 'aar')
+  compile(name: 'ampiri-sdk-mediation-admob', version:'3.0.0', ext: 'aar')
+  compile(name: 'ampiri-sdk-mediation-applifier', version:'3.0.0', ext: 'aar')
+  compile(name: 'ampiri-sdk-mediation-chartboost', version:'3.0.0', ext: 'aar')
+  compile(name: 'ampiri-sdk-mediation-facebook', version:'3.0.0', ext: 'aar')
+  compile(name: 'ampiri-sdk-mediation-mopub', version:'3.0.0', ext: 'aar')
+  compile(name: 'ampiri-sdk-mediation-nativex', version:'3.0.0', ext: 'aar')
+  compile(name: 'ampiri-sdk-mediation-vungle', version:'3.0.0', ext: 'aar')
+  compile(name: 'unity-ads', ext: 'aar')
 
-    compile 'com.google.android.gms:play-services-ads:8.3.0'
-    compile 'com.google.code.gson:gson:2.2.4'
-    compile 'org.jooq:joor:0.9.5'
+  compile 'com.google.android.gms:play-services-ads:8.3.0'
+  compile 'com.google.code.gson:gson:2.2.4'
+  compile 'org.jooq:joor:0.9.5'
 }
 ```
 
@@ -65,17 +98,17 @@ To show *interstitial* ads:
 
 * `ampiri-sdk-mediation-admob` [Google Mobile Ads](https://developers.google.com/admob/android/quick-start) v8.4.0
 * `ampiri-sdk-mediation-mopub` [MoPub](https://github.com/mopub/mopub-android-sdk) v4.4.1
-* `ampiri-sdk-mediation-chartboost` [Chartboost](https://answers.chartboost.com/hc/en-us/articles/201219545-Download-Integrate-the-Chartboost-SDK-for-Android) v5.5.3
+* `ampiri-sdk-mediation-chartboost` [Chartboost](https://answers.chartboost.com/hc/en-us/articles/201219545-Download-Integrate-the-Chartboost-SDK-for-Android) v6.4.1
 * `ampiri-sdk-mediation-facebook` [Facebook Audience](https://developers.facebook.com/docs/audience-network) v4.10.0
-* `ampiri-sdk-mediation-nativex` [NativeX](https://github.com/nativex/NativeX-Android-SDK) v5.5.3
+* `ampiri-sdk-mediation-nativex` [NativeX](https://github.com/nativex/NativeX-Android-SDK) v5.5.6
 
 To show *video* ads:
 
-* `ampiri-sdk-mediation-adcolony` [AdColony](https://github.com/AdColony/AdColony-Android-SDK) v2.2.2
-* `ampiri-sdk-mediation-applifier` [Unity Ads(Applifier)](https://github.com/Applifier/unity-ads-sdk) v1.5.3
-* `ampiri-sdk-mediation-chartboost` [Chartboost](https://answers.chartboost.com/hc/en-us/articles/201219545-Download-Integrate-the-Chartboost-SDK-for-Android) v5.5.3
-* `ampiri-sdk-mediation-nativex` [NativeX](https://github.com/nativex/NativeX-Android-SDK) v5.5.3
-* `ampiri-sdk-mediation-vungle` [Vungle](https://v.vungle.com/sdk) v3.3.3
+* `ampiri-sdk-mediation-adcolony` [AdColony](https://github.com/AdColony/AdColony-Android-SDK) v2.3.4
+* `ampiri-sdk-mediation-applifier` [Unity Ads(Applifier)](https://github.com/Applifier/unity-ads-sdk) v1.5.6
+* `ampiri-sdk-mediation-chartboost` [Chartboost](https://answers.chartboost.com/hc/en-us/articles/201219545-Download-Integrate-the-Chartboost-SDK-for-Android) v6.4.1
+* `ampiri-sdk-mediation-nativex` [NativeX](https://github.com/nativex/NativeX-Android-SDK) v5.5.6
+* `ampiri-sdk-mediation-vungle` [Vungle](https://v.vungle.com/sdk) v3.3.4
 
 To show *native* ads:
 
@@ -106,9 +139,9 @@ different builds for your application. You can use flavors for that. Please add 
 ```
 #!groovy
 productFlavors {
-  flavor15 {
-     minSdkVersion 15
-     versionCode 151 // minSdkVersion 15 + versionCode 1
+  flavor11 {
+     minSdkVersion 11
+     versionCode 111 // minSdkVersion 11 + versionCode 1
   }
   flavor9 {
      minSdkVersion 9
@@ -116,11 +149,11 @@ productFlavors {
   }
 }
 ```
-In dependencies module of gralde config add:
+In dependencies section of gralde config add:
 
 ```
 #!groovy
-flavor15Compile(name: 'ampiri-sdk-mediation-facebook', version: '2.2.0', ext: 'aar')
+flavor11Compile(name: 'ampiri-sdk-mediation-facebook', version: '3.0.0', ext: 'aar')
 ```
 
 Please see the Android documentation [here](http://developer.android.com/intl/ru/google/play/publishing/multiple-apks.html).

@@ -3,7 +3,7 @@ apply from: rootProject.file('config/quality.gradle')
 
 android {
     compileSdkVersion 23
-    buildToolsVersion "23.0.2"
+    buildToolsVersion "23.0.3"
 
     defaultConfig {
         targetSdkVersion 23
@@ -30,9 +30,9 @@ android {
         disable 'AllowBackup', 'InvalidPackage'
     }
     productFlavors {
-        flavor15 {
-            minSdkVersion 15
-            versionCode 151 // minSdkVersion 15 + versionCode 1
+        flavor11 {
+            minSdkVersion 11
+            versionCode 111 // minSdkVersion 11 + versionCode 1
         }
         flavor9 {
             minSdkVersion 9
@@ -48,7 +48,7 @@ repositories {
 }
 
 dependencies {
-    compile 'com.android.support:support-annotations:23.2.1'
+    compile 'com.android.support:support-annotations:23.3.0'
     compile 'com.google.android.gms:play-services-ads:8.4.0'
     compile 'com.google.code.gson:gson:2.6.2'
     compile 'org.jooq:joor:0.9.5'
@@ -67,5 +67,5 @@ dependencies {
     compile(name: 'ampiri-sdk-mediation-nativex', version: '3.0.0', ext: 'aar')
     compile(name: 'unity-ads', version: '1.5.6', ext: 'aar')
 
-    flavor15Compile(name: 'ampiri-sdk-mediation-facebook', version: '3.0.0', ext: 'aar')
+    flavor11Compile(name: 'ampiri-sdk-mediation-facebook', version: '3.0.0', ext: 'aar')
 }

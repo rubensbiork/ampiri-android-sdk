@@ -8,6 +8,8 @@
 * [Ad events handling](#markdown-header-ad-events-handling)
 * [Activity lifecycle events handling](#markdown-header-activity-lifecycle-events-handling)
 * [User Data](#markdown-header-user-data)
+* [User profiling](#markdown-header-user-profiling)
+* [Log](#markdown-header-log)
 * [Debug mode](#markdown-header-debug-mode)
 * [Test devices](#markdown-header-test-devices)
 
@@ -20,12 +22,15 @@ Under the main `<manifest>` element, add the following permissions.
 <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
 <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+<uses-permission android:name="android.permission.WAKE_LOCK" />
+<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 ```
 
 * ACCESS_COARSE_LOCATION (recommended) - Grants the SDK permission to access approximate location based on cell tower.
 * ACCESS_FINE_LOCATION (recommended) - Grants the SDK permission to access a more accurate location based on GPS.
 
-Although not technically required, the LOCATION permissions make it possible for the SDK to send location-based data to advertisers. Sending better location data generally leads to better monetization.
+Although not technically required, the LOCATION permissions make it possible for the SDK to send location-based data to advertisers. Sending better
+location data generally leads to better monetization.
 
 * WRITE_EXTERNAL_STORAGE (optional) - Allows the SDK to cache all ad assets (creatives, custom frames, etc.) in external memory. This can maximize 
 performance by ensuring immediate delivery of ads and minimize network traffic used by the SDK by keeping cached
@@ -35,6 +40,24 @@ ad assets available even after the user closes the app.
 
 > When using SDK as a library project, you shouldn't need to worry about merging AndroidManifest.xml changes or Proguard settings. If you run into problems, 
 make sure `manifestmerger.enabled` is set to `true` in `project.properties`
+
+## Updating your Application class
+
+This step is only required if you extended the `android.app.Application` class. If you specified a custom class in the attribute `android:name`
+for the `<application>` tag in `AndroidManifest.xml`, you should add a process verification to the beginning of that class’s `onCreate` method, like this:
+
+```java
+public class … extends Application {
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        if (AmpiriService.isServiceProcess(this)) {
+            return;
+        }
+        // Your custom initialization code here
+    }
+}
+```
 
 ## Standard banners
 
@@ -306,7 +329,6 @@ AdEventCallback adListener = new AdEventCallback() {
 };
 ```
 
-
 ## Activity lifecycle events handling
 
 `onPause()`, `onResume()` and `onDestroy()` methods should be called depending on the Activity lifecycle events.
@@ -321,6 +343,7 @@ protected void onPause() {
     videoAd.onPause();
     nativeAd.onPause();
 }
+
 @Override
 protected void onResume() {
     super.onResume();
@@ -348,6 +371,46 @@ Ampiri.setUserBirthday(data);
 Ampiri.setUserGender(UserData.Gender.FEMALE);
 Ampiri.setUserInterests(Arrays.asList("football", "auto", "cats")); // Just for example. Please set real interests.
 ```
+
+## User profiling
+
+In order to improve conversions rate of the ads you may enable user data profiling. In each of your app’s activities (or in their custom superclass, if you
+created one), call `appStarted` and `appClosed`:
+
+```java
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        AmpiriInsights.appStarted(this);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        AmpiriInsights.appClosed(this);
+    }
+```
+
+> It is extremely important that `appStarted` be called before any activity is started. That’s why you should call it in `onCreate`. If any activity in your
+app is in the started state before calling `appStarted`, the session lifetime results you will see in your dashboard will be incorrect.
+
+In order to gather information about whether the app was installed as a result of a campaign referral or keyword search add the following in the
+`AndroidManifest.xml`:
+
+```xml
+<receiver android:name="com.ampiri.insights.AmpiriReceiver"
+          android:process=":dsservice" >
+    <intent-filter>
+        <action android:name="com.android.vending.INSTALL_REFERRER" />
+    </intentfilter>
+</receiver>
+```
+
+> If your app uses other SDKs that also monitor **INSTALL_REFERRER** (for example Google Analytics), you **must** put the Ampiri `<receiver>` first in
+your manifest file. The problem is that only the first `<receiver>` declared in the manifest will actually receive the **INSTALL_REFERRER** intent - but
+we’ve implemented a mechanism into the Ampiri that will look for other receivers in the manifest that require the **INSTALL_REFERRER** action,
+and propagate the action to them as well. If you are using other mechanisms to propagate the **INSTALL_REFERRER** action to multiple receivers: don’t place
+our receiver first in the manifest, and it will avoid propagating the **INSTALL_REFERRER** action.
 
 ## Log
 
