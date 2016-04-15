@@ -180,7 +180,7 @@ You can either create your custom views in a layout `.xml`, or you can add eleme
 The custom layout `.xml`. For example:
 
 ``` xml
-<ScrollView android:id="@+id/native_ad"
+<FrameLayout android:id="@+id/native_ad"
  ...>
     <RelativeLayout ...>
         <ImageView android:id="@+id/native_ad_icon"
@@ -201,7 +201,7 @@ The custom layout `.xml`. For example:
           android:padding="10dp"
           ... />
     </RelativeLayout>
-</ScrollView>
+</FrameLayout>
 ```
 
 After you created all the views, please proceed by passing the views to our SDK. For example:
