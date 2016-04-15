@@ -11,6 +11,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.ampiri.insights.AmpiriInsights;
 import com.ampiri.sdk.utils.AmpiriLogger;
 
 public class MainActivity extends Activity implements OnItemClickListener {
@@ -19,10 +20,19 @@ public class MainActivity extends Activity implements OnItemClickListener {
     protected void onCreate(@Nullable final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         AmpiriLogger.setDebugMode(true);
+
         final ListView listView = new ListView(this);
         listView.setAdapter(new MainAdapter(this));
         listView.setOnItemClickListener(this);
         setContentView(listView);
+
+        AmpiriInsights.appStarted(this);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        AmpiriInsights.appClosed(this);
     }
 
     @Override

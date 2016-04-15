@@ -6,10 +6,10 @@ Sign up for an account at [ampiri.com](https://ampiri.com)
 ## Requirements and Dependencies ##
 
 * Android 2.3 (API Version 9) and up
-* support-annotations, v23.0.1
+* support-annotations, v23.3.0
+* support-v4, v23.3.0
 * joor, v0.9.5
-* gson, v2.2.4
-* **Recommended** Google Play Services 8.3.0
+* **Recommended** Google Play Services 8.4.0
 
 We strongly recommend compiling your app against the **Google Play Services** in order to use the `Android Advertising ID` instead of the `Device ID`,
 as required by Google. Failing to correctly use the `Android Advertising ID` may result in your submission to the Play Store being rejected.
@@ -34,21 +34,24 @@ Add follow rows in your _app_ module `build.gradle` file:
 ```
 repositories {
   maven { url "http://dl.bintray.com/ampiri/maven" }
+  flatDir {
+    dirs 'libs'
+  }
 }
 
 depedencies {
-  compile 'com.ampiri.sdk:ampiri-sdk:3.0.0'
-  compile 'com.ampiri.sdk:ampiri-sdk-mediation:3.0.0'
-  compile 'com.ampiri.sdk:ampiri-sdk-mediation-adcolony:3.0.0'
-  compile 'com.ampiri.sdk:ampiri-sdk-mediation-admob:3.0.0'
-  compile 'com.ampiri.sdk:ampiri-sdk-mediation-applifier:3.0.0'
-  compile 'com.ampiri.sdk:ampiri-sdk-mediation-chartboost:3.0.0'
-  compile 'com.ampiri.sdk:ampiri-sdk-mediation-facebook:3.0.0'
-  compile 'com.ampiri.sdk:ampiri-sdk-mediation-mopub:3.0.0'
-  compile 'com.ampiri.sdk:ampiri-sdk-mediation-nativex:3.0.0'
-  compile 'com.ampiri.sdk:ampiri-sdk-mediation-vungle:3.0.0'
+  compile 'com.ampiri.sdk:ampiri-sdk:3.0.1'
+  compile 'com.ampiri.sdk:ampiri-sdk-mediation-adcolony:3.0.1'
+  compile 'com.ampiri.sdk:ampiri-sdk-mediation-admob:3.0.1'
+  compile 'com.ampiri.sdk:ampiri-sdk-mediation-applifier:3.0.1'
+  compile 'com.ampiri.sdk:ampiri-sdk-mediation-chartboost:3.0.1'
+  compile 'com.ampiri.sdk:ampiri-sdk-mediation-facebook:3.0.1'
+  compile 'com.ampiri.sdk:ampiri-sdk-mediation-mopub:3.0.1'
+  compile 'com.ampiri.sdk:ampiri-sdk-mediation-nativex:3.0.1'
+  compile 'com.ampiri.sdk:ampiri-sdk-mediation-vungle:3.0.1'
 
-  compile 'com.google.android.gms:play-services-ads:8.3.0'
+  compile 'com.google.android.gms:play-services-ads:8.4.0'
+  compile(name: 'unity-ads', ext: 'aar')
 }
 ```
 
@@ -66,20 +69,20 @@ repositories {
 }
 
 dependencies {
-  compile(name: 'ampiri-sdk', version:'3.0.0', ext: 'aar')
-  compile(name: 'ampiri-sdk-mediation', version:'3.0.0', ext: 'aar')
-  compile(name: 'ampiri-sdk-mediation-adcolony', version:'3.0.0', ext: 'aar')
-  compile(name: 'ampiri-sdk-mediation-admob', version:'3.0.0', ext: 'aar')
-  compile(name: 'ampiri-sdk-mediation-applifier', version:'3.0.0', ext: 'aar')
-  compile(name: 'ampiri-sdk-mediation-chartboost', version:'3.0.0', ext: 'aar')
-  compile(name: 'ampiri-sdk-mediation-facebook', version:'3.0.0', ext: 'aar')
-  compile(name: 'ampiri-sdk-mediation-mopub', version:'3.0.0', ext: 'aar')
-  compile(name: 'ampiri-sdk-mediation-nativex', version:'3.0.0', ext: 'aar')
-  compile(name: 'ampiri-sdk-mediation-vungle', version:'3.0.0', ext: 'aar')
+  compile(name: 'ampiri-sdk', version:'3.0.1', ext: 'aar')
+  compile(name: 'ampiri-sdk-mediation', version:'3.0.1', ext: 'aar')
+  compile(name: 'ampiri-sdk-mediation-adcolony', version:'3.0.1', ext: 'aar')
+  compile(name: 'ampiri-sdk-mediation-admob', version:'3.0.1', ext: 'aar')
+  compile(name: 'ampiri-sdk-mediation-applifier', version:'3.0.1', ext: 'aar')
+  compile(name: 'ampiri-sdk-mediation-chartboost', version:'3.0.1', ext: 'aar')
+  compile(name: 'ampiri-sdk-mediation-facebook', version:'3.0.1', ext: 'aar')
+  compile(name: 'ampiri-sdk-mediation-mopub', version:'3.0.1', ext: 'aar')
+  compile(name: 'ampiri-sdk-mediation-nativex', version:'3.0.1', ext: 'aar')
+  compile(name: 'ampiri-sdk-mediation-vungle', version:'3.0.1', ext: 'aar')
   compile(name: 'unity-ads', ext: 'aar')
 
-  compile 'com.google.android.gms:play-services-ads:8.3.0'
-  compile 'com.google.code.gson:gson:2.2.4'
+  compile 'com.google.android.gms:play-services-ads:8.4.0'
+  compile 'com.google.code.gson:gson:2.6.2'
   compile 'org.jooq:joor:0.9.5'
 }
 ```
@@ -149,7 +152,7 @@ productFlavors {
 In dependencies section of gralde config add:
 
 ```
-flavor11Compile(name: 'ampiri-sdk-mediation-facebook', version: '3.0.0', ext: 'aar')
+flavor11Compile(name: 'ampiri-sdk-mediation-facebook', version: '3.0.1', ext: 'aar')
 ```
 
 Please see the Android documentation [here](http://developer.android.com/intl/ru/google/play/publishing/multiple-apks.html).

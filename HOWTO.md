@@ -175,6 +175,8 @@ In order to start using native ads, you will need to go through following steps:
 
 You can either create your custom views in a layout `.xml`, or you can add elements in code.
 
+> All views should be placed in one child; this child itself should be placed in one child.
+
 The custom layout `.xml`. For example:
 
 ``` xml

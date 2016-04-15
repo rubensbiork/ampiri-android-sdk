@@ -57,16 +57,16 @@ dependencies {
     }
     compile 'com.squareup.picasso:picasso:2.5.2'
 
-    compile(name: 'ampiri-sdk', version: '3.0.0', ext: 'aar')
-    compile(name: 'ampiri-sdk-mediation', version: '3.0.0', ext: 'aar')
-    compile(name: 'ampiri-sdk-mediation-adcolony', version: '3.0.0', ext: 'aar')
-    compile(name: 'ampiri-sdk-mediation-admob', version: '3.0.0', ext: 'aar')
-    compile(name: 'ampiri-sdk-mediation-applifier', version: '3.0.0', ext: 'aar')
-    compile(name: 'ampiri-sdk-mediation-chartboost', version: '3.0.0', ext: 'aar')
-    compile(name: 'ampiri-sdk-mediation-mopub', version: '3.0.0', ext: 'aar')
-    compile(name: 'ampiri-sdk-mediation-nativex', version: '3.0.0', ext: 'aar')
-    compile(name: 'ampiri-sdk-mediation-vungle', version: '3.0.0', ext: 'aar')
+    compile(name: 'ampiri-sdk', version: '3.0.1', ext: 'aar')
+    compile(name: 'ampiri-sdk-mediation', version: '3.0.1', ext: 'aar')
+    compile(name: 'ampiri-sdk-mediation-adcolony', version: '3.0.1', ext: 'aar')
+    compile(name: 'ampiri-sdk-mediation-admob', version: '3.0.1', ext: 'aar')
+    compile(name: 'ampiri-sdk-mediation-applifier', version: '3.0.1', ext: 'aar')
+    compile(name: 'ampiri-sdk-mediation-chartboost', version: '3.0.1', ext: 'aar')
+    compile(name: 'ampiri-sdk-mediation-mopub', version: '3.0.1', ext: 'aar')
+    compile(name: 'ampiri-sdk-mediation-nativex', version: '3.0.1', ext: 'aar')
+    compile(name: 'ampiri-sdk-mediation-vungle', version: '3.0.1', ext: 'aar')
     compile(name: 'unity-ads', version: '1.5.6', ext: 'aar')
 
-    flavor11Compile(name: 'ampiri-sdk-mediation-facebook', version: '3.0.0', ext: 'aar')
+    flavor11Compile(name: 'ampiri-sdk-mediation-facebook', version: '3.0.1', ext: 'aar')
 }
