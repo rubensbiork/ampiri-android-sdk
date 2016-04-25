@@ -1,4 +1,4 @@
-# Ampiri Android SDK 2.x Integration Guide
+# Ampiri Android SDK 3.x Integration Guide
 
 * [Updating your Android Manifest](#markdown-header-updating-your-android-manifest)
 * [Standard banners](#markdown-header-standard-banners)
