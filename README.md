@@ -33,22 +33,22 @@ Add follow rows in your _app_ module `build.gradle` file:
 
 ```
 repositories {
-  maven { url "http://dl.bintray.com/ampiri/maven" }
+  maven { url "http://ampiri.bintray.com/maven" }
   flatDir {
     dirs 'libs'
   }
 }
 
 depedencies {
-  compile 'com.ampiri.sdk:ampiri-sdk:3.0.1'
-  compile 'com.ampiri.sdk:ampiri-sdk-mediation-adcolony:3.0.1'
-  compile 'com.ampiri.sdk:ampiri-sdk-mediation-admob:3.0.1'
-  compile 'com.ampiri.sdk:ampiri-sdk-mediation-applifier:3.0.1'
-  compile 'com.ampiri.sdk:ampiri-sdk-mediation-chartboost:3.0.1'
-  compile 'com.ampiri.sdk:ampiri-sdk-mediation-facebook:3.0.1'
-  compile 'com.ampiri.sdk:ampiri-sdk-mediation-mopub:3.0.1'
-  compile 'com.ampiri.sdk:ampiri-sdk-mediation-nativex:3.0.1'
-  compile 'com.ampiri.sdk:ampiri-sdk-mediation-vungle:3.0.1'
+  compile 'com.ampiri.sdk:ampiri-sdk:3.0.2'
+  compile 'com.ampiri.sdk:ampiri-sdk-mediation-adcolony:3.0.2'
+  compile 'com.ampiri.sdk:ampiri-sdk-mediation-admob:3.0.2'
+  compile 'com.ampiri.sdk:ampiri-sdk-mediation-applifier:3.0.2'
+  compile 'com.ampiri.sdk:ampiri-sdk-mediation-chartboost:3.0.2'
+  compile 'com.ampiri.sdk:ampiri-sdk-mediation-facebook:3.0.2'
+  compile 'com.ampiri.sdk:ampiri-sdk-mediation-mopub:3.0.2'
+  compile 'com.ampiri.sdk:ampiri-sdk-mediation-nativex:3.0.2'
+  compile 'com.ampiri.sdk:ampiri-sdk-mediation-vungle:3.0.2'
 
   compile 'com.google.android.gms:play-services-ads:8.4.0'
   compile(name: 'unity-ads', ext: 'aar')
@@ -69,19 +69,24 @@ repositories {
 }
 
 dependencies {
-  compile(name: 'ampiri-sdk', version:'3.0.1', ext: 'aar')
-  compile(name: 'ampiri-sdk-mediation', version:'3.0.1', ext: 'aar')
-  compile(name: 'ampiri-sdk-mediation-adcolony', version:'3.0.1', ext: 'aar')
-  compile(name: 'ampiri-sdk-mediation-admob', version:'3.0.1', ext: 'aar')
-  compile(name: 'ampiri-sdk-mediation-applifier', version:'3.0.1', ext: 'aar')
-  compile(name: 'ampiri-sdk-mediation-chartboost', version:'3.0.1', ext: 'aar')
-  compile(name: 'ampiri-sdk-mediation-facebook', version:'3.0.1', ext: 'aar')
-  compile(name: 'ampiri-sdk-mediation-mopub', version:'3.0.1', ext: 'aar')
-  compile(name: 'ampiri-sdk-mediation-nativex', version:'3.0.1', ext: 'aar')
-  compile(name: 'ampiri-sdk-mediation-vungle', version:'3.0.1', ext: 'aar')
+  compile(name: 'ampiri-sdk', version:'3.0.2', ext: 'aar')
+  compile(name: 'ampiri-sdk-mediation', version:'3.0.2', ext: 'aar')
+  compile(name: 'ampiri-sdk-mediation-adcolony', version:'3.0.2', ext: 'aar')
+  compile(name: 'ampiri-sdk-mediation-admob', version:'3.0.2', ext: 'aar')
+  compile(name: 'ampiri-sdk-mediation-applifier', version:'3.0.2', ext: 'aar')
+  compile(name: 'ampiri-sdk-mediation-chartboost', version:'3.0.2', ext: 'aar')
+  compile(name: 'ampiri-sdk-mediation-facebook', version:'3.0.2', ext: 'aar')
+  compile(name: 'ampiri-sdk-mediation-mopub', version:'3.0.2', ext: 'aar')
+  compile(name: 'ampiri-sdk-mediation-nativex', version:'3.0.2', ext: 'aar')
+  compile(name: 'ampiri-sdk-mediation-vungle', version:'3.0.2', ext: 'aar')
+
   compile(name: 'unity-ads', ext: 'aar')
 
   compile 'com.google.android.gms:play-services-ads:8.4.0'
+  compile 'com.facebook.android:audience-network-sdk:4.11.0'
+  compile 'com.mopub:mopub-sdk:4.5.1@aar', {
+    transitive = true
+  }
   compile 'com.google.code.gson:gson:2.6.2'
   compile 'org.jooq:joor:0.9.5'
 }
@@ -91,31 +96,31 @@ Ampiri supports the following ad networks on the client-side:
 
 To show *standard* banner ads:
 
-* `ampiri-sdk-mediation-admob` [Google Mobile Ads](https://developers.google.com/admob/android/quick-start) v8.4.0
-* `ampiri-sdk-mediation-mopub` [MoPub](https://github.com/mopub/mopub-android-sdk) v4.4.1
-* `ampiri-sdk-mediation-facebook` [Facebook Audience](https://developers.facebook.com/docs/audience-network) v4.10.0
+* `ampiri-sdk-mediation-admob` [Google Mobile Ads](https://developers.google.com/admob/android/quick-start) v8.4.0, API 9: Android 2.3 (Gingerbread)
+* `ampiri-sdk-mediation-mopub` [MoPub](https://github.com/mopub/mopub-android-sdk) v4.4.1, API 9: Android 2.3 (Gingerbread)
+* `ampiri-sdk-mediation-facebook` [Facebook Audience](https://developers.facebook.com/docs/audience-network) v4.10.0, API 11: Android 3.0 (Honeycomb)
 
 To show *interstitial* ads:
 
-* `ampiri-sdk-mediation-admob` [Google Mobile Ads](https://developers.google.com/admob/android/quick-start) v8.4.0
-* `ampiri-sdk-mediation-mopub` [MoPub](https://github.com/mopub/mopub-android-sdk) v4.4.1
-* `ampiri-sdk-mediation-chartboost` [Chartboost](https://answers.chartboost.com/hc/en-us/articles/201219545-Download-Integrate-the-Chartboost-SDK-for-Android) v6.4.1
-* `ampiri-sdk-mediation-facebook` [Facebook Audience](https://developers.facebook.com/docs/audience-network) v4.10.0
-* `ampiri-sdk-mediation-nativex` [NativeX](https://github.com/nativex/NativeX-Android-SDK) v5.5.6
+* `ampiri-sdk-mediation-admob` [Google Mobile Ads](https://developers.google.com/admob/android/quick-start) v8.4.0, API 9: Android 2.3 (Gingerbread)
+* `ampiri-sdk-mediation-mopub` [MoPub](https://github.com/mopub/mopub-android-sdk) v4.4.1, API 9: Android 2.3 (Gingerbread)
+* `ampiri-sdk-mediation-chartboost` [Chartboost](https://answers.chartboost.com/hc/en-us/articles/201219545-Download-Integrate-the-Chartboost-SDK-for-Android) v6.4.1, API 9: Android 2.3 (Gingerbread)
+* `ampiri-sdk-mediation-facebook` [Facebook Audience](https://developers.facebook.com/docs/audience-network) v4.10.0, API 11: Android 3.0 (Honeycomb)
+* `ampiri-sdk-mediation-nativex` [NativeX](https://github.com/nativex/NativeX-Android-SDK) v5.5.6, API 11: Android 3.0 (Honeycomb)
 
 To show *video* ads:
 
-* `ampiri-sdk-mediation-adcolony` [AdColony](https://github.com/AdColony/AdColony-Android-SDK) v2.3.4
-* `ampiri-sdk-mediation-applifier` [Unity Ads(Applifier)](https://github.com/Applifier/unity-ads-sdk) v1.5.6
-* `ampiri-sdk-mediation-chartboost` [Chartboost](https://answers.chartboost.com/hc/en-us/articles/201219545-Download-Integrate-the-Chartboost-SDK-for-Android) v6.4.1
-* `ampiri-sdk-mediation-nativex` [NativeX](https://github.com/nativex/NativeX-Android-SDK) v5.5.6
-* `ampiri-sdk-mediation-vungle` [Vungle](https://v.vungle.com/sdk) v3.3.4
+* `ampiri-sdk-mediation-adcolony` [AdColony](https://github.com/AdColony/AdColony-Android-SDK) v2.3.4, API 14: Android 4.0 (Ice Cream Sandwich)
+* `ampiri-sdk-mediation-applifier` [Unity Ads(Applifier)](https://github.com/Applifier/unity-ads-sdk) v1.5.6, API 9: Android 2.3 (Gingerbread)
+* `ampiri-sdk-mediation-chartboost` [Chartboost](https://answers.chartboost.com/hc/en-us/articles/201219545-Download-Integrate-the-Chartboost-SDK-for-Android) v6.4.1, API 9: Android 2.3 (Gingerbread)
+* `ampiri-sdk-mediation-nativex` [NativeX](https://github.com/nativex/NativeX-Android-SDK) v5.5.6, API 11: Android 3.0 (Honeycomb)
+* `ampiri-sdk-mediation-vungle` [Vungle](https://v.vungle.com/sdk) v3.3.5, API 11: Android 3.0 (Honeycomb)
 
 To show *native* ads:
 
-* `ampiri-sdk-mediation-admob` [Google Mobile Ads](https://developers.google.com/admob/android/quick-start) v8.4.0
-* `ampiri-sdk-mediation-mopub` [MoPub](https://github.com/mopub/mopub-android-sdk) v4.4.1
-* `ampiri-sdk-mediation-facebook` [Facebook Audience](https://developers.facebook.com/docs/audience-network) v4.10.0
+* `ampiri-sdk-mediation-admob` [Google Mobile Ads](https://developers.google.com/admob/android/quick-start) v8.4.0, API 9: Android 2.3 (Gingerbread)
+* `ampiri-sdk-mediation-mopub` [MoPub](https://github.com/mopub/mopub-android-sdk) v4.4.1, API 9: Android 2.3 (Gingerbread)
+* `ampiri-sdk-mediation-facebook` [Facebook Audience](https://developers.facebook.com/docs/audience-network) v4.10.0, API 11: Android 3.0 (Honeycomb)
 
 > We can't guarantee stable work of SDK if you use other versions of this network libraries. 
 
@@ -131,31 +136,6 @@ defaulConfig {
 }
 ```
 Please see the Android documentation [here](https://developer.android.com/tools/building/multidex.html).
-
-### Supporting multiple API levels ###
-
-Since the audience network library from facebook sdk supports API 11 (Android 3.0) and above (our SDK supports API 9 Android 2.3) you have to generate
-different builds for your application. You can use flavors for that. Please add this code in your gradle config in android section:
-
-```
-productFlavors {
-  flavor11 {
-     minSdkVersion 11
-     versionCode 111 // minSdkVersion 11 + versionCode 1
-  }
-  flavor9 {
-     minSdkVersion 9
-     versionCode 91 // minSdkVersion 9 + versionCode 1
-  }
-}
-```
-In dependencies section of gralde config add:
-
-```
-flavor11Compile(name: 'ampiri-sdk-mediation-facebook', version: '3.0.1', ext: 'aar')
-```
-
-Please see the Android documentation [here](http://developer.android.com/intl/ru/google/play/publishing/multiple-apks.html).
 
 ## Documentation
 
