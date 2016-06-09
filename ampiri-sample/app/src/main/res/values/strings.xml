@@ -5,6 +5,7 @@
     <string name="ad_interstitial">Ampiri Interstitial Sample</string>
     <string name="ad_video">Ampiri Video Interstitial Sample</string>
     <string name="ad_native">Ampiri Native Ad Sample</string>
+    <string name="ad_infeed">Ampiri Infeed Ad Sample</string>
 
     <string name="auto_refresh">Auto update</string>
 
@@ -23,4 +24,8 @@
     <string name="video_show">Show Video</string>
     <string name="video_load">Load Video</string>
     <string name="video_show_on_load">Load and show</string>
+
+    <string name="ad_attribution_text">Sponsored</string>
+
+    <string name="in_feed_item">Item %d</string>
 </resources>

@@ -78,7 +78,7 @@ public class InterstitialActivity extends AdCallbackActivity {
     public void onDestroy() {
         super.onDestroy();
         if (interstitialAd != null) {
-            interstitialAd.onDestroy();
+            interstitialAd.onActivityDestroyed();
         }
     }
 
@@ -86,7 +86,7 @@ public class InterstitialActivity extends AdCallbackActivity {
     public void onPause() {
         super.onPause();
         if (interstitialAd != null) {
-            interstitialAd.onPause();
+            interstitialAd.onActivityPaused();
         }
     }
 
@@ -94,7 +94,7 @@ public class InterstitialActivity extends AdCallbackActivity {
     public void onResume() {
         super.onResume();
         if (interstitialAd != null) {
-            interstitialAd.onResume();
+            interstitialAd.onActivityResumed();
             if (interstitialAd.isReady() && showView != null) {
                 showView.setEnabled(true);
             }

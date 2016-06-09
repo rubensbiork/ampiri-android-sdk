@@ -6,7 +6,6 @@ import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
 import android.widget.Toast;
 
-import com.ampiri.insights.AmpiriInsights;
 import com.ampiri.sdk.listeners.AdEventCallback;
 import com.ampiri.sdk.mediation.ResponseStatus;
 
@@ -15,13 +14,11 @@ public abstract class AdCallbackActivity extends Activity implements AdEventCall
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        AmpiriInsights.appStarted(this);
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        AmpiriInsights.appClosed(this);
     }
 
     @Override

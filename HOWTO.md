@@ -5,10 +5,10 @@
 * [Interstitials](#markdown-header-interstitial-ads)
 * [Video](#markdown-header-video-ads)
 * [Native Ads](#markdown-header-native-ads)
+* [In Feed Ads](#markdown-header-in-feed-ads)
 * [Ad events handling](#markdown-header-ad-events-handling)
 * [Activity lifecycle events handling](#markdown-header-activity-lifecycle-events-handling)
 * [User Data](#markdown-header-user-data)
-* [User profiling](#markdown-header-user-profiling)
 * [Log](#markdown-header-log)
 * [Debug mode](#markdown-header-debug-mode)
 * [Test devices](#markdown-header-test-devices)
@@ -22,7 +22,6 @@ Under the main `<manifest>` element, add the following permissions.
 <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
 <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
-<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 ```
 
 * ACCESS_COARSE_LOCATION (recommended) - Grants the SDK permission to access approximate location based on cell tower.
@@ -37,28 +36,8 @@ ad assets available even after the user closes the app.
 
 * READ_PHONE_STATE (recommended) - Allows the SDK to handle calls interrupting video playback during videos.
 
-* RECEIVE_BOOT_COMPLETED (recommended) - Allows the analytics engine to be able to run even if the device was rebooted.
-
-> When using SDK as a library project, you shouldn't need to worry about merging AndroidManifest.xml changes or Proguard settings. If you run into problems, 
+> When using SDK as a library project, you shouldn't need to worry about merging AndroidManifest.xml changes or Proguard settings. If you run into problems,
 make sure `manifestmerger.enabled` is set to `true` in `project.properties`
-
-## Updating your Application class
-
-This step is only required if you extended the `android.app.Application` class. If you specified a custom class in the attribute `android:name`
-for the `<application>` tag in `AndroidManifest.xml`, you should add a process verification to the beginning of that class’s `onCreate` method, like this:
-
-```java
-public class … extends Application {
-    @Override
-    public void onCreate() {
-        super.onCreate();
-        if (AmpiriService.isServiceProcess(this)) {
-            return;
-        }
-        // Your custom initialization code here
-    }
-}
-```
 
 ## Standard banners
 
@@ -167,21 +146,98 @@ videoAd.isReady();
 
 > Attention! All SDK method calls should be done from the main thread (Main thread, UI tread).
 
+Native ads are loaded via the `NativeAd` class, which has its own `Builder` class to customize it during creation:
+
+```java
+NativeAd nativeAd = new NativeAd.Builder()
+  .setAdPlaceId(YOUR_NATIVE_AD_PLACE_ID)
+  .setCallback(adListener)
+  .setAdAttributionText(getString(R.string.ad_attribution_text))
+  .build(this);
+```
+
+To show native ads you can use two way:
+
+* Create a ad view programmatically from template and add it to the screen.
+* Add `NativeAdView` view in the layout and bind loaded data to this view.
+
+### Templates
+
+Ampiri SDK provides 2 types of templates for native ads
+
+* FeedCardNativeAdView - Icon, title, description, star rating, and CTA button
+* StoryCardNativeAdView - Image, icon, title, description, star rating, and CTA button
+
+> Every template have a sign that clearly indicates that it is an ad. For example "Ad" or "Sponsored".
+
+If you want to use one of these templates, you can add the selected template in the creation of the `NativeAd`:
+
+```java
+.setAdViewBuilder(FeedCardNativeAdView.BUILDER);
+```
+
+With a native template, you can customize the following elements:
+
+* Height
+* Width
+* Background Color
+* Title Color
+* Title Font
+* Description Color
+* Description Font
+* Button Color
+* Button Title Color
+* Button Title Font
+* Button Border Color
+
+In order to customize these elements, you will need to build an attributes object and provide in the creation of the `NativeAd`:
+```java
+.setAdView(FeedCardNativeAdView.BUILDER, new NativeAdView.Attributes()
+    .setBackgroundColor(Color.RED)
+    .setTitleTextColor(Color.GREEN)
+    .setButtonColor(Color.GREEN));
+```
+
+Add a banner place to layout, e.g.:
+``` xml
+  <FrameLayout
+    android:id="@+id/ad_container"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:visibility="gone"/>
+```
+
+After calling the `loadAd()` method, ads download starts. If you call `loadAd()` again before the banner is fully served, new request processing is
+ignored. In this case, only the last request will be processed.
+
+When banner download is completed, you can display the banner by calling `renderAdView()` method.
+
+```java
+adContainerView = (FrameLayout) view.findViewById(R.id.ad_container);
+
+@Override
+public void onAdLoaded() {
+  adContainerView.setVisibility(View.VISIBLE);
+  adContainerView.removeAllViews();
+  adContainerView.addView(nativeAd.renderAdView());
+}
+```
+
+### Create native UI
+
 In order to start using native ads, you will need to go through following steps:
- 
+
 * Create all needed views (icon view, main image view, text views, rating bar etc...)
-* Put your views together so that they look similar to your app content
 * Pass the views to our SDK
-* and start requesting
 
 You can either create your custom views in a layout `.xml`, or you can add elements in code.
 
-> All views should be placed in one child; this child itself should be placed in one child.
+> All views should be placed in one child; this child itself should be placed in `NativeAdView`.
 
 The custom layout `.xml`. For example:
 
 ``` xml
-<FrameLayout android:id="@+id/native_ad"
+<com.ampiri.sdk.banner.NativeAdView android:id="@+id/native_ad"
  ...>
     <RelativeLayout ...>
         <ImageView android:id="@+id/native_ad_icon"
@@ -196,108 +252,74 @@ The custom layout `.xml`. For example:
           ... />
         <Button android:id="@+id/native_ad_call_to_action"
           ... />
-        <ImageView android:id="@+id/native_ad_choices"
+        <TextView android:id="@+id/native_ad_attribution"
+          ... />
+        <ImageView android:id="@+id/native_ad_choices_icon"
           android:layout_width="40dp"
           android:layout_height="40dp"
           android:padding="10dp"
           ... />
+        <FrameLayout
+          android:id="@+id/native_ad_choices_container"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:minHeight="20dp"
+          android:minWidth="20dp"
+          ... />
     </RelativeLayout>
-</FrameLayout>
+</com.ampiri.sdk.banner.NativeAdView>
 ```
 
 After you created all the views, please proceed by passing the views to our SDK. For example:
 
 ```java
-NativeAdRenderer viewRenderer = new NativeAdRenderer() {
-    @Override
-    public NativeAdViewAssets renderAdView(@NonNull final View view, @NonNull final NativeAdData.AdData adData) {
-        final ImageView iconView = (ImageView) view.findViewById(R.id.native_ad_icon);
-        if (adData.iconUrl != null) {
-            // Downloading and setting the ad icon.
-            Picasso.with(view.getContext()).load(adData.iconUrl).into(iconView);
-            iconView.setVisibility(View.VISIBLE);
-        }
-        
-        final ImageView imageView = (ImageView) view.findViewById(R.id.native_ad_image);
-        if (adData.imageUrl != null) {
-            // Downloading and setting the ad main image.
-            Picasso.with(view.getContext()).load(adData.imageUrl).into(imageView);
-            imageView.setVisibility(View.VISIBLE);
-        }
-        
-        final TextView titleView = (TextView) view.findViewById(R.id.native_ad_title);
-        if (adData.title != null) {
-            titleView.setText(adData.title);
-            titleView.setVisibility(View.VISIBLE);
-        }
+  adView = (NativeAdView) view.findViewById(R.id.native_ad);
 
-        final TextView textView = (TextView) view.findViewById(R.id.native_ad_text);
-        if (adData.text != null) {
-            textView.setText(adData.text);
-            textView.setVisibility(View.VISIBLE);
-        }
-
-        final RatingBar starRatingView = (RatingBar) view.findViewById(R.id.native_ad_star_rating);
-        if (adData.starRating != null) {
-            starRatingView.setStepSize(0.1F);
-            starRatingView.setIsIndicator(true);
-            starRatingView.setNumStars((int) adData.starRating.scale);
-            starRatingView.setRating((float) adData.starRating.value);
-            starRatingView.setVisibility(View.VISIBLE);
-        }
-
-        if (adData.adChoice != null) {
-            final ImageView adChoiceView = (ImageView) view.findViewById(R.id.native_ad_choices_icon);
-            adChoiceView.setContentDescription(adData.adChoice.iconCaption);
-            adChoiceView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(final View v) {
-                    final Intent intent = new Intent();
-                    intent.setAction("android.intent.action.VIEW");
-                    intent.addCategory("android.intent.category.BROWSABLE");
-                    intent.setData(Uri.parse(adData.adChoice.clickUrl));
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    v.getContext().startActivity(intent);
-                }
-            });
-            adChoiceView.setVisibility(View.VISIBLE);
-            // Downloading and setting the adChoice icon.
-            Picasso.with(getActivity()).load(adData.adChoice.iconUrl).into(adChoiceView);
-        }
-        
-        return new NativeAdViewAssets.Builder()
-                .setIconView(iconView)
-                .setImageView(imageView)
-                .setTitleView(titleView)
-                .setTextView(textView)
-                .setCallToActionView(callToActionView)
-                .setStarRatingView(starRatingView)
-                .build();
-    }
-}
+  adView.setIconView(R.id.native_ad_icon);
+  adView.setCoverImageView(R.id.native_ad_image);
+  adView.setTextView(R.id.native_ad_text);
+  adView.setTitleView(R.id.native_ad_title);
+  adView.setCallToActionView(R.id.native_ad_call_to_action);
+  adView.setStarRatingView(R.id.native_ad_star_rating);
+  adView.setAdAttributionView(R.id.native_ad_attribution);
+  adView.setAdChoiceIconView(R.id.native_ad_choices_icon);
+  adView.setAdChoiceContainerView(R.id.native_ad_choices_container);
 ```
 
-Add the following code to your activity:
+Registering the native ad view in the creation of the `NativeAd`:
 
 ```java
-NativeAd nativeAd = new NativeAd(this, "YOUR_NATIVE_AD_PLACE_ID", viewRenderer, adListener);
-nativeAd.loadAd();
+.setAdView(adView);
 ```
 
-After calling the `loadAd()` method, native ad download starts. If you call `loadAd()` again before the native ad is fully served, new request processing is cancelled. Only one request will be processed.
+After calling the `loadAd()` method, ads download starts. If you call `loadAd()` again before the banner is fully served, new request processing is
+ignored. In this case, only the last request will be processed.
 
-When native ad download is completed, you can display it by calling `renderAdView()` method.
-```java
-ViewGroup adView = (ViewGroup) view.findViewById(R.id.native_ad);
-nativeAd.renderAdView(adView);
-```
+When banner download is completed, you can display the banner by calling `showAd()` method.
 
 To learn about download completion, subscribe to ad events (see [Ad events handling](#markdown-header-ad-events-handling) section) or call method `isReady()`.
 ```java
 nativeAd.isReady();
 ```
 
-> Every ad should have a sign that clearly indicates that it is an ad. For example "Ad" or "Sposored".
+## In Feed Ads
+
+> Attention! All SDK method calls should be done from the main thread (Main thread, UI tread).
+
+Add the following code to your activity:
+
+```java
+StreamAdAdapter adAdapter = new StreamAdAdapter(this, new MainAdapter(this), "YOUR_NATIVE_AD_PLACE_ID", FeedCardNativeAdView.BUILDER, getString(R.string.ad_attribution_text));
+listView.setAdapter(adAdapter);
+adAdapter.loadAd();
+```
+
+After calling the `loadAd()` method, infeed ad download starts. If you call `loadAd()` again before the native ad is fully served, new request processing is cancelled. Only one request will be processed.
+
+When infeed ad download is completed, it will show automatically.
+
+To learn about download completion, subscribe to ad events (see [Ad events handling](#markdown-header-ad-events-handling) section).
+
 
 ## Ad events handling
 
@@ -341,28 +363,28 @@ Example:
 @Override
 protected void onPause() {
     super.onPause();
-    interstitialAd.onPause();
-    standardAd.onPause();
-    videoAd.onPause();
-    nativeAd.onPause();
+    interstitialAd.onActivityPaused();
+    standardAd.onActivityPaused();
+    videoAd.onActivityPaused();
+    nativeAd.onActivityPaused();
 }
 
 @Override
 protected void onResume() {
     super.onResume();
-    interstitialAd.onResume();
-    standardAd.onResume();
-    videoAd.onResume();
-    nativeAd.onResume();
+    interstitialAd.onActivityResumed();
+    standardAd.onActivityResumed();
+    videoAd.onActivityResumed();
+    nativeAd.onActivityResumed();
 }
  
 @Override
 protected void onDestroy() {
     super.onDestroy();
-    interstitialAd.onDestroy();
-    standardAd.onDestroy();
-    videoAd.onDestroy();
-    nativeAd.onDestroy();
+    interstitialAd.onActivityDestroyed();
+    standardAd.onActivityDestroyed();
+    videoAd.onActivityDestroyed();
+    nativeAd.onActivityDestroyed();
 }
 ```
 
@@ -374,28 +396,6 @@ Ampiri.setUserBirthday(data);
 Ampiri.setUserGender(UserData.Gender.FEMALE);
 Ampiri.setUserInterests(Arrays.asList("football", "auto", "cats")); // Just for example. Please set real interests.
 ```
-
-## User profiling
-
-In order to improve conversions rate of the ads you may enable user data profiling. In each of your app’s activities (or in their custom superclass, if you
-created one), call `appStarted` and `appClosed`:
-
-```java
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        AmpiriInsights.appStarted(this);
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        AmpiriInsights.appClosed(this);
-    }
-```
-
-> It is extremely important that `appStarted` be called before any activity is started. That’s why you should call it in `onCreate`. If any activity in your
-app is in the started state before calling `appStarted`, the session lifetime results you will see in your dashboard will be incorrect.
 
 ## Log
 
@@ -424,7 +424,7 @@ It is recommended to use this option for integration test purposes.
 
 ```java
 Ampiri.addMediationAdapter(new AdMobMediation.Builder()
-    .addTestDevice("784289AB4B95404108C39EB9280D8900")
+    .addTestDevice("HASHED_ID")
     .build());
 ```
 
@@ -432,6 +432,6 @@ Ampiri.addMediationAdapter(new AdMobMediation.Builder()
 
 ```java
 Ampiri.addMediationAdapter(new FacebookMediation.Builder()
-    .addTestDevice("4096e0b2fe4611dfdbc4bc4cc53697f3")
+    .addTestDevice("HASHED_ID")
     .build());
 ```

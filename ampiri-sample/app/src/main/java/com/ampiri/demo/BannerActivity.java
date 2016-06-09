@@ -54,7 +54,7 @@ public abstract class BannerActivity extends AdCallbackActivity {
     public void onResume() {
         super.onResume();
         if (standardAd != null) {
-            standardAd.onResume();
+            standardAd.onActivityResumed();
             if (autoUpdateView != null) {
                 autoUpdateView.setChecked(standardAd.isAutoRefreshEnable());
             }
@@ -65,14 +65,14 @@ public abstract class BannerActivity extends AdCallbackActivity {
     public void onPause() {
         super.onPause();
         if (standardAd != null) {
-            standardAd.onPause();
+            standardAd.onActivityPaused();
         }
     }
 
     @Override
     public void onDestroy() {
         if (standardAd != null) {
-            standardAd.onDestroy();
+            standardAd.onActivityDestroyed();
         }
         super.onDestroy();
     }

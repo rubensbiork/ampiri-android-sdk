@@ -11,7 +11,6 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import com.ampiri.insights.AmpiriInsights;
 import com.ampiri.sdk.utils.AmpiriLogger;
 
 public class MainActivity extends Activity implements OnItemClickListener {
@@ -25,14 +24,6 @@ public class MainActivity extends Activity implements OnItemClickListener {
         listView.setAdapter(new MainAdapter(this));
         listView.setOnItemClickListener(this);
         setContentView(listView);
-
-        AmpiriInsights.appStarted(this);
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        AmpiriInsights.appClosed(this);
     }
 
     @Override
@@ -52,6 +43,9 @@ public class MainActivity extends Activity implements OnItemClickListener {
                 break;
             case 4:
                 startActivity(NativeActivity.buildIntent(this));
+                break;
+            case 5:
+                startActivity(InfeedActivity.buildIntent(this));
                 break;
             default:
                 throw new IllegalStateException("Unknown position [" + position + "]");

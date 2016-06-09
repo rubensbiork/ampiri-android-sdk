@@ -35,6 +35,9 @@
         <activity
             android:name=".NativeActivity"
             android:label="@string/ad_native"/>
+        <activity
+            android:name=".InfeedActivity"
+            android:label="@string/ad_infeed"/>
     </application>
 
 </manifest>

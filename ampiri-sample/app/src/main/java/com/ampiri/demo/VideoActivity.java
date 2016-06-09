@@ -70,7 +70,7 @@ public class VideoActivity extends AdCallbackActivity {
     public void onResume() {
         super.onResume();
         if (videoAd != null) {
-            videoAd.onResume();
+            videoAd.onActivityResumed();
             if (videoAd.isReady() && showView != null) {
                 showView.setEnabled(true);
             }
@@ -82,7 +82,7 @@ public class VideoActivity extends AdCallbackActivity {
     public void onPause() {
         super.onPause();
         if (videoAd != null) {
-            videoAd.onPause();
+            videoAd.onActivityPaused();
         }
     }
 
@@ -90,7 +90,7 @@ public class VideoActivity extends AdCallbackActivity {
     public void onDestroy() {
         super.onDestroy();
         if (videoAd != null) {
-            videoAd.onDestroy();
+            videoAd.onActivityDestroyed();
         }
     }
 

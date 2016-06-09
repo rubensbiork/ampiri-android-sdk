@@ -6,5 +6,6 @@
         <item>@string/ad_interstitial</item>
         <item>@string/ad_video</item>
         <item>@string/ad_native</item>
+        <item>@string/ad_infeed</item>
     </string-array>
 </resources>
