@@ -45,7 +45,16 @@ public class MainActivity extends Activity implements OnItemClickListener {
                 startActivity(NativeActivity.buildIntent(this));
                 break;
             case 5:
-                startActivity(InfeedActivity.buildIntent(this));
+                startActivity(VideoNativeActivity.buildIntent(this));
+                break;
+            case 6:
+                startActivity(FeedCardInfeedActivity.buildIntent(this));
+                break;
+            case 7:
+                startActivity(StoryCardInfeedActivity.buildIntent(this));
+                break;
+            case 8:
+                startActivity(VideoCardInfeedActivity.buildIntent(this));
                 break;
             default:
                 throw new IllegalStateException("Unknown position [" + position + "]");

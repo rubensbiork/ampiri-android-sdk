@@ -12,7 +12,7 @@ import com.ampiri.sdk.banner.InterstitialAd;
 
 public class InterstitialActivity extends AdCallbackActivity {
     @NonNull
-    private static final String AD_PLACE_ID = "00000000-0000-0000-0000-000000000000";
+    private static final String AD_PLACE_ID = "6b34bf0e-04c4-47f9-b4d3-caeddeab0b13";
     @Nullable
     private InterstitialAd interstitialAd;
     @Nullable

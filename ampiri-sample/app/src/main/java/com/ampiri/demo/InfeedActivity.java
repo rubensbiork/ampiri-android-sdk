@@ -1,29 +1,23 @@
 package com.ampiri.demo;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import com.ampiri.sdk.banner.FeedCardNativeAdView;
+import com.ampiri.sdk.banner.NativeAdView;
 import com.ampiri.sdk.banner.StreamAdAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class InfeedActivity extends AdCallbackActivity {
+public abstract class InfeedActivity extends AdCallbackActivity {
     @NonNull
-    private static final String AD_PLACE_ID = "00000000-0000-0000-0000-000000000007";
+    private static final String AD_PLACE_ID = "e5cc8e6d-d674-402a-aeca-eda7856bd7af";
     @Nullable
     private StreamAdAdapter adAdapter;
-
-    @NonNull
-    public static Intent buildIntent(@NonNull final Context context) {
-        return new Intent(context, InfeedActivity.class);
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,12 +26,22 @@ public class InfeedActivity extends AdCallbackActivity {
 
         final ListView listView = (ListView) findViewById(R.id.list);
         if (listView != null) {
+            final Context context = this;
             final MainAdapter adapter = new MainAdapter(this);
-            adAdapter = new StreamAdAdapter(this, adapter, AD_PLACE_ID, FeedCardNativeAdView.BUILDER, getString(R.string.ad_attribution_text), this);
+            adAdapter = new StreamAdAdapter.Builder()
+                    .setAdapter(adapter)
+                    .setAdPlaceId(AD_PLACE_ID)
+                    .setViewBuilder(getNativeAdViewBuilder())
+                    .setAdAttributionText(getString(R.string.ad_attribution_text))
+                    .setEventCallback(this)
+                    .build(context);
             listView.setAdapter(adAdapter);
             adAdapter.loadAd();
         }
     }
+
+    @NonNull
+    protected abstract NativeAdView.Builder getNativeAdViewBuilder();
 
     @Override
     public void onResume() {

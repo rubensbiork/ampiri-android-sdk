@@ -5,7 +5,10 @@
     <string name="ad_interstitial">Ampiri Interstitial Sample</string>
     <string name="ad_video">Ampiri Video Interstitial Sample</string>
     <string name="ad_native">Ampiri Native Ad Sample</string>
-    <string name="ad_infeed">Ampiri Infeed Ad Sample</string>
+    <string name="ad_native_video">Ampiri Native Video Ad Sample</string>
+    <string name="ad_native_infeed_feed_card">Ampiri Infeed Ad Sample</string>
+    <string name="ad_native_infeed_story_card">Ampiri Infeed Story Card Ad Sample</string>
+    <string name="ad_native_infeed_video_card">Ampiri Infeed Video Card Ad Sample</string>
 
     <string name="auto_refresh">Auto update</string>
 

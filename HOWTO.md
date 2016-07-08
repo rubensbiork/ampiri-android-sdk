@@ -30,7 +30,7 @@ Under the main `<manifest>` element, add the following permissions.
 Although not technically required, the LOCATION permissions make it possible for the SDK to send location-based data to advertisers. Sending better
 location data generally leads to better monetization.
 
-* WRITE_EXTERNAL_STORAGE (optional) - Allows the SDK to cache all ad assets (creatives, custom frames, etc.) in external memory. This can maximize 
+* WRITE_EXTERNAL_STORAGE (optional) - Allows the SDK to cache all ad assets (creatives, custom frames, etc.) in external memory. This can maximize
 performance by ensuring immediate delivery of ads and minimize network traffic used by the SDK by keeping cached
 ad assets available even after the user closes the app.
 
@@ -41,7 +41,7 @@ make sure `manifestmerger.enabled` is set to `true` in `project.properties`
 
 ## Standard banners
 
-> Attention! All SDK method calls should be done from the main thread (Main thread, UI tread).
+> Note: All SDK method calls should be done from the main thread (Main thread, UI thread).
 
 Add a banner to layout file, e.g.:
 ```xml
@@ -54,7 +54,7 @@ Add a banner to layout file, e.g.:
 
 It is advisable to make the banner size in the layout the same as the required one (see below). Otherwise, the banner might be displayed incorrectly.
 
-Add the folowing code to your activity:
+Add the following code to your activity:
 ```java
 FrameLayout adView = (FrameLayout) view.findViewById(R.id.ad_view);
 StandardAd standardAd = new StandardAd(this, adView, "YOUR_STANDARD_AD_PLACE_ID", BannerSize.BANNER_SIZE_320x50, adListener);
@@ -68,16 +68,16 @@ Banners `320*50` are served by default. Available sizes:
 
 ### Standard banner auto-update
 
-You can switch banner auto-update on or off; to do this, call `setAutorefreshEnabled()` method, e.g.:
+You can switch the banner auto-update function on or off; to do this, call `setAutorefreshEnabled()` method, e.g.:
 ```java
 standardAd.setAutorefreshEnabled(false);
 ```
 
-By default, auto-update is switched on. Auto-update period is set up via the admin panel.
+By default, auto-update is switched on. The auto-update period is set up via the admin panel.
 
 ## Interstitial Ads
 
-> Attention! All SDK method calls should be done from the main thread (Main thread, UI tread).
+> Note: All SDK method calls should be done from the main thread (Main thread, UI thread).
 
 ### Interstitial ad initialization
 
@@ -86,9 +86,9 @@ Add the following code to your activity:
 InterstitialAd interstitialAd = new InterstitialAd(this, "YOUR_INTERSTITIAL_AD_PLACE_ID", adListener);
 interstitialAd.loadAd();
 ```
-After calling the `loadAd()` method, interstitial download starts. If you call `loadAd()` again before the banner is fully served, previous request processing is cancelled. In this case, only the last request will be processed.
+After calling the `loadAd()` method, the interstitial download starts. If you call `loadAd()` again before the banner is fully served, the previous request processing is cancelled. In this case, only the last request will be processed.
 
-When banner download is completed, you can display the banner by calling `showAd()` method.
+When the banner download is completed, you can display the banner by calling `showAd()` method.
 ```java
 interstitialAd.showAd();
 ```
@@ -98,41 +98,48 @@ To learn about download completion, subscribe to banner events (see [Ad events h
 interstitialAd.isReady();
 ```
 
-If your application workflow allows to show fullscreen banner in any time and any place, there are 2 additional ways to show it right after the loading was finished or with custom delay after method invocation.
+If your application workflow allows showing full screen banners at any time and in any place, there are 2 additional ways to show it right after the loading has finished or with a custom delay after method invocation.
 
-To load and show fullscreen banner right after it was loaded use:
+To load and show full screen banner right after it was loaded use:
 ```java
 interstitialAd.loadAndShow()
 ```
 
-To load and show fullscreen banner with custom delay after method invocation use:
+To load and show full screen banner with a custom delay after method invocation use:
 ```java
 interstitialAd.loadAndShowWithDelay()
 ```
-Delay interval is specified via Admin UI interface.
+The delay interval is specified via Admin UI interface.
 
-If you want full control over when and where to show fullscreen banner, use the following steps:
+If you want full control over when and where to show full screen banners, use the following steps:
 
 1. Call `interstitialAd.loadAd()` in advance
 2. Set `AdEventCallback` to handle banner events
-3. When you want to show banner, check that it is ready and show: `if (interstitialAd.isReady()) interstitialAd.showAd()`
+3. When you want to show the banner, check that it is ready and show: `if (interstitialAd.isReady()) interstitialAd.showAd()`
 4. Start loading next banner in `onAdClosed()` event handler of `AdEventCallback`
 
 ## Video Ads
 
-> Attention! All SDK method calls should be done from the main thread (Main thread, UI tread).
+> Note: All SDK method calls should be done from the main thread (Main thread, UI thread).
 
 ### Video ad initialization
 
-Add the folowing code to your activity:
+Add the following code to your activity:
 ```java
 VideoAd videoAd = new VideoAd(this, "YOUR_VIDEO_AD_PLACE_ID", adListener);
 videoAd.loadAd();
 ```
 
-After calling the `loadAd()` method, video download starts. If you call `loadAd()` again before the video is started to show, new request processing is cancelled. Only one request will be processed.
+Close button for video ads is supported for some networks. If you want to enable this button you should add boolean parameter in video ad constructor:
+```java
+VideoAd videoAd = new VideoAd(this, "YOUR_VIDEO_AD_PLACE_ID", closeButtonEnabled);
+or
+VideoAd videoAd = new VideoAd(this, "YOUR_VIDEO_AD_PLACE_ID", closeButtonEnabled, adListener);
+```
 
-When video download is completed, you can display it by calling `showAd()` method.
+After calling the `loadAd()` method, the video download starts. If you call `loadAd()` again before the video has started to show, new request processing is cancelled. Only one request will be processed.
+
+When the video download is completed, you can display it by calling the `showAd()` method.
 ```java
 videoAd.showAd();
 ```
@@ -144,7 +151,7 @@ videoAd.isReady();
 
 ## Native Ads
 
-> Attention! All SDK method calls should be done from the main thread (Main thread, UI tread).
+>Note: All SDK method calls should be done from the main thread (Main thread, UI thread).
 
 Native ads are loaded via the `NativeAd` class, which has its own `Builder` class to customize it during creation:
 
@@ -156,19 +163,20 @@ NativeAd nativeAd = new NativeAd.Builder()
   .build(this);
 ```
 
-To show native ads you can use two way:
+To show native ads you can use two methods:
 
-* Create a ad view programmatically from template and add it to the screen.
+* Create an ad view programmatically from template and add it to the screen.
 * Add `NativeAdView` view in the layout and bind loaded data to this view.
 
 ### Templates
 
-Ampiri SDK provides 2 types of templates for native ads
+Ampiri SDK provides 3 types of templates for native ads
 
 * FeedCardNativeAdView - Icon, title, description, star rating, and CTA button
-* StoryCardNativeAdView - Image, icon, title, description, star rating, and CTA button
+* StoryCardNativeAdView - Icon, image, title, description, star rating, and CTA button
+* VideoCardNativeAdView - Icon, image/video/carousel, title, description, star rating, and CTA button
 
-> Every template have a sign that clearly indicates that it is an ad. For example "Ad" or "Sponsored".
+> Every template has a label that clearly indicates that it is an ad. For example "Ad" or "Sponsored".
 
 If you want to use one of these templates, you can add the selected template in the creation of the `NativeAd`:
 
@@ -190,7 +198,7 @@ With a native template, you can customize the following elements:
 * Button Title Font
 * Button Border Color
 
-In order to customize these elements, you will need to build an attributes object and provide in the creation of the `NativeAd`:
+In order to customize these elements, you will need to build an attributes object and provide the following in the creation of the `NativeAd`:
 ```java
 .setAdView(FeedCardNativeAdView.BUILDER, new NativeAdView.Attributes()
     .setBackgroundColor(Color.RED)
@@ -207,10 +215,10 @@ Add a banner place to layout, e.g.:
     android:visibility="gone"/>
 ```
 
-After calling the `loadAd()` method, ads download starts. If you call `loadAd()` again before the banner is fully served, new request processing is
+After calling the `loadAd()` method, the ad download starts. If you call `loadAd()` again before the banner is fully served, new request processing is
 ignored. In this case, only the last request will be processed.
 
-When banner download is completed, you can display the banner by calling `renderAdView()` method.
+When the banner download is completed, you can display the banner by calling `renderAdView()` method.
 
 ```java
 adContainerView = (FrameLayout) view.findViewById(R.id.ad_container);
@@ -230,11 +238,11 @@ In order to start using native ads, you will need to go through following steps:
 * Create all needed views (icon view, main image view, text views, rating bar etc...)
 * Pass the views to our SDK
 
-You can either create your custom views in a layout `.xml`, or you can add elements in code.
+You can either create your custom views in a layout `.xml`, or you can add elements in the code.
 
 > All views should be placed in one child; this child itself should be placed in `NativeAdView`.
 
-The custom layout `.xml`. For example:
+Custom layout `.xml`. For example:
 
 ``` xml
 <com.ampiri.sdk.banner.NativeAdView android:id="@+id/native_ad"
@@ -242,7 +250,9 @@ The custom layout `.xml`. For example:
     <RelativeLayout ...>
         <ImageView android:id="@+id/native_ad_icon"
           ... />
-        <ImageView android:id="@+id/native_ad_image"
+        <ImageView android:id="@+id/native_ad_cover_image"
+          ... />
+        <FrameLayout android:id="@+id/native_ad_media_container"
           ... />
         <TextView android:id="@+id/native_ad_title"
           ... />
@@ -276,7 +286,8 @@ After you created all the views, please proceed by passing the views to our SDK.
   adView = (NativeAdView) view.findViewById(R.id.native_ad);
 
   adView.setIconView(R.id.native_ad_icon);
-  adView.setCoverImageView(R.id.native_ad_image);
+  adView.setCoverImageView(R.id.native_ad_cover_image);
+  adView.setMediaContainerView(R.id.native_ad_media_container);
   adView.setTextView(R.id.native_ad_text);
   adView.setTitleView(R.id.native_ad_title);
   adView.setCallToActionView(R.id.native_ad_call_to_action);
@@ -292,7 +303,7 @@ Registering the native ad view in the creation of the `NativeAd`:
 .setAdView(adView);
 ```
 
-After calling the `loadAd()` method, ads download starts. If you call `loadAd()` again before the banner is fully served, new request processing is
+After calling the `loadAd()` method, the ad download starts. If you call `loadAd()` again before the banner is fully served, new request processing is
 ignored. In this case, only the last request will be processed.
 
 When banner download is completed, you can display the banner by calling `showAd()` method.
@@ -304,7 +315,7 @@ nativeAd.isReady();
 
 ## In Feed Ads
 
-> Attention! All SDK method calls should be done from the main thread (Main thread, UI tread).
+> Note: All SDK method calls should be done from the main thread (Main thread, UI thread).
 
 Add the following code to your activity:
 
@@ -314,9 +325,9 @@ listView.setAdapter(adAdapter);
 adAdapter.loadAd();
 ```
 
-After calling the `loadAd()` method, infeed ad download starts. If you call `loadAd()` again before the native ad is fully served, new request processing is cancelled. Only one request will be processed.
+After calling the `loadAd()` method, the in-feed ad download starts. If you call `loadAd()` again before the native ad is fully served, new request processing is cancelled. Only one request will be processed.
 
-When infeed ad download is completed, it will show automatically.
+When in-feed ad download is completed, it will show automatically.
 
 To learn about download completion, subscribe to ad events (see [Ad events handling](#markdown-header-ad-events-handling) section).
 
@@ -331,23 +342,23 @@ AdEventCallback adListener = new AdEventCallback() {
     @Override
     public void onAdLoaded() {
     }
- 
+
     @Override
     public void onAdFailed(@NonNull final ResponseStatus responseStatus) {
     }
- 
+
     @Override
     public void onAdOpened() {
     }
- 
+
     @Override
     public void onAdClicked() {
     }
- 
+
     @Override
     public void onAdClosed() {
     }
- 
+
     @Override
     public void onAdCompleted() {
     }
@@ -356,7 +367,7 @@ AdEventCallback adListener = new AdEventCallback() {
 
 ## Activity lifecycle events handling
 
-`onPause()`, `onResume()` and `onDestroy()` methods should be called depending on the Activity lifecycle events.
+`onPause()`, `onResume()` and `onDestroy()` methods should be called depending on the activity lifecycle events.
 
 Example:
 ```java
@@ -377,7 +388,7 @@ protected void onResume() {
     videoAd.onActivityResumed();
     nativeAd.onActivityResumed();
 }
- 
+
 @Override
 protected void onDestroy() {
     super.onDestroy();
@@ -390,7 +401,7 @@ protected void onDestroy() {
 
 ## User Data
 
-To pass user data to Ampiri SDK use the following static methods:
+To pass user data to the Ampiri SDK, use the following static methods:
 ```java
 Ampiri.setUserBirthday(data);
 Ampiri.setUserGender(UserData.Gender.FEMALE);
@@ -415,8 +426,8 @@ setprop log.tag.VAST DEBUG
 
 ## Debug mode
 
-If you want to log Debug information, please install `AmpiriLogger.setDebugMode(true)` (false by default), then you will see the logs under `Ampiri_SDK` tag.
-It is recommended to use this option for integration test purposes.
+If you want to log debug information, please install `AmpiriLogger.setDebugMode(true)` (false by default), then you will see the logs under `Ampiri_SDK` tag.
+It is recommended that this option should be used for integration test purposes.
 
 ## Test devices
 

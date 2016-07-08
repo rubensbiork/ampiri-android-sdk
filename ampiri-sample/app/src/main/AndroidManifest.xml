@@ -36,8 +36,17 @@
             android:name=".NativeActivity"
             android:label="@string/ad_native"/>
         <activity
-            android:name=".InfeedActivity"
-            android:label="@string/ad_infeed"/>
+            android:name=".VideoNativeActivity"
+            android:label="@string/ad_native_video"/>
+        <activity
+            android:name=".FeedCardInfeedActivity"
+            android:label="@string/ad_native_infeed_feed_card"/>
+        <activity
+            android:name=".StoryCardInfeedActivity"
+            android:label="@string/ad_native_infeed_story_card"/>
+        <activity
+            android:name=".VideoCardInfeedActivity"
+            android:label="@string/ad_native_infeed_video_card"/>
     </application>
 
 </manifest>

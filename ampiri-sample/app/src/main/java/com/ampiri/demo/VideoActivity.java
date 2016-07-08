@@ -12,7 +12,7 @@ import com.ampiri.sdk.banner.VideoAd;
 
 public class VideoActivity extends AdCallbackActivity {
     @NonNull
-    private static final String AD_PLACE_ID = "00000000-0000-0000-0000-000000000005";
+    private static final String AD_PLACE_ID = "032c0809-0335-4e98-8f8c-8e522f291d0f";
     @Nullable
     private VideoAd videoAd;
     @Nullable

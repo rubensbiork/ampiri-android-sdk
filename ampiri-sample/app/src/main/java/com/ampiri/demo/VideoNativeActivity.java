@@ -9,9 +9,9 @@ import android.view.View;
 import android.widget.FrameLayout;
 
 import com.ampiri.sdk.banner.NativeAd;
-import com.ampiri.sdk.banner.StoryCardNativeAdView;
+import com.ampiri.sdk.banner.VideoCardNativeAdView;
 
-public class NativeActivity extends AdCallbackActivity {
+public class VideoNativeActivity extends AdCallbackActivity {
     @NonNull
     private static final String AD_PLACE_ID = "e5cc8e6d-d674-402a-aeca-eda7856bd7af";
     @Nullable
@@ -21,7 +21,7 @@ public class NativeActivity extends AdCallbackActivity {
 
     @NonNull
     public static Intent buildIntent(@NonNull final Context context) {
-        return new Intent(context, NativeActivity.class);
+        return new Intent(context, VideoNativeActivity.class);
     }
 
     @Override
@@ -31,13 +31,12 @@ public class NativeActivity extends AdCallbackActivity {
 
         adContainerView = (FrameLayout) findViewById(R.id.ad_container);
 
-        final Context context = this;
         nativeAd = new NativeAd.Builder()
                 .setAdPlaceId(AD_PLACE_ID)
-                .setAdViewBuilder(StoryCardNativeAdView.BUILDER)
+                .setAdViewBuilder(VideoCardNativeAdView.BUILDER)
                 .setAdAttributionText(getString(R.string.ad_attribution_text))
                 .setCallback(this)
-                .build(context);
+                .build(this);
         nativeAd.loadAd();
     }
 

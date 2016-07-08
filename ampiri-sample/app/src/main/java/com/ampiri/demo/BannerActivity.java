@@ -13,7 +13,7 @@ import com.ampiri.sdk.mediation.BannerSize;
 
 public abstract class BannerActivity extends AdCallbackActivity {
     @NonNull
-    private static final String AD_PLACE_ID = "00000000-0000-0000-0000-000000000001";
+    private static final String AD_PLACE_ID = "3dfbb889-3bcd-4c34-82ae-8fcb539c3b25";
     @Nullable
     private StandardAd standardAd;
     @Nullable

@@ -1,3 +1,15 @@
+## Version 3.2.0 (July 8, 2016)
+- Added Facebook Native Ad Video
+- Added `VideoCardNativeAdView` template for support native video ads
+- Added close button control for Video Ad
+- NativeAd class now can utilize Context instance instead of Activity
+- Updated the following dependencies:
+	- support-annotations JAR to 24.0.0
+	- Google Play Services to 9.2.0
+	- Facebook Audience Network SDK to 4.13.0
+	- MoPub SDK to 4.7.1
+- Miscellaneous bug fixes
+
 ## Version 3.1.0 (June 9, 2016)
 - Added `StreamAdAdapter` for support native ads in `ListView` and `GridView`
 - Added customizable templates for native ads
