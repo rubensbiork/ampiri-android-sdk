@@ -54,20 +54,21 @@ repositories {
 }
 
 depedencies {
-  compile 'com.ampiri.sdk:ampiri-sdk:3.2.0'
-  compile 'com.ampiri.sdk:ampiri-sdk-mediation-adcolony:3.2.0'
-  compile 'com.ampiri.sdk:ampiri-sdk-mediation-admob:3.2.0'
-  compile 'com.ampiri.sdk:ampiri-sdk-mediation-applifier:3.2.0'
-  compile 'com.ampiri.sdk:ampiri-sdk-mediation-applovin:3.2.0'
-  compile 'com.ampiri.sdk:ampiri-sdk-mediation-chartboost:3.2.0'
-  compile 'com.ampiri.sdk:ampiri-sdk-mediation-facebook:3.2.0'
-  compile 'com.ampiri.sdk:ampiri-sdk-mediation-mopub:3.2.0'
-  compile 'com.ampiri.sdk:ampiri-sdk-mediation-nativex:3.2.0'
-  compile 'com.ampiri.sdk:ampiri-sdk-mediation-vungle:3.2.0'
+  compile 'com.ampiri.sdk:ampiri-sdk:3.2.1'
+  compile 'com.ampiri.sdk:ampiri-sdk-mediation-adcolony:3.2.1'
+  compile 'com.ampiri.sdk:ampiri-sdk-mediation-admob:3.2.1'
+  compile 'com.ampiri.sdk:ampiri-sdk-mediation-applifier:3.2.1'
+  compile 'com.ampiri.sdk:ampiri-sdk-mediation-applovin:3.2.1'
+  compile 'com.ampiri.sdk:ampiri-sdk-mediation-chartboost:3.2.1'
+  compile 'com.ampiri.sdk:ampiri-sdk-mediation-facebook:3.2.1'
+  compile 'com.ampiri.sdk:ampiri-sdk-mediation-mopub:3.2.1'
+  compile 'com.ampiri.sdk:ampiri-sdk-mediation-nativex:3.2.1'
+  compile 'com.ampiri.sdk:ampiri-sdk-mediation-vungle:3.2.1'
 
   compile 'com.google.android.gms:play-services-ads:9.2.0'
 }
 ```
+> Applifier provides only aar file, so you need to add unity-ads-x.x.x.aar in to the 'libs' folder of your project in order to integrate Applifier Ad network.
 
 ### Including the local .aar libraries ###
 
@@ -83,19 +84,19 @@ repositories {
 }
 
 dependencies {
-  compile(name: 'ampiri-sdk', version:'3.2.0', ext: 'aar')
-  compile(name: 'ampiri-sdk-mediation', version:'3.2.0', ext: 'aar')
-  compile(name: 'ampiri-sdk-mediation-adcolony', version:'3.2.0', ext: 'aar')
-  compile(name: 'ampiri-sdk-mediation-admob', version:'3.2.0', ext: 'aar')
-  compile(name: 'ampiri-sdk-mediation-applovin', version:'3.2.0', ext: 'aar')
-  compile(name: 'ampiri-sdk-mediation-applifier', version:'3.2.0', ext: 'aar')
-  compile(name: 'ampiri-sdk-mediation-chartboost', version:'3.2.0', ext: 'aar')
-  compile(name: 'ampiri-sdk-mediation-facebook', version:'3.2.0', ext: 'aar')
-  compile(name: 'ampiri-sdk-mediation-mopub', version:'3.2.0', ext: 'aar')
-  compile(name: 'ampiri-sdk-mediation-nativex', version:'3.2.0', ext: 'aar')
-  compile(name: 'ampiri-sdk-mediation-vungle', version:'3.2.0', ext: 'aar')
-  compile(name: 'ampiri-sdk-mraid', version:'3.2.0', ext: 'aar')
-  compile(name: 'ampiri-sdk-vast', version:'3.2.0', ext: 'aar')
+  compile(name: 'ampiri-sdk', version:'3.2.1', ext: 'aar')
+  compile(name: 'ampiri-sdk-mediation', version:'3.2.1', ext: 'aar')
+  compile(name: 'ampiri-sdk-mediation-adcolony', version:'3.2.1', ext: 'aar')
+  compile(name: 'ampiri-sdk-mediation-admob', version:'3.2.1', ext: 'aar')
+  compile(name: 'ampiri-sdk-mediation-applovin', version:'3.2.1', ext: 'aar')
+  compile(name: 'ampiri-sdk-mediation-applifier', version:'3.2.1', ext: 'aar')
+  compile(name: 'ampiri-sdk-mediation-chartboost', version:'3.2.1', ext: 'aar')
+  compile(name: 'ampiri-sdk-mediation-facebook', version:'3.2.1', ext: 'aar')
+  compile(name: 'ampiri-sdk-mediation-mopub', version:'3.2.1', ext: 'aar')
+  compile(name: 'ampiri-sdk-mediation-nativex', version:'3.2.1', ext: 'aar')
+  compile(name: 'ampiri-sdk-mediation-vungle', version:'3.2.1', ext: 'aar')
+  compile(name: 'ampiri-sdk-mraid', version:'3.2.1', ext: 'aar')
+  compile(name: 'ampiri-sdk-vast', version:'3.2.1', ext: 'aar')
 
   compile(name: 'unity-ads', ext: 'aar')
 
