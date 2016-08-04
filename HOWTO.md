@@ -57,7 +57,7 @@ It is advisable to make the banner size in the layout the same as the required o
 Add the following code to your activity:
 ```java
 FrameLayout adView = (FrameLayout) view.findViewById(R.id.ad_view);
-StandardAd standardAd = new StandardAd(this, adView, "YOUR_STANDARD_AD_PLACE_ID", BannerSize.BANNER_SIZE_320x50, adListener);
+StandardAd standardAd = new StandardAd(this, adView, "YOUR_STANDARD_AD_UNIT_ID", BannerSize.BANNER_SIZE_320x50, adListener);
 standardAd.loadAd();
 ```
 
@@ -83,7 +83,7 @@ By default, auto-update is switched on. The auto-update period is set up via the
 
 Add the following code to your activity:
 ```java
-InterstitialAd interstitialAd = new InterstitialAd(this, "YOUR_INTERSTITIAL_AD_PLACE_ID", adListener);
+InterstitialAd interstitialAd = new InterstitialAd(this, "YOUR_INTERSTITIAL_AD_UNIT_ID", adListener);
 interstitialAd.loadAd();
 ```
 After calling the `loadAd()` method, the interstitial download starts. If you call `loadAd()` again before the banner is fully served, the previous request processing is cancelled. In this case, only the last request will be processed.
@@ -126,15 +126,15 @@ If you want full control over when and where to show full screen banners, use th
 
 Add the following code to your activity:
 ```java
-VideoAd videoAd = new VideoAd(this, "YOUR_VIDEO_AD_PLACE_ID", adListener);
+VideoAd videoAd = new VideoAd(this, "YOUR_VIDEO_AD_UNIT_ID", adListener);
 videoAd.loadAd();
 ```
 
 Close button for video ads is supported for some networks. If you want to enable this button you should add boolean parameter in video ad constructor:
 ```java
-VideoAd videoAd = new VideoAd(this, "YOUR_VIDEO_AD_PLACE_ID", closeButtonEnabled);
+VideoAd videoAd = new VideoAd(this, "YOUR_VIDEO_AD_UNIT_ID", closeButtonEnabled);
 or
-VideoAd videoAd = new VideoAd(this, "YOUR_VIDEO_AD_PLACE_ID", closeButtonEnabled, adListener);
+VideoAd videoAd = new VideoAd(this, "YOUR_VIDEO_AD_UNIT_ID", closeButtonEnabled, adListener);
 ```
 
 After calling the `loadAd()` method, the video download starts. If you call `loadAd()` again before the video has started to show, new request processing is cancelled. Only one request will be processed.
@@ -157,7 +157,7 @@ Native ads are loaded via the `NativeAd` class, which has its own `Builder` clas
 
 ```java
 NativeAd nativeAd = new NativeAd.Builder()
-  .setAdPlaceId(YOUR_NATIVE_AD_PLACE_ID)
+  .setAdUnitId(YOUR_NATIVE_AD_UNIT_ID)
   .setCallback(adListener)
   .setAdAttributionText(getString(R.string.ad_attribution_text))
   .build(this);
@@ -322,9 +322,11 @@ Add the following code to your activity:
 ```java
 StreamAdAdapter adAdapter = new StreamAdAdapter.Builder()
   .setAdapter(new MainAdapter(this))
-  .setAdPlaceId("YOUR_NATIVE_AD_PLACE_ID")
+  .setAdUnitId("YOUR_NATIVE_AD_UNIT_ID")
   .setViewBuilder(FeedCardNativeAdView.BUILDER)
-  .setAdAttributionText(getString(R.string.ad_attribution_text))
+  .setAdViewAttributes(new NativeAdView.Attributes()
+    .setAdAttributionText(R.string.ad_attribution_text)
+    .setDefaultCallToActionText(R.string.call_to_action_text))
   .setEventCallback(this)
   .build(this);
 listView.setAdapter(adAdapter);

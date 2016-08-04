@@ -12,7 +12,7 @@ import com.ampiri.sdk.banner.VideoAd;
 
 public class VideoActivity extends AdCallbackActivity {
     @NonNull
-    private static final String AD_PLACE_ID = "032c0809-0335-4e98-8f8c-8e522f291d0f";
+    private static final String AD_UNIT_ID = "032c0809-0335-4e98-8f8c-8e522f291d0f";
     @Nullable
     private VideoAd videoAd;
     @Nullable
@@ -59,7 +59,7 @@ public class VideoActivity extends AdCallbackActivity {
             }
         });
 
-        videoAd = new VideoAd(this, AD_PLACE_ID, this);
+        videoAd = new VideoAd(this, AD_UNIT_ID, this);
         if (videoAd.isReady() && showView != null) {
             showView.setEnabled(true);
         }

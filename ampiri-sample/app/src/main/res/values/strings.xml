@@ -29,6 +29,7 @@
     <string name="video_show_on_load">Load and show</string>
 
     <string name="ad_attribution_text">Sponsored</string>
+    <string name="call_to_action_text">Install</string>
 
     <string name="in_feed_item">Item %d</string>
 </resources>

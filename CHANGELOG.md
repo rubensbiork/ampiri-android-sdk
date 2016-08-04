@@ -1,3 +1,25 @@
+## Version 3.2.2 (August 1, 2016)
+- `PlaceId` renamed to `UnitId`
+- Added
+  - `setAdViewAttributes(NativeAdView.Attributes attributes)` to `NativeAd.Builder` class
+  - `setAdViewAttributes(NativeAdView.Attributes attributes)` to `StreamAdAdapter.Builder` class
+  - `setAdAttributionText(String adAttributionText)` to `NativeAdView.Attributes` class
+  - `setDefaultCallToActionText(String defaultCallToActionText)` to `NativeAdView.Attributes` class
+- Renamed
+    - `StreamAdAdapter.Builder.setViewBuilder()` to `StreamAdAdapter.Builder.setAdViewBuilder()`
+- Removed
+    - `setAdAttributionText()` from `NativeAd.Builder` class
+    - `setAdAttributionText()` from `StreamAdAdapter.Builder` class
+- Updated the following dependencies:
+	- support-annotations JAR to 24.1.1
+	- Google Play Services to 9.2.1
+- Miscellaneous bug fixes
+
+## Version 3.2.1 (July 25, 2016)
+- Removed
+    - `showAd()` from `NativeAd` class
+- Miscellaneous bug fixes
+
 ## Version 3.2.0 (July 8, 2016)
 - Added Facebook Native Ad Video
 - Added `VideoCardNativeAdView` template for support native video ads

@@ -13,7 +13,7 @@ import com.ampiri.sdk.mediation.BannerSize;
 
 public abstract class BannerActivity extends AdCallbackActivity {
     @NonNull
-    private static final String AD_PLACE_ID = "3dfbb889-3bcd-4c34-82ae-8fcb539c3b25";
+    private static final String AD_UNIT_ID = "3dfbb889-3bcd-4c34-82ae-8fcb539c3b25";
     @Nullable
     private StandardAd standardAd;
     @Nullable
@@ -28,7 +28,7 @@ public abstract class BannerActivity extends AdCallbackActivity {
         if (bannerView != null) {
             bannerView.setVisibility(View.VISIBLE);
 
-            standardAd = new StandardAd(this, bannerView, AD_PLACE_ID, getBannerSize(), this);
+            standardAd = new StandardAd(this, bannerView, AD_UNIT_ID, getBannerSize(), this);
             standardAd.loadAd();
 
             autoUpdateView = (CheckBox) findViewById(R.id.auto_update_switch);
