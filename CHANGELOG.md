@@ -1,4 +1,4 @@
-## Version 3.2.2 (August 1, 2016)
+## Version 3.2.2 (August 4, 2016)
 - `PlaceId` renamed to `UnitId`
 - Added
   - `setAdViewAttributes(NativeAdView.Attributes attributes)` to `NativeAd.Builder` class
