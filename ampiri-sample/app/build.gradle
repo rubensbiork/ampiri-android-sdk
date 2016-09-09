@@ -3,7 +3,7 @@ apply from: rootProject.file('config/quality.gradle')
 
 android {
     compileSdkVersion 24
-    buildToolsVersion "24.0.1"
+    buildToolsVersion "24.0.2"
 
     defaultConfig {
         minSdkVersion 9
@@ -42,14 +42,14 @@ repositories {
 }
 
 dependencies {
-    compile 'com.ampiri.sdk:ampiri-sdk:3.2.2'
-    compile 'com.ampiri.sdk:ampiri-sdk-mediation-adcolony:3.2.2'
-    compile 'com.ampiri.sdk:ampiri-sdk-mediation-admob:3.2.2'
-    compile 'com.ampiri.sdk:ampiri-sdk-mediation-applifier:3.2.2'
-    compile 'com.ampiri.sdk:ampiri-sdk-mediation-applovin:3.2.2'
-    compile 'com.ampiri.sdk:ampiri-sdk-mediation-chartboost:3.2.2'
-    compile 'com.ampiri.sdk:ampiri-sdk-mediation-facebook:3.2.2'
-    compile 'com.ampiri.sdk:ampiri-sdk-mediation-mopub:3.2.2'
-    compile 'com.ampiri.sdk:ampiri-sdk-mediation-nativex:3.2.2'
-    compile 'com.ampiri.sdk:ampiri-sdk-mediation-vungle:3.2.2'
+    compile 'com.ampiri.sdk:ampiri-sdk:3.2.3'
+    compile 'com.ampiri.sdk:ampiri-sdk-mediation-adcolony:3.2.3'
+    compile 'com.ampiri.sdk:ampiri-sdk-mediation-admob:3.2.3'
+    compile 'com.ampiri.sdk:ampiri-sdk-mediation-applifier:3.2.3'
+    compile 'com.ampiri.sdk:ampiri-sdk-mediation-applovin:3.2.3'
+    compile 'com.ampiri.sdk:ampiri-sdk-mediation-chartboost:3.2.3'
+    compile 'com.ampiri.sdk:ampiri-sdk-mediation-facebook:3.2.3'
+    compile 'com.ampiri.sdk:ampiri-sdk-mediation-mopub:3.2.3'
+    compile 'com.ampiri.sdk:ampiri-sdk-mediation-nativex:3.2.3'
+    compile 'com.ampiri.sdk:ampiri-sdk-mediation-vungle:3.2.3'
 }

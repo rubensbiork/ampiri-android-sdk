@@ -1,3 +1,16 @@
+## Version 3.2.3 (September 9, 2016)
+- Changed
+  - `void setTitleTextSize(final int titleTextSize)` to `Attributes setTitleTextSize(final int titleTextSize)` in `NativeAdView` class
+  - `void setTextTextSize(final int textTextSize)` to `Attributes setTextTextSize(final int textTextSize)` in `NativeAdView` class
+- Updated the following dependencies:
+	- support-annotations JAR to 24.2.0
+	- support-v4 AAR to 24.2.0
+	- Google Play Services to 9.4.0
+	- MoPub SDK to 4.9.0
+- Fixed:
+    - Empty template's text and title if sizes are not set
+    - Miscellaneous bug fixes
+    
 ## Version 3.2.2 (August 4, 2016)
 - `PlaceId` renamed to `UnitId`
 - Added
