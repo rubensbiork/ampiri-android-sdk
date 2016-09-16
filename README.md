@@ -3,6 +3,8 @@
 Make more revenue with mobile traffic while spending less time.
 Sign up for an account at [ampiri.com](https://ampiri.com)
 
+There is the integration tutorial video on [ampiri.com/tutorials](http://www.ampiri.com/tutorials/)
+
 ## Requirements and Dependencies ##
 
 * Android 2.3 (API Version 9) and up
