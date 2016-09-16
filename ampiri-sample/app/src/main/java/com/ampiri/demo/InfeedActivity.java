@@ -30,7 +30,7 @@ public abstract class InfeedActivity extends AdCallbackActivity {
             final MainAdapter adapter = new MainAdapter(this);
             adAdapter = new StreamAdAdapter.Builder()
                     .setAdapter(adapter)
-                    .setAdPlaceId(AD_UNIT_ID)
+                    .setAdUnitId(AD_UNIT_ID)
                     .setViewBuilder(getNativeAdViewBuilder())
                     .setAdViewAttributes(new NativeAdView.Attributes()
                             .setAdAttributionText(R.string.ad_attribution_text))

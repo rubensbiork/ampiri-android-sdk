@@ -1,3 +1,11 @@
+## Version 3.2.4 (September 13, 2016)
+- Support Multiple Ad Units
+- Added `void setStore(String store)` to `AdColonyMediation.Builder` class
+- Updated the following dependencies:
+	- AppLovin SDK to 6.3.0
+- Fixed:
+    - Miscellaneous bug fixes
+    
 ## Version 3.2.3 (September 9, 2016)
 - Changed
   - `void setTitleTextSize(final int titleTextSize)` to `Attributes setTitleTextSize(final int titleTextSize)` in `NativeAdView` class
@@ -10,7 +18,7 @@
 - Fixed:
     - Empty template's text and title if sizes are not set
     - Miscellaneous bug fixes
-    
+
 ## Version 3.2.2 (August 4, 2016)
 - `PlaceId` renamed to `UnitId`
 - Added

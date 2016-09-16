@@ -33,7 +33,7 @@ public class VideoNativeActivity extends AdCallbackActivity {
         adContainerView = (FrameLayout) findViewById(R.id.ad_container);
 
         nativeAd = new NativeAd.Builder()
-                .setAdPlaceId(AD_UNIT_ID)
+                .setAdUnitId(AD_UNIT_ID)
                 .setAdViewBuilder(VideoCardNativeAdView.BUILDER)
                 .setAdViewAttributes(new NativeAdView.Attributes()
                         .setAdAttributionText(R.string.ad_attribution_text)

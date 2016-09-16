@@ -23,16 +23,11 @@ Please ask your account manager for further details. If the publisher uses the I
 ## New in this Version
 Please view the [changelog](CHANGELOG.md) for a complete list of additions, fixes, and enhancements in the latest release.
 
-- Changed
-  - `void setTitleTextSize(final int titleTextSize)` to `Attributes setTitleTextSize(final int titleTextSize)` in `NativeAdView` class
-  - `void setTextTextSize(final int textTextSize)` to `Attributes setTextTextSize(final int textTextSize)` in `NativeAdView` class
+- Support Multiple Ad Units
+- Added `void setStore(String store)` to `AdColonyMediation.Builder` class
 - Updated the following dependencies:
-	- support-annotations JAR to 24.2.0
-	- support-v4 AAR to 24.2.0
-	- Google Play Services to 9.4.0
-	- MoPub SDK to 4.9.0
+	- AppLovin SDK to 6.3.0
 - Fixed:
-    - Empty template's text and title if sizes are not set
     - Miscellaneous bug fixes
 
 ## Initialization ##
@@ -55,16 +50,16 @@ repositories {
 }
 
 depedencies {
-  compile 'com.ampiri.sdk:ampiri-sdk:3.2.3'
-  compile 'com.ampiri.sdk:ampiri-sdk-mediation-adcolony:3.2.3'
-  compile 'com.ampiri.sdk:ampiri-sdk-mediation-admob:3.2.3'
-  compile 'com.ampiri.sdk:ampiri-sdk-mediation-applifier:3.2.3'
-  compile 'com.ampiri.sdk:ampiri-sdk-mediation-applovin:3.2.3'
-  compile 'com.ampiri.sdk:ampiri-sdk-mediation-chartboost:3.2.3'
-  compile 'com.ampiri.sdk:ampiri-sdk-mediation-facebook:3.2.3'
-  compile 'com.ampiri.sdk:ampiri-sdk-mediation-mopub:3.2.3'
-  compile 'com.ampiri.sdk:ampiri-sdk-mediation-nativex:3.2.3'
-  compile 'com.ampiri.sdk:ampiri-sdk-mediation-vungle:3.2.3'
+  compile 'com.ampiri.sdk:ampiri-sdk:3.2.4'
+  compile 'com.ampiri.sdk:ampiri-sdk-mediation-adcolony:3.2.4'
+  compile 'com.ampiri.sdk:ampiri-sdk-mediation-admob:3.2.4'
+  compile 'com.ampiri.sdk:ampiri-sdk-mediation-applifier:3.2.4'
+  compile 'com.ampiri.sdk:ampiri-sdk-mediation-applovin:3.2.4'
+  compile 'com.ampiri.sdk:ampiri-sdk-mediation-chartboost:3.2.4'
+  compile 'com.ampiri.sdk:ampiri-sdk-mediation-facebook:3.2.4'
+  compile 'com.ampiri.sdk:ampiri-sdk-mediation-mopub:3.2.4'
+  compile 'com.ampiri.sdk:ampiri-sdk-mediation-nativex:3.2.4'
+  compile 'com.ampiri.sdk:ampiri-sdk-mediation-vungle:3.2.4'
 
   compile 'com.google.android.gms:play-services-ads:9.4.0'
 }
@@ -85,19 +80,19 @@ repositories {
 }
 
 dependencies {
-  compile(name: 'ampiri-sdk', version:'3.2.3', ext: 'aar')
-  compile(name: 'ampiri-sdk-mediation', version:'3.2.3', ext: 'aar')
-  compile(name: 'ampiri-sdk-mediation-adcolony', version:'3.2.3', ext: 'aar')
-  compile(name: 'ampiri-sdk-mediation-admob', version:'3.2.3', ext: 'aar')
-  compile(name: 'ampiri-sdk-mediation-applovin', version:'3.2.3', ext: 'aar')
-  compile(name: 'ampiri-sdk-mediation-applifier', version:'3.2.3', ext: 'aar')
-  compile(name: 'ampiri-sdk-mediation-chartboost', version:'3.2.3', ext: 'aar')
-  compile(name: 'ampiri-sdk-mediation-facebook', version:'3.2.3', ext: 'aar')
-  compile(name: 'ampiri-sdk-mediation-mopub', version:'3.2.3', ext: 'aar')
-  compile(name: 'ampiri-sdk-mediation-nativex', version:'3.2.3', ext: 'aar')
-  compile(name: 'ampiri-sdk-mediation-vungle', version:'3.2.3', ext: 'aar')
-  compile(name: 'ampiri-sdk-mraid', version:'3.2.3', ext: 'aar')
-  compile(name: 'ampiri-sdk-vast', version:'3.2.3', ext: 'aar')
+  compile(name: 'ampiri-sdk', version:'3.2.4', ext: 'aar')
+  compile(name: 'ampiri-sdk-mediation', version:'3.2.4', ext: 'aar')
+  compile(name: 'ampiri-sdk-mediation-adcolony', version:'3.2.4', ext: 'aar')
+  compile(name: 'ampiri-sdk-mediation-admob', version:'3.2.4', ext: 'aar')
+  compile(name: 'ampiri-sdk-mediation-applovin', version:'3.2.4', ext: 'aar')
+  compile(name: 'ampiri-sdk-mediation-applifier', version:'3.2.4', ext: 'aar')
+  compile(name: 'ampiri-sdk-mediation-chartboost', version:'3.2.4', ext: 'aar')
+  compile(name: 'ampiri-sdk-mediation-facebook', version:'3.2.4', ext: 'aar')
+  compile(name: 'ampiri-sdk-mediation-mopub', version:'3.2.4', ext: 'aar')
+  compile(name: 'ampiri-sdk-mediation-nativex', version:'3.2.4', ext: 'aar')
+  compile(name: 'ampiri-sdk-mediation-vungle', version:'3.2.4', ext: 'aar')
+  compile(name: 'ampiri-sdk-mraid', version:'3.2.4', ext: 'aar')
+  compile(name: 'ampiri-sdk-vast', version:'3.2.4', ext: 'aar')
 
   compile(name: 'unity-ads', ext: 'aar')
 
@@ -126,7 +121,7 @@ To show *interstitial* ads:
 * `ampiri-sdk-mediation-chartboost` [Chartboost](https://answers.chartboost.com/hc/en-us/articles/201219545-Download-Integrate-the-Chartboost-SDK-for-Android) v6.4.1, API 9: Android 2.3 (Gingerbread)
 * `ampiri-sdk-mediation-facebook` [Facebook Audience](https://developers.facebook.com/docs/audience-network) v4.13.0, API 11: Android 3.0 (Honeycomb)
 * `ampiri-sdk-mediation-nativex` [NativeX](https://github.com/nativex/NativeX-Android-SDK) v5.5.6.3, API 11: Android 3.0 (Honeycomb)
-* `ampiri-sdk-mediation-applovin` [AppLovin](https://github.com/AppLovin/Android-Demo-App) v6.2.2, API 9: Android 2.3 (Gingerbread)
+* `ampiri-sdk-mediation-applovin` [AppLovin](https://github.com/AppLovin/Android-Demo-App) v6.3.0, API 9: Android 2.3 (Gingerbread)
 
 To show *video* ads:
 
@@ -141,7 +136,7 @@ To show *native* ads:
 * `ampiri-sdk-mediation-admob` [Google Mobile Ads](https://developers.google.com/admob/android/quick-start) v9.4.0, API 9: Android 2.3 (Gingerbread)
 * `ampiri-sdk-mediation-mopub` [MoPub](https://github.com/mopub/mopub-android-sdk) v4.9.0, API 9: Android 2.3 (Gingerbread)
 * `ampiri-sdk-mediation-facebook` [Facebook Audience](https://developers.facebook.com/docs/audience-network) v4.13.0, API 11: Android 3.0 (Honeycomb)
-* `ampiri-sdk-mediation-applovin` [AppLovin](https://github.com/AppLovin/Android-Demo-App) v6.2.2, API 9: Android 2.3 (Gingerbread)
+* `ampiri-sdk-mediation-applovin` [AppLovin](https://github.com/AppLovin/Android-Demo-App) v6.3.0, API 9: Android 2.3 (Gingerbread)
 
 > We can't guarantee stable work of SDK if you use other versions of this network libraries. 
 

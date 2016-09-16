@@ -9,9 +9,9 @@
 * [Ad events handling](#ad-events-handling)
 * [Activity lifecycle events handling](#activity-lifecycle-events-handling)
 * [User Data](#user-data)
+* [Ad networks settings](#ad-networks-settings)
 * [Log](#og)
 * [Debug mode](#debug-mode)
-* [Test devices](#test-devices)
 
 ## Updating your Android Manifest
 
@@ -416,6 +416,32 @@ Ampiri.setUserGender(UserData.Gender.FEMALE);
 Ampiri.setUserInterests(Arrays.asList("football", "auto", "cats")); // Just for example. Please set real interests.
 ```
 
+## Ad networks settings
+
+### AdMob
+
+```java
+Ampiri.addMediationAdapter(new AdMobMediation.Builder()
+    .addTestDevice("HASHED_ID")
+    .build());
+```
+
+### Facebook
+
+```java
+Ampiri.addMediationAdapter(new FacebookMediation.Builder()
+    .addTestDevice("HASHED_ID")
+    .build());
+```
+
+### AdColony
+
+```java
+Ampiri.addMediationAdapter(new AdColonyMediation.Builder()
+    .setStore("Amazon")
+    .build());
+```
+
 ## Log
 
 The default log level is INFO. From the adb shell, you can change the log level to DEBUG, VERBOSE etc. using this command:
@@ -436,21 +462,3 @@ setprop log.tag.VAST DEBUG
 
 If you want to log debug information, please install `AmpiriLogger.setDebugMode(true)` (false by default), then you will see the logs under `Ampiri_SDK` tag.
 It is recommended that this option should be used for integration test purposes.
-
-## Test devices
-
-### AdMob
-
-```java
-Ampiri.addMediationAdapter(new AdMobMediation.Builder()
-    .addTestDevice("HASHED_ID")
-    .build());
-```
-
-### Facebook
-
-```java
-Ampiri.addMediationAdapter(new FacebookMediation.Builder()
-    .addTestDevice("HASHED_ID")
-    .build());
-```

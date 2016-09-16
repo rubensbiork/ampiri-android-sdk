@@ -34,7 +34,7 @@ public class NativeActivity extends AdCallbackActivity {
 
         final Context context = this;
         nativeAd = new NativeAd.Builder()
-                .setAdPlaceId(AD_UNIT_ID)
+                .setAdUnitId(AD_UNIT_ID)
                 .setAdViewBuilder(StoryCardNativeAdView.BUILDER)
                 .setAdViewAttributes(new NativeAdView.Attributes()
                         .setAdAttributionText(R.string.ad_attribution_text)
