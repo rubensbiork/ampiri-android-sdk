@@ -1,4 +1,4 @@
-## Version 3.2.4 (September 13, 2016)
+## Version 3.2.4 (September 16, 2016)
 - Support Multiple Ad Units
 - Added `void setStore(String store)` to `AdColonyMediation.Builder` class
 - Updated the following dependencies:
