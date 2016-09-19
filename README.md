@@ -1,7 +1,6 @@
 # Ampiri Android Demo
 
-Make more revenue with mobile traffic while spending less time.
-Sign up for an account at [ampiri.com](https://ampiri.com)
+Boost your app's revenue streams and save time: sign up for an account at [Ampiri.com](https://ampiri.com)
 
 There is the integration tutorial video on [ampiri.com/tutorials](http://www.ampiri.com/tutorials/)
 
@@ -13,7 +12,7 @@ There is the integration tutorial video on [ampiri.com/tutorials](http://www.amp
 * joor, v0.9.6
 * **Recommended** Google Play Services 9.4.0
 
-We strongly recommend compiling your app against the **Google Play Services** in order to use the `Android Advertising ID` instead of the `Device ID`,
+We strongly recommend compiling your app using **Google Play services**, in order to use the `Android Advertising ID` instead of the `Device ID`,
 as required by Google. Failing to correctly use the `Android Advertising ID` may result in your submission to the Play Store being rejected.
 
 Be sure that you have obtained all the crucial data provided by Ampiri:
@@ -41,7 +40,7 @@ The Ampiri SDK is available via:
 
 ### Gradle Integration ###
 
-Add follow rows in your _app_ module `build.gradle` file:
+Add the following rows in your _app_ module `build.gradle` file:
 
 ```
 repositories {
@@ -140,9 +139,10 @@ To show *native* ads:
 * `ampiri-sdk-mediation-facebook` [Facebook Audience](https://developers.facebook.com/docs/audience-network) v4.13.0, API 11: Android 3.0 (Honeycomb)
 * `ampiri-sdk-mediation-applovin` [AppLovin](https://github.com/AppLovin/Android-Demo-App) v6.3.0, API 9: Android 2.3 (Gingerbread)
 
-> We can't guarantee stable work of SDK if you use other versions of this network libraries. 
 
-You should setup each external network on the Ampiri website, otherwise they will not be used for showing ads.
+> We can't guarantee stable functionality of the SDK if you use other versions of these network libraries. 
+
+You should set up each external network on the Ampiri website, otherwise they will not be used for showing ads.
 
 ### Eclipse Integration ###
 
@@ -150,7 +150,7 @@ Since Google [deprecated] (https://developer.android.com/studio/tools/sdk/eclips
 
 ### Avoiding the 65K Limit ###
 
-If adding third party network SDKs and adapters, if you receive a dex error, you may need to enable multidexing in your build.gradle file.
+If you receive a dex error while adding third party network SDKs and adapters, you may need to enable multidexing in your build.gradle file.
 
 ```
 defaultConfig {
@@ -162,3 +162,4 @@ Please see the Android documentation [here](https://developer.android.com/tools/
 ## Documentation
 
 Documentation is available at [HOWTO](HOWTO.md)
+

@@ -10,7 +10,7 @@
 * [Activity lifecycle events handling](#activity-lifecycle-events-handling)
 * [User Data](#user-data)
 * [Ad networks settings](#ad-networks-settings)
-* [Log](#og)
+* [Log](#log)
 * [Debug mode](#debug-mode)
 
 ## Updating your Android Manifest
