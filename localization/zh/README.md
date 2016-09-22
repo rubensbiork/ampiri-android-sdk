@@ -1,48 +1,43 @@
-[中文](localization/zh/README.md) - [Português](localization/pt/README.md)
-
 # Ampiri Android Demo
 
-Boost your app's revenue streams and save time: sign up for an account at [Ampiri.com](https://ampiri.com)
+为了提高你的app收入来源和节约时间：请在以下网址注册一个帐户[Ampiri.com](https://ampiri.com)
 
-There is the integration tutorial video on [ampiri.com/tutorials](http://www.ampiri.com/tutorials/)
+视频教程整合在[ ampiri.com/tutorials](http://www.ampiri.com/tutorials/ ）
 
 ## Requirements and Dependencies ##
 
 * Android 2.3 (API Version 9) and up
-* support-annotations, v24.2.0
-* support-v4, v24.2.0
-* joor, v0.9.6
+* Support-annotations, v24.2.0
+* Support-v4, v24.2.0
+* Joor, v0.9.6
 * **Recommended** Google Play Services 9.4.0
 
-We strongly recommend compiling your app using **Google Play services**, in order to use the `Android Advertising ID` instead of the `Device ID`,
-as required by Google. Failing to correctly use the `Android Advertising ID` may result in your submission to the Play Store being rejected.
+我们强烈建议使用**Google Play services**编译你的app，从而按照Google的要求使用`Android Advertising ID`代替`Device ID`。没有正确使用`Android Advertising ID`可能导致你向Play Store的提交被拒绝。
 
-Be sure that you have obtained all the crucial data provided by Ampiri:
+确保你已经获得了Ampiri提供的所有重要数据：
 
-*adUnitId* - for each distinguished ad space placement in the app
+*adUnitId* -  用于app中每一种不同的广告空间布置
 
-Please ask your account manager for further details. If the publisher uses the IDs from the examples, there will be no payout.
+请向你的帐户管理员了解进一步细节。如果发行商使用来自示例的ID，则不会付费。
 
 ## New in this Version
-Please view the [changelog](CHANGELOG.md) for a complete list of additions, fixes, and enhancements in the latest release.
+对于最新版中的增加、修复、和改进的完整列表，请查看增加、修复、和改进的完整列表，请查看[changelog](CHANGELOG.md)。
 
-- Support Multiple Ad Units
-- Added `void setStore(String store)` to `AdColonyMediation.Builder` class
-- Updated the following dependencies:
-	- AppLovin SDK to 6.3.0
-- Fixed:
-    - Miscellaneous bug fixes
+- 增加  `void setStore(String store)`在 `AdColonyMediation.Builder`类
+- 更新以下附加组件
+	- AppLovin SDK 更新到 6.3.0
+- 其它错误修复
 
 ## Initialization ##
 
-The Ampiri SDK is available via:
+可通过以下方式获得Ampiri SDK ：
 
 1. jCenter AAR (**Recommended**)
 2. Zipped AAR
 
 ### Gradle Integration ###
 
-Add the following rows in your _app_ module `build.gradle` file:
+在your _app_ module `build.gradle` 文件中增加以下行：
 
 ```
 repositories {
@@ -63,17 +58,15 @@ depedencies {
   compile 'com.ampiri.sdk:ampiri-sdk-mediation-mopub:3.2.4'
   compile 'com.ampiri.sdk:ampiri-sdk-mediation-nativex:3.2.4'
   compile 'com.ampiri.sdk:ampiri-sdk-mediation-vungle:3.2.4'
-
   compile 'com.google.android.gms:play-services-ads:9.4.0'
 }
 ```
-> Applifier provides only aar file, so you need to add unity-ads-x.x.x.aar in to the 'libs' folder of your project in order to integrate Applifier Ad network.
 
 ### Including the local .aar libraries ###
 
-Save the `aar` files under _app_ module's `libs` folder (eg: `<project>/<app>/libs`)
+将 `aar` 文件保存在 _app_ module's `libs` 文件夹下 (例如： `<project>/<app>/libs`)
 
-Then add follow rows in your _app_ module `build.gradle` file:
+然后在your _app_ module `build.gradle` 文件中增加以下行：
 
 ```
 repositories {
@@ -96,9 +89,7 @@ dependencies {
   compile(name: 'ampiri-sdk-mediation-vungle', version:'3.2.4', ext: 'aar')
   compile(name: 'ampiri-sdk-mraid', version:'3.2.4', ext: 'aar')
   compile(name: 'ampiri-sdk-vast', version:'3.2.4', ext: 'aar')
-
   compile(name: 'unity-ads', ext: 'aar')
-
   compile 'com.google.android.gms:play-services-ads:9.4.0'
   compile 'com.facebook.android:audience-network-sdk:4.13.0'
   compile 'com.mopub:mopub-sdk:4.9.0@aar', {
@@ -109,15 +100,17 @@ dependencies {
 }
 ```
 
-Ampiri supports the following ad networks on the client-side:
 
-To show *standard* banner ads:
+Ampiri 在客户端一侧支持以下广告网络：
+
+
+为了显示 *standard* 标准横幅广告：
 
 * `ampiri-sdk-mediation-admob` [Google Mobile Ads](https://developers.google.com/admob/android/quick-start) v9.4.0, API 9: Android 2.3 (Gingerbread)
 * `ampiri-sdk-mediation-mopub` [MoPub](https://github.com/mopub/mopub-android-sdk) v4.9.0, API 9: Android 2.3 (Gingerbread)
 * `ampiri-sdk-mediation-facebook` [Facebook Audience](https://developers.facebook.com/docs/audience-network) v4.13.0, API 11: Android 3.0 (Honeycomb)
 
-To show *interstitial* ads:
+为了显示  *interstitial* 插播广告：
 
 * `ampiri-sdk-mediation-admob` [Google Mobile Ads](https://developers.google.com/admob/android/quick-start) v9.4.0, API 9: Android 2.3 (Gingerbread)
 * `ampiri-sdk-mediation-mopub` [MoPub](https://github.com/mopub/mopub-android-sdk) v4.9.0, API 9: Android 2.3 (Gingerbread)
@@ -126,15 +119,16 @@ To show *interstitial* ads:
 * `ampiri-sdk-mediation-nativex` [NativeX](https://github.com/nativex/NativeX-Android-SDK) v5.5.6.3, API 11: Android 3.0 (Honeycomb)
 * `ampiri-sdk-mediation-applovin` [AppLovin](https://github.com/AppLovin/Android-Demo-App) v6.3.0, API 9: Android 2.3 (Gingerbread)
 
-To show *video* ads:
+为了显示 *video* 视频广告：
 
+		
 * `ampiri-sdk-mediation-adcolony` [AdColony](https://github.com/AdColony/AdColony-Android-SDK) v2.3.5, API 14: Android 4.0 (Ice Cream Sandwich)
 * `ampiri-sdk-mediation-applifier` [Unity Ads(Applifier)](https://github.com/Applifier/unity-ads-sdk) v1.5.6, API 9: Android 2.3 (Gingerbread)
 * `ampiri-sdk-mediation-chartboost` [Chartboost](https://answers.chartboost.com/hc/en-us/articles/201219545-Download-Integrate-the-Chartboost-SDK-for-Android) v6.4.1, API 9: Android 2.3 (Gingerbread)
 * `ampiri-sdk-mediation-nativex` [NativeX](https://github.com/nativex/NativeX-Android-SDK) v5.5.6.3, API 11: Android 3.0 (Honeycomb)
 * `ampiri-sdk-mediation-vungle` [Vungle](https://v.vungle.com/sdk) v3.3.5, API 11: Android 3.0 (Honeycomb)
 
-To show *native* ads:
+为了显示  *native* 原生广告：
 
 * `ampiri-sdk-mediation-admob` [Google Mobile Ads](https://developers.google.com/admob/android/quick-start) v9.4.0, API 9: Android 2.3 (Gingerbread)
 * `ampiri-sdk-mediation-mopub` [MoPub](https://github.com/mopub/mopub-android-sdk) v4.9.0, API 9: Android 2.3 (Gingerbread)
@@ -142,26 +136,26 @@ To show *native* ads:
 * `ampiri-sdk-mediation-applovin` [AppLovin](https://github.com/AppLovin/Android-Demo-App) v6.3.0, API 9: Android 2.3 (Gingerbread)
 
 
-> We can't guarantee stable functionality of the SDK if you use other versions of these network libraries. 
+>  如果你使用这些网络库的其它版本，我们不能保证SDK的功能稳定。
 
-You should set up each external network on the Ampiri website, otherwise they will not be used for showing ads.
+你应当在Ampiri网站设置外部网络，否则它们不会用于显示广告。
 
-### Eclipse Integration ###
 
-Since Google [deprecated] (https://developer.android.com/studio/tools/sdk/eclipse-adt.html) the Eclipse support, we recommend to use Android Studio for the SDK integration.
+### Eclipse集成###
+自google（已废弃） （ https://developer.android.com/studio/tools/sdk/eclipse-adt.html ） Eclipse的支持下，对于SDK整合我们建议使用Android Studio.
 
 ### Avoiding the 65K Limit ###
 
-If you receive a dex error while adding third party network SDKs and adapters, you may need to enable multidexing in your build.gradle file.
+如果你在增加第三方网络SDK和适配器时收到一个dex错误，你可能需要在你的build.gradle文件中启用multidexing。
 
 ```
 defaultConfig {
     multiDexEnable true
 }
 ```
-Please see the Android documentation [here](https://developer.android.com/tools/building/multidex.html).
+
+请见Android 文档 [这里](https://developer.android.com/tools/building/multidex.html)。
 
 ## Documentation
 
-Documentation is available at [HOWTO](HOWTO.md)
-
+文档可以在[HOWTO](HOWTO.md)中获得。
