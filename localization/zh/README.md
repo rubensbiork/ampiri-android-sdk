@@ -21,7 +21,7 @@
 请向你的帐户管理员了解进一步细节。如果发行商使用来自示例的ID，则不会付费。
 
 ## New in this Version
-对于最新版中的增加、修复、和改进的完整列表，请查看增加、修复、和改进的完整列表，请查看[changelog](CHANGELOG.md)。
+对于最新版中的增加、修复、和改进的完整列表，请查看增加、修复、和改进的完整列表，请查看[changelog](../../CHANGELOG.md)。
 
 - 增加  `void setStore(String store)`在 `AdColonyMediation.Builder`类
 - 更新以下附加组件
