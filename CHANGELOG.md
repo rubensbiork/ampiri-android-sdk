@@ -1,11 +1,43 @@
-## Version 3.2.4 (September 16, 2016)
+## Version 3.3 (October 24, 2016)
+- Baidu Ads Network SDK v5.6 integration
+- VAST 3.0 support for video ads.
+- New templates for native ads. More customization options for templates.
+- Cool down for ads requests
+- Cached data source for multiple `StreamAdAdapter` instances
+- Removed the need for AAR file by UnityAds. You don't need to put Unity-ads-x.x.x.aar to your libs folder.
+- Added
+  - `setStarRating(NativeAdView.Attributes.Setter<NativeAdView.Attributes.StarRating> starRating)` to `NativeAdView.Attributes` class
+  - `setAdAttribution(NativeAdView.Attributes.Setter<NativeAdView.Attributes.AdAttribution> adAttribution)` to `NativeAdView.Attributes` class
+  - `setTitle(NativeAdView.Attributes.Setter<NativeAdView.Attributes.Title> title)` to `NativeAdView.Attributes` class
+  - `setIcon(NativeAdView.Attributes.Setter<NativeAdView.Attributes.Icon> icon)` to `NativeAdView.Attributes` class
+  - `setCoverImage(NativeAdView.Attributes.Setter<NativeAdView.Attributes.CoverImage> coverImage)` to `NativeAdView.Attributes` class
+  - `setDescription(NativeAdView.Attributes.Setter<NativeAdView.Attributes.Description> description)` to `NativeAdView.Attributes` class
+  - `setCallToAction(@NonNull NativeAdView.Attributes.Setter<NativeAdView.Attributes.CallToAction> callToAction)` to `NativeAdView.Attributes` class
+- Removed
+  - `setAdAttributionText(String adAttributionText)` from `NativeAdView.Attributes` class
+  - `setDefaultCallToActionText(String defaultCallToActionText)` from `NativeAdView.Attributes` class
+- Updated the following dependencies:
+    - support-annotations JAR to 25.0.0
+    - support-v4 AAR to 25.0.0
+    - Google Play Services to 9.6.1
+  	- Unity Ads SDK to 2.0.4
+  	- Facebook Audience Network SDK to 4.16.1
+  	- Applovin SDK to 6.3.2
+  	- AdColony SDK to 2.3.6
+  	- NativeX SDK to 5.5.8
+  	- Vungle SDK to 4.0.2
+  	- Chartboost SDK to 6.5.1
+- Fixed:
+    - Miscellaneous bug fixes
+
+## Version 3.2.4 (September 13, 2016)
 - Support Multiple Ad Units
 - Added `void setStore(String store)` to `AdColonyMediation.Builder` class
 - Updated the following dependencies:
 	- AppLovin SDK to 6.3.0
 - Fixed:
     - Miscellaneous bug fixes
-    
+
 ## Version 3.2.3 (September 9, 2016)
 - Changed
   - `void setTitleTextSize(final int titleTextSize)` to `Attributes setTitleTextSize(final int titleTextSize)` in `NativeAdView` class

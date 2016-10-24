@@ -39,21 +39,18 @@ public class MainActivity extends Activity implements OnItemClickListener {
                 startActivity(InterstitialActivity.buildIntent(this));
                 break;
             case 3:
-                startActivity(VideoActivity.buildIntent(this));
-                break;
-            case 4:
                 startActivity(NativeActivity.buildIntent(this));
                 break;
-            case 5:
+            case 4:
                 startActivity(VideoNativeActivity.buildIntent(this));
                 break;
-            case 6:
+            case 5:
                 startActivity(FeedCardInfeedActivity.buildIntent(this));
                 break;
-            case 7:
+            case 6:
                 startActivity(StoryCardInfeedActivity.buildIntent(this));
                 break;
-            case 8:
+            case 7:
                 startActivity(VideoCardInfeedActivity.buildIntent(this));
                 break;
             default:

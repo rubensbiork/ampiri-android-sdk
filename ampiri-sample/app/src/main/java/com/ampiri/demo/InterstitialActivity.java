@@ -26,7 +26,7 @@ public class InterstitialActivity extends AdCallbackActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_interstitial);
+        setContentView(R.layout.activity_interstitial_ad);
 
         showView = (Button) findViewById(R.id.interstitial_show);
         if (showView != null) {

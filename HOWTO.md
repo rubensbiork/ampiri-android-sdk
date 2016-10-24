@@ -159,7 +159,6 @@ Native ads are loaded via the `NativeAd` class, which has its own `Builder` clas
 NativeAd nativeAd = new NativeAd.Builder()
   .setAdUnitId(YOUR_NATIVE_AD_UNIT_ID)
   .setCallback(adListener)
-  .setAdAttributionText(getString(R.string.ad_attribution_text))
   .build(this);
 ```
 
@@ -182,28 +181,6 @@ If you want to use one of these templates, you can add the selected template in 
 
 ```java
 .setAdViewBuilder(FeedCardNativeAdView.BUILDER);
-```
-
-With a native template, you can customize the following elements:
-
-* Height
-* Width
-* Background Color
-* Title Color
-* Title Font
-* Description Color
-* Description Font
-* Button Color
-* Button Title Color
-* Button Title Font
-* Button Border Color
-
-In order to customize these elements, you will need to build an attributes object and provide the following in the creation of the `NativeAd`:
-```java
-.setAdView(FeedCardNativeAdView.BUILDER, new NativeAdView.Attributes()
-    .setBackgroundColor(Color.RED)
-    .setTitleTextColor(Color.GREEN)
-    .setButtonColor(Color.GREEN));
 ```
 
 Add a banner place to layout, e.g.:
@@ -233,7 +210,7 @@ public void onAdLoaded() {
 
 ### Create native UI
 
-In order to start using native ads, you will need to go through following steps:
+In order to create custom native ads ui, you will need to go through following steps:
 
 * Create all needed views (icon view, main image view, text views, rating bar etc...)
 * Pass the views to our SDK
@@ -313,6 +290,131 @@ To learn about download completion, subscribe to ad events (see [Ad events handl
 nativeAd.isReady();
 ```
 
+### Customize native UI
+
+With a native template, you can customize the following elements:
+
+* Title
+    * Text font (DEFAULT, DEFAULT_BOLD, MONOSPACE, SANS_SERIF, SERIF)
+    * Text size
+    * Text color
+    * Max Ems (25 by default)
+* Icon
+    * Dimensions(width, height)
+    * Margins (left, right)
+* Star rating
+    * Star size (SMALL, MEDIUM, LARGE)
+* Attribution label
+    * Default text
+    * Text font (DEFAULT, DEFAULT_BOLD, MONOSPACE, SANS_SERIF, SERIF)
+    * Text size
+    * Text color
+* Cover image
+    * Background color
+    * Background resource
+    * Margins (left, right, bottom, top)
+    * Alignment (undefine, top, bottom, left, right, center, center_vertical, center_horizontal)
+* Description
+    * Text font (DEFAULT, DEFAULT_BOLD, MONOSPACE, SANS_SERIF, SERIF)
+    * Text size
+    * Text color
+    * Margins (left, right)
+    * Max Ems (100 by default)
+* Call To Action button
+    * Default text
+    * Text font (DEFAULT, DEFAULT_BOLD, MONOSPACE, SANS_SERIF, SERIF)
+    * Text size
+    * Text color
+    * Max Ems (25 by default)
+    * Background color
+    * Background resource
+    * Margins (left, right)
+
+In order to customize these elements, you will need to build an attributes object and provide the following in the creation of the `NativeAd`:
+```java
+.setAdUnitId(AD_UNIT_ID)
+.setAdViewBuilder(StoryCardNativeAdView.BUILDER)
+.setAdViewAttributes(new NativeAdView.Attributes(this)
+    .setTitle(new NativeAdView.Attributes.Setter<NativeAdView.Attributes.Title>() {
+        @Override
+        public NativeAdView.Attributes.Title set(@NonNull NativeAdView.Attributes.Title builder) {
+            return builder
+                    .setTextFont(Typeface.MONOSPACE)
+                    .setTextColor(Color.RED)
+                    .setMaxEms(20);
+        }
+    })
+    .setStarRating(new NativeAdView.Attributes.Setter<NativeAdView.Attributes.StarRating>() {
+        @Override
+        public NativeAdView.Attributes.StarRating set(@NonNull NativeAdView.Attributes.StarRating builder) {
+            return builder.setStarSize(Size.MEDIUM);
+            }
+        })
+    .setAdAttribution(new NativeAdView.Attributes.Setter<NativeAdView.Attributes.AdAttribution>() {
+        @Override
+        public NativeAdView.Attributes.AdAttribution set(@NonNull final NativeAdView.Attributes.AdAttribution adAttribution) {
+            return adAttribution.setDefaultText(R.string.sponsored);
+        }
+}))
+```
+
+Also, you can set style your `NativeAdView` layout by using following attributes:
+
+|attribute name | format | description |
+|---|---|---|
+| `Title` |
+| ampiriTitleTextFont | DEFAULT, DEFAULT_BOLD, MONOSPACE, SANS_SERIF, SERIF | Font of the Title text |
+| ampiriTitleTextSize | reference,dimension | Size of the Title text|
+| ampiriTitleTextColor | reference,color | Color of the Title text|
+| ampiriTitleTextMaxLengthEms | integer | Maximum Ems of the Title text|
+| `Icon` |
+| ampiriIconWidth | reference,dimension | Icon view width |
+| ampiriIconHeight | reference,dimension |Icon view height|
+| ampiriIconMarginLeft | reference,dimension | Icon view left margin|
+| ampiriIconMarginRight | reference,dimension | Icon view right margin|
+| `Star Rating` |
+| ampiriStarRatingSize | SMALL, MEDIUM, LARGE | Size of the rating bar stars. SMALL - 10dp for height and width, MEDIUM - 16dp, LARGE - 22dp|
+| `Ad Attribution` |
+| ampiriAdAttributionTextFont | DEFAULT, DEFAULT_BOLD, MONOSPACE, SANS_SERIF, SERIF | Font of the Attribution label text |
+| ampiriAdAttributionTextSize | reference,dimension | Size of the Ad Attribution text|
+| ampiriAdAttributionTextColor | reference,color | Color of the Ad Attribution text|
+| ampiriAdAttributionDefaultText | reference,string | Default Ad Attribution text|
+| `Cover Image` |
+| ampiriCoverImageBackgroundColor | reference,color | Cover Image background color|
+| ampiriCoverImageBackgroundResource | reference | Cover Image background resource|
+| ampiriCoverImageMarginLeft | reference,dimension | Cover Image left margin|
+| ampiriCoverImageMarginRight | reference,dimension | Cover Image right margin|
+| ampiriCoverImageMarginTop | reference,dimension | Cover Image top margin|
+| ampiriCoverImageMarginBottom | reference,dimension | Cover Image bottom margin|
+| ampiriCoverImageAlignment | undefine, top, bottom, left, right, center, center_vertical, center_horizontal | Cover Image alignment within the NativeAd view|
+| `Description` |
+| ampiriDescriptionTextFont | DEFAULT, DEFAULT_BOLD, MONOSPACE, SANS_SERIF, SERIF | Font of the Description text |
+| ampiriDescriptionTextSize | reference,dimension | Size of the Description text|
+| ampiriDescriptionTextColor | reference,color | Color of the Description text|
+| ampiriTitleTextMaxLengthEms | integer | Maximum Ems of the Description text|
+| ampiriDescriptionMarginLeft | reference,dimension | Description view left margin|
+| ampiriDescriptionMarginRight | reference,dimension | Description view right margin|
+| `Call To Action` |
+| ampiriCallToActionBackgroundColor |  reference,color | Color of the Call To Action button |
+| ampiriCallToActionTextFont | DEFAULT, DEFAULT_BOLD, MONOSPACE, SANS_SERIF, SERIF | Font of the Description text |
+| ampiriCallToActionTextSize | reference,dimension | Size of the Call To Action button text|
+| ampiriCallToActionTextColor | reference,color | Color of the Call To Action button text|
+| ampiriCallToActionMarginLeft | reference,dimension | Call To Action button view left margin|
+| ampiriCallToActionMarginRight | reference,dimension | Call To Action button view right margin|
+| ampiriCallToActionMarginTop | reference,dimension | Call To Action button view top margin|
+| ampiriCallToActionMarginBottom | reference,dimension | Call To Action button view bottom margin|
+| ampiriCallToActionDefaultText | reference,string | Default Call To Action text|
+
+You can set this attributes in your custom `NativeAdView` layout
+``` xml
+<com.ampiri.sdk.banner.NativeAdView android:id="@+id/native_ad"
+    app:ampiriTitleTextFont="MONOSPACE"
+    app:ampiriIconWidth="42dp"
+    app:ampiriIconHeight="42dp"
+    app:ampiriCallToActionTextColor="@android:color/lighter_gray"
+ ...>
+```
+
 ## In Feed Ads
 
 > Note: All SDK method calls should be done from the main thread (Main thread, UI thread).
@@ -324,9 +426,6 @@ StreamAdAdapter adAdapter = new StreamAdAdapter.Builder()
   .setAdapter(new MainAdapter(this))
   .setAdUnitId("YOUR_NATIVE_AD_UNIT_ID")
   .setViewBuilder(FeedCardNativeAdView.BUILDER)
-  .setAdViewAttributes(new NativeAdView.Attributes()
-    .setAdAttributionText(R.string.ad_attribution_text)
-    .setDefaultCallToActionText(R.string.call_to_action_text))
   .setEventCallback(this)
   .build(this);
 listView.setAdapter(adAdapter);

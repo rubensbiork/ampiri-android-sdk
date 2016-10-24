@@ -22,7 +22,7 @@ public abstract class BannerActivity extends AdCallbackActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_banner);
+        setContentView(R.layout.activity_banner_ad);
 
         final RelativeLayout bannerView = getBannerView();
         if (bannerView != null) {

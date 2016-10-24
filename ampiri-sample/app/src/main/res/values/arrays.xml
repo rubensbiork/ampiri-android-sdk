@@ -4,7 +4,6 @@
         <item>@string/ad_banner_standard</item>
         <item>@string/ad_banner_big</item>
         <item>@string/ad_interstitial</item>
-        <item>@string/ad_video</item>
         <item>@string/ad_native</item>
         <item>@string/ad_native_video</item>
         <item>@string/ad_native_infeed_feed_card</item>

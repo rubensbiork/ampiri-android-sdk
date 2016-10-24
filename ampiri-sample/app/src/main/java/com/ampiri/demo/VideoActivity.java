@@ -26,7 +26,7 @@ public class VideoActivity extends AdCallbackActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_video);
+        setContentView(R.layout.activity_video_ad);
 
         showView = (Button) findViewById(R.id.video_show);
         if (showView != null) {

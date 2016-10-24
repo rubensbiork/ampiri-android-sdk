@@ -28,7 +28,7 @@ public class VideoNativeActivity extends AdCallbackActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_native);
+        setContentView(R.layout.activity_native_ad);
 
         adContainerView = (FrameLayout) findViewById(R.id.ad_container);
 
@@ -36,8 +36,26 @@ public class VideoNativeActivity extends AdCallbackActivity {
                 .setAdUnitId(AD_UNIT_ID)
                 .setAdViewBuilder(VideoCardNativeAdView.BUILDER)
                 .setAdViewAttributes(new NativeAdView.Attributes()
-                        .setAdAttributionText(R.string.ad_attribution_text)
-                        .setDefaultCallToActionText(R.string.call_to_action_text))
+                        .setStarRating(new NativeAdView.Attributes.Setter<NativeAdView.Attributes.StarRating>() {
+                            @Override
+                            public NativeAdView.Attributes.StarRating set(@NonNull NativeAdView.Attributes.StarRating starRating) {
+                                return starRating.setStarRatingStyle(NativeAdView.Attributes.StarRating.Style.MEDIUM);
+                            }
+                        })
+                        .setAdAttribution(new NativeAdView.Attributes.Setter<NativeAdView.Attributes.AdAttribution>() {
+                            @Override
+                            public NativeAdView.Attributes.AdAttribution set(@NonNull NativeAdView.Attributes.AdAttribution adAttribution) {
+                                return adAttribution.setDefaultText(R.string.ad_attribution_text);
+                            }
+                        })
+                        .setCallToAction(new NativeAdView.Attributes.Setter<NativeAdView.Attributes.CallToAction>() {
+                            @Override
+                            public NativeAdView.Attributes.CallToAction set(@NonNull NativeAdView.Attributes.CallToAction callToAction) {
+                                return callToAction
+                                        .setDefaultText(R.string.call_to_action_text)
+                                        .setMaxLengthEms(8);
+                            }
+                        }))
                 .setCallback(this)
                 .build(this);
         nativeAd.loadAd();
