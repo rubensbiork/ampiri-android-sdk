@@ -1,8 +1,13 @@
+## Version 3.3.1 (October 27, 2016)
+- Updated the following dependencies:
+    - Google Play Services to 9.8.0
+- Fixed:
+    - Miscellaneous bug fixes
+    
 ## Version 3.3 (October 24, 2016)
 - Baidu Ads Network SDK v5.6 integration
 - VAST 3.0 support for video ads.
 - New templates for native ads. More customization options for templates.
-- Cool down for ads requests
 - Cached data source for multiple `StreamAdAdapter` instances
 - Removed the need for AAR file by UnityAds. You don't need to put Unity-ads-x.x.x.aar to your libs folder.
 - Added

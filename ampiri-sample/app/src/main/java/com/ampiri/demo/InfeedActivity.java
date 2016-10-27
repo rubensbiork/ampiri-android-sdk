@@ -49,8 +49,7 @@ public abstract class InfeedActivity extends AdCallbackActivity {
                                 @Override
                                 public NativeAdView.Attributes.CallToAction set(@NonNull NativeAdView.Attributes.CallToAction callToAction) {
                                     return callToAction
-                                            .setDefaultText(R.string.call_to_action_text)
-                                            .setMaxLengthEms(8);
+                                            .setDefaultText(R.string.call_to_action_text);
                                 }
                             })
                     )
