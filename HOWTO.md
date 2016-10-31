@@ -448,26 +448,32 @@ Listener example:
 AdEventCallback adListener = new AdEventCallback() {
     @Override
     public void onAdLoaded() {
+        // Called when an ad is received
     }
 
     @Override
     public void onAdFailed(@NonNull final ResponseStatus responseStatus) {
+        // Called when an ad request failed because of error or no fill
     }
 
     @Override
     public void onAdOpened() {
+        // Called when an ad is shown
     }
 
     @Override
     public void onAdClicked() {
+        // Called when the user click on the ad
     }
 
     @Override
     public void onAdClosed() {
+        // Called when the user is about to close the banner or return to the application after clicking on an ad
     }
 
     @Override
     public void onAdCompleted() {
+        // Called when a video was played till the end
     }
 };
 ```
