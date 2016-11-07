@@ -1,3 +1,5 @@
+[中文](localization/zh/README.md) - [Português](localization/pt/README.md)
+
 # Ampiri Android Demo
 
 Boost your app's revenue streams and save time: sign up for an account at [Ampiri.com](https://ampiri.com)
