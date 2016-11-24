@@ -1,1 +1,208 @@
-# Ampiri Android DemoTurbine o faturamento do seu app e poupe tempo: crie uma conta em [Ampiri.com](https://ampiri.com)Tem um vídeo tutorial de como realizar esta integração em [ampiri.com/tutorials](http://www.ampiri.com/tutorials/)## Requisitos e Dependências ##* Android 2.3 (API Versão 9) e superior* Support-annotations, v25.0.0* Support-v4, v25.0.0* Joor, v0.9.6* **Recomendado** Google Play Services 9.8.0Recomendamos fortemente a compilação da sua app usando o **Google Play services**, de modo a utilizar o `Android Advertising ID` em vez do `Device ID`,conforme requirido pela Google. A não utilização correta do `Android Advertising ID` poderá resultar na rejeição do seu pedido à Play Store.Certifique-se que obteve todas as informações essenciais fornecidas pela Ampiri:*adUnitId* - para cada colocação diferente do espaço do anúncio na appPor favor consulte o seu gestor de conta para obter mais informações. Se o editor utilizar os IDs dos exemplos, não haverá pagamento.## Novo nesta versãoPor favor consultar [changelog](../../CHANGELOG.md) para obter uma lista completa de adições, resoluções e melhorias na versão mais recente.- Adicionada integração com a rede de anúncios Baidu SDK v5.6- VAST 3.0 suporte para anúncios de video.- Novo template para anúncios nativos. Mais opções de customização de templates.- Cool down para requisições de anúncios- Cache de dados para múltiplas instancias do `StreamAdAdapter`- Removida a necessidade de arquivos ARR do UnityAds. Você não precisa colocor o arquivo Unity-ads-x.x.x.aar na sua pasta libs.- Adicionado  - `setStarRating(NativeAdView.Attributes.Setter<NativeAdView.Attributes.StarRating> starRating)` para a `NativeAdView.Attributes` classe  - `setAdAttribution(NativeAdView.Attributes.Setter<NativeAdView.Attributes.AdAttribution> adAttribution)` para a `NativeAdView.Attributes` classe  - `setTitle(NativeAdView.Attributes.Setter<NativeAdView.Attributes.Title> title)` para a `NativeAdView.Attributes` classe  - `setIcon(NativeAdView.Attributes.Setter<NativeAdView.Attributes.Icon> icon)` para a `NativeAdView.Attributes` classe  - `setCoverImage(NativeAdView.Attributes.Setter<NativeAdView.Attributes.CoverImage> coverImage)` para a `NativeAdView.Attributes` classe  - `setDescription(NativeAdView.Attributes.Setter<NativeAdView.Attributes.Description> description)` para a `NativeAdView.Attributes` classe  - `setCallToAction(@NonNull NativeAdView.Attributes.Setter<NativeAdView.Attributes.CallToAction> callToAction)` para a `NativeAdView.Attributes` classe- Removido  - `setAdAttributionText(String adAttributionText)` da `NativeAdView.Attributes` classe  - `setDefaultCallToActionText(String defaultCallToActionText)` da `NativeAdView.Attributes` classe- Corrigido diversos bugs## Inicialização ##O Ampiri SDK está disponível através de:1. jCenter AAR (**Recomendado**)2. Zipped AAR### Integração Gradle ###Adicionar as seguintes linhas ao seu arquivo _app_ módulo `build.gradle`:```repositories {  maven { url "http://ampiri.bintray.com/maven" }}dependencies {  compile 'com.ampiri.sdk:ampiri-sdk:3.3.1'  compile 'com.ampiri.sdk:ampiri-sdk-mediation-adcolony:3.3.1'  compile 'com.ampiri.sdk:ampiri-sdk-mediation-admob:3.3.1'  compile 'com.ampiri.sdk:ampiri-sdk-mediation-unityads:3.3.1'  compile 'com.ampiri.sdk:ampiri-sdk-mediation-applovin:3.3.1'  compile 'com.ampiri.sdk:ampiri-sdk-mediation-chartboost:3.3.1'  compile 'com.ampiri.sdk:ampiri-sdk-mediation-facebook:3.3.1'  compile 'com.ampiri.sdk:ampiri-sdk-mediation-mopub:3.3.1'  compile 'com.ampiri.sdk:ampiri-sdk-mediation-nativex:3.3.1'  compile 'com.ampiri.sdk:ampiri-sdk-mediation-vungle:3.3.1'  compile 'com.ampiri.sdk:ampiri-sdk-mediation-baidu:3.3.1'  compile 'com.google.android.gms:play-services-ads:9.8.0'}```> Applifier fornece somente arquivos arr, sendo assim, você precisa adicionar unity-ads-x.x.x.aar na pasta 'libs' do seu projeto para integrar com a rede de anúncios Applifier.### Incluindo as bibliotecas locais .aar ###Guardar os arquivos `aar` na pasta _app_ module's `libs` (ex: `<project>/<app>/libs`)Depois, adicionar as seguintes linhas ao seu arquivo}}do módulo _app_ `build.gradle`:```repositories {  flatDir {    dirs 'libs'  }}dependencies {  compile(name: 'ampiri-sdk', version:'3.3.1', ext: 'aar')  compile(name: 'ampiri-sdk-mediation', version:'3.3.1', ext: 'aar')  compile(name: 'ampiri-sdk-mediation-adcolony', version:'3.3.1', ext: 'aar')  compile(name: 'ampiri-sdk-mediation-admob', version:'3.3.1', ext: 'aar')  compile(name: 'ampiri-sdk-mediation-applovin', version:'3.3.1', ext: 'aar')  compile(name: 'ampiri-sdk-mediation-unityads', version:'3.3.1', ext: 'aar')  compile(name: 'ampiri-sdk-mediation-chartboost', version:'3.3.1', ext: 'aar')  compile(name: 'ampiri-sdk-mediation-facebook', version:'3.3.1', ext: 'aar')  compile(name: 'ampiri-sdk-mediation-mopub', version:'3.3.1', ext: 'aar')  compile(name: 'ampiri-sdk-mediation-nativex', version:'3.3.1', ext: 'aar')  compile(name: 'ampiri-sdk-mediation-vungle', version:'3.3.1', ext: 'aar')  compile(name: 'ampiri-sdk-mediation-baidu', version:'3.3.1', ext: 'aar')  compile(name: 'ampiri-sdk-mraid', version:'3.3.1', ext: 'aar')  compile(name: 'ampiri-sdk-vast', version:'3.3.1', ext: 'aar')  compile 'com.google.android.gms:play-services-ads:9.8.0'  compile 'com.facebook.android:audience-network-sdk:4.16.1'  compile 'com.mopub:mopub-sdk:4.9.0@aar', {    transitive = true  }  compile 'com.google.code.gson:gson:2.7'  compile 'org.jooq:joor:0.9.6'}```Então, adicione as linhas a seguir no seu módulo _app_ no arquivo `proguard-rules.pro`:```-keep class com.ampiri.** { *; }-dontwarn com.ampiri.**```Por favor, veja a documentação do Android [aqui](https://developer.android.com/studio/build/shrink-code.html).## Rede de anúncios ##O Ampiri suporta as seguintes redes de anúncios no cliente:Para visualizar os anúncios de banner *padrão*:* `ampiri-sdk-mediation-admob` [Google Mobile Ads](https://developers.google.com/admob/android/quick-start) v9.8.0, API 9: Android 2.3 (Gingerbread)* `ampiri-sdk-mediation-mopub` [MoPub](https://github.com/mopub/mopub-android-sdk) v4.9.0, API 9: Android 2.3 (Gingerbread)* `ampiri-sdk-mediation-facebook` [Facebook Audience](https://developers.facebook.com/docs/audience-network) v4.16.1, API 11: Android 3.0 (Honeycomb)Para visualizar os anúncios *intersticial*:* `ampiri-sdk-mediation-admob` [Google Mobile Ads](https://developers.google.com/admob/android/quick-start) v9.8.0, API 9: Android 2.3 (Gingerbread)* `ampiri-sdk-mediation-mopub` [MoPub](https://github.com/mopub/mopub-android-sdk) v4.9.0, API 9: Android 2.3 (Gingerbread)* `ampiri-sdk-mediation-chartboost` [Chartboost](https://answers.chartboost.com/hc/en-us/articles/201219545-Download-Integrate-the-Chartboost-SDK-for-Android) v6.5.1, API 9: Android 2.3 (Gingerbread)* `ampiri-sdk-mediation-facebook` [Facebook Audience](https://developers.facebook.com/docs/audience-network) v4.16.1, API 11: Android 3.0 (Honeycomb)* `ampiri-sdk-mediation-nativex` [NativeX](https://github.com/nativex/NativeX-Android-SDK) v5.5.8, API 11: Android 3.0 (Honeycomb)* `ampiri-sdk-mediation-applovin` [AppLovin](https://github.com/AppLovin/Android-Demo-App) v6.3.2, API 9: Android 2.3 (Gingerbread)Para visualizar os anúncios *vídeo*:* `ampiri-sdk-mediation-adcolony` [AdColony](https://github.com/AdColony/AdColony-Android-SDK) v2.3.6, API 14: Android 4.0 (Ice Cream Sandwich)* `ampiri-sdk-mediation-unityads` [Unity Ads](https://github.com/Applifier/unity-ads-sdk) v2.0.4, API 9: Android 2.3 (Gingerbread)* `ampiri-sdk-mediation-chartboost` [Chartboost](https://answers.chartboost.com/hc/en-us/articles/201219545-Download-Integrate-the-Chartboost-SDK-for-Android) v6.5.1, API 9: Android 2.3 (Gingerbread)* `ampiri-sdk-mediation-nativex` [NativeX](https://github.com/nativex/NativeX-Android-SDK) v5.5.8, API 11: Android 3.0 (Honeycomb)* `ampiri-sdk-mediation-vungle` [Vungle](https://v.vungle.com/sdk) v4.0.2, API 11: Android 3.0 (Honeycomb)Para visualizar os anúncios *nativo*:* `ampiri-sdk-mediation-admob` [Google Mobile Ads](https://developers.google.com/admob/android/quick-start) v9.8.0, API 9: Android 2.3 (Gingerbread)* `ampiri-sdk-mediation-mopub` [MoPub](https://github.com/mopub/mopub-android-sdk) v4.9.0, API 9: Android 2.3 (Gingerbread)* `ampiri-sdk-mediation-facebook` [Facebook Audience](https://developers.facebook.com/docs/audience-network) v4.16.1, API 11: Android 3.0 (Honeycomb)* `ampiri-sdk-mediation-applovin` [AppLovin](https://github.com/AppLovin/Android-Demo-App) v6.3.2, API 9: Android 2.3 (Gingerbread)* `ampiri-sdk-mediation-baidu` [Baidu](http://mssp.baidu.com/app/static/main.html#/sdk) v5.6, API 8: Android 2.2 (Froyo)> Não podemos garantir um funcionamento estável do SDK se forem utilizadas outras versões destas bibliotecas de rede.Deve-se configurar cada rede externa no site da Ampiri, caso contrário, não serão utilizadas para visualização dos anúncios.### Eclipse Integration ###Desde que a Google tornou obsoleto o suporte ao Eclipse [deprecated] (https://developer.android.com/studio/tools/sdk/eclipse-adt.html), recomendamos o uso do Android Studio para a integração do SDK.### Evitar o limite de 65K ###Caso haja erro de dex quando adicionar SDKs e adaptadores de rede de terceiros, pode ser necessário ativar o multidexing no seu arquivo build.gradle.```defaultConfig {  ...  multiDexEnabled true  ...}```Então adicione ao seu manifest a `MultiDexApplication` classe da sua biblioteca de suporte multidex para o elemento da aplicação:```<application  ...  android:name="android.support.multidex.MultiDexApplication">  ...</application>```Por favor consultar a documentação Android [aqui](https://developer.android.com/tools/building/multidex.html).## DocumentaçãoA documentação está disponível em [HOWTO](HOWTO.md)
+# Ampiri Android Demo
+
+Turbine o faturamento do seu app e poupe tempo: crie uma conta em [Ampiri.com](https://ampiri.com)
+
+## Suporte Ampiri 
+
+* Nota: Os tutorias a seguir estão em Inglês. A versão em Português estará disponível em breve.
+
+Documentos adicionais sobre a integração do Ampiri SDK com o seu Android app pode ser encontrado clicando nos links.
+- [Tutoriais Ampiri.com](http://www.ampiri.com/tutorials/) - Tutoriais da Ampiri
+- [Guia do desenvolvedor](https://ampiri.zendesk.com/hc/en-us/articles/213857245-Publisher-s-Self-Serve-UI-User-Guide) - Guia do desenvolvedor
+- [Começando com Ampiri SDK Android](https://ampiri.zendesk.com/hc/en-us/articles/213431769-Ampiri-SDK-Android-Quickstart) - Integração Básica
+- Em breve o manual completo da Ampiri SDK!
+
+## Requisitos e Dependências ##
+
+* Android 2.3 (API Versão 9) e superior
+* Support-annotations, v25.0.0
+* Support-v4, v25.0.0
+* Joor, v0.9.6
+* **Recomendado** Google Play Services 9.8.0
+
+Recomendamos fortemente a compilação da sua app usando o **Google Play services**, de modo a utilizar o `Android Advertising ID` em vez do `Device ID`,
+conforme requirido pela Google. A não utilização correta do `Android Advertising ID` poderá resultar na rejeição do seu pedido à Play Store.
+
+Certifique-se que obteve todas as informações essenciais fornecidas pela Ampiri:
+
+*adUnitId* - para cada colocação diferente do espaço do anúncio na app
+
+Por favor consulte o seu gestor de conta para obter mais informações. Se o editor utilizar os IDs dos exemplos, não haverá pagamento.
+
+## Novo nesta versão
+Por favor consultar [changelog](../../CHANGELOG.md) para obter uma lista completa de adições, resoluções e melhorias na versão mais recente.
+
+- Adicionada integração com a rede de anúncios Baidu SDK v5.6
+- VAST 3.0 suporte para anúncios de video.
+- Novo template para anúncios nativos. Mais opções de customização de templates.
+- Cool down para requisições de anúncios
+- Cache de dados para múltiplas instancias do `StreamAdAdapter`
+- Removida a necessidade de arquivos ARR do UnityAds. Você não precisa colocor o arquivo Unity-ads-x.x.x.aar na sua pasta libs.
+- Adicionado
+  - `setStarRating(NativeAdView.Attributes.Setter<NativeAdView.Attributes.StarRating> starRating)` para a `NativeAdView.Attributes` classe
+  - `setAdAttribution(NativeAdView.Attributes.Setter<NativeAdView.Attributes.AdAttribution> adAttribution)` para a `NativeAdView.Attributes` classe
+  - `setTitle(NativeAdView.Attributes.Setter<NativeAdView.Attributes.Title> title)` para a `NativeAdView.Attributes` classe
+  - `setIcon(NativeAdView.Attributes.Setter<NativeAdView.Attributes.Icon> icon)` para a `NativeAdView.Attributes` classe
+  - `setCoverImage(NativeAdView.Attributes.Setter<NativeAdView.Attributes.CoverImage> coverImage)` para a `NativeAdView.Attributes` classe
+  - `setDescription(NativeAdView.Attributes.Setter<NativeAdView.Attributes.Description> description)` para a `NativeAdView.Attributes` classe
+  - `setCallToAction(@NonNull NativeAdView.Attributes.Setter<NativeAdView.Attributes.CallToAction> callToAction)` para a `NativeAdView.Attributes` classe
+- Removido
+  - `setAdAttributionText(String adAttributionText)` da `NativeAdView.Attributes` classe
+  - `setDefaultCallToActionText(String defaultCallToActionText)` da `NativeAdView.Attributes` classe
+- Corrigido diversos bugs
+
+
+## Inicialização ##
+
+O Ampiri SDK está disponível através de:
+
+1. jCenter AAR (**Recomendado**)
+2. Zipped AAR
+
+### Integração Gradle ###
+
+Adicionar as seguintes linhas ao seu arquivo _app_ módulo `build.gradle`:
+
+```
+repositories {
+  maven { url "http://ampiri.bintray.com/maven" }
+}
+
+dependencies {
+  compile 'com.ampiri.sdk:ampiri-sdk:3.3.1'
+  compile 'com.ampiri.sdk:ampiri-sdk-mediation-adcolony:3.3.1'
+  compile 'com.ampiri.sdk:ampiri-sdk-mediation-admob:3.3.1'
+  compile 'com.ampiri.sdk:ampiri-sdk-mediation-unityads:3.3.1'
+  compile 'com.ampiri.sdk:ampiri-sdk-mediation-applovin:3.3.1'
+  compile 'com.ampiri.sdk:ampiri-sdk-mediation-chartboost:3.3.1'
+  compile 'com.ampiri.sdk:ampiri-sdk-mediation-facebook:3.3.1'
+  compile 'com.ampiri.sdk:ampiri-sdk-mediation-mopub:3.3.1'
+  compile 'com.ampiri.sdk:ampiri-sdk-mediation-nativex:3.3.1'
+  compile 'com.ampiri.sdk:ampiri-sdk-mediation-vungle:3.3.1'
+  compile 'com.ampiri.sdk:ampiri-sdk-mediation-baidu:3.3.1'
+
+  compile 'com.google.android.gms:play-services-ads:9.8.0'
+}
+```
+
+> Applifier fornece somente arquivos arr, sendo assim, você precisa adicionar unity-ads-x.x.x.aar na pasta 'libs' do seu projeto para integrar com a rede de anúncios Applifier.
+
+### Incluindo as bibliotecas locais .aar ###
+
+Guardar os arquivos `aar` na pasta _app_ module's `libs` (ex: `<project>/<app>/libs`)
+
+Depois, adicionar as seguintes linhas ao seu arquivo}}do módulo _app_ `build.gradle`:
+
+```
+repositories {
+  flatDir {
+    dirs 'libs'
+  }
+}
+
+dependencies {
+  compile(name: 'ampiri-sdk', version:'3.3.1', ext: 'aar')
+  compile(name: 'ampiri-sdk-mediation', version:'3.3.1', ext: 'aar')
+  compile(name: 'ampiri-sdk-mediation-adcolony', version:'3.3.1', ext: 'aar')
+  compile(name: 'ampiri-sdk-mediation-admob', version:'3.3.1', ext: 'aar')
+  compile(name: 'ampiri-sdk-mediation-applovin', version:'3.3.1', ext: 'aar')
+  compile(name: 'ampiri-sdk-mediation-unityads', version:'3.3.1', ext: 'aar')
+  compile(name: 'ampiri-sdk-mediation-chartboost', version:'3.3.1', ext: 'aar')
+  compile(name: 'ampiri-sdk-mediation-facebook', version:'3.3.1', ext: 'aar')
+  compile(name: 'ampiri-sdk-mediation-mopub', version:'3.3.1', ext: 'aar')
+  compile(name: 'ampiri-sdk-mediation-nativex', version:'3.3.1', ext: 'aar')
+  compile(name: 'ampiri-sdk-mediation-vungle', version:'3.3.1', ext: 'aar')
+  compile(name: 'ampiri-sdk-mediation-baidu', version:'3.3.1', ext: 'aar')
+  compile(name: 'ampiri-sdk-mraid', version:'3.3.1', ext: 'aar')
+  compile(name: 'ampiri-sdk-vast', version:'3.3.1', ext: 'aar')
+
+  compile 'com.google.android.gms:play-services-ads:9.8.0'
+  compile 'com.facebook.android:audience-network-sdk:4.16.1'
+  compile 'com.mopub:mopub-sdk:4.9.0@aar', {
+    transitive = true
+  }
+  compile 'com.google.code.gson:gson:2.7'
+  compile 'org.jooq:joor:0.9.6'
+}
+```
+
+Então, adicione as linhas a seguir no seu módulo _app_ no arquivo `proguard-rules.pro`:
+
+```
+-keep class com.ampiri.** { *; }
+-dontwarn com.ampiri.**
+```
+
+Por favor, veja a documentação do Android [aqui](https://developer.android.com/studio/build/shrink-code.html).
+
+## Rede de anúncios ##
+
+O Ampiri suporta as seguintes redes de anúncios no cliente:
+
+Para visualizar os anúncios de banner *padrão*:
+
+* `ampiri-sdk-mediation-admob` [Google Mobile Ads](https://developers.google.com/admob/android/quick-start) v9.8.0, API 9: Android 2.3 (Gingerbread)
+* `ampiri-sdk-mediation-mopub` [MoPub](https://github.com/mopub/mopub-android-sdk) v4.9.0, API 9: Android 2.3 (Gingerbread)
+* `ampiri-sdk-mediation-facebook` [Facebook Audience](https://developers.facebook.com/docs/audience-network) v4.16.1, API 11: Android 3.0 (Honeycomb)
+
+Para visualizar os anúncios *intersticial*:
+
+* `ampiri-sdk-mediation-admob` [Google Mobile Ads](https://developers.google.com/admob/android/quick-start) v9.8.0, API 9: Android 2.3 (Gingerbread)
+* `ampiri-sdk-mediation-mopub` [MoPub](https://github.com/mopub/mopub-android-sdk) v4.9.0, API 9: Android 2.3 (Gingerbread)
+* `ampiri-sdk-mediation-chartboost` [Chartboost](https://answers.chartboost.com/hc/en-us/articles/201219545-Download-Integrate-the-Chartboost-SDK-for-Android) v6.5.1, API 9: Android 2.3 (Gingerbread)
+* `ampiri-sdk-mediation-facebook` [Facebook Audience](https://developers.facebook.com/docs/audience-network) v4.16.1, API 11: Android 3.0 (Honeycomb)
+* `ampiri-sdk-mediation-nativex` [NativeX](https://github.com/nativex/NativeX-Android-SDK) v5.5.8, API 11: Android 3.0 (Honeycomb)
+* `ampiri-sdk-mediation-applovin` [AppLovin](https://github.com/AppLovin/Android-Demo-App) v6.3.2, API 9: Android 2.3 (Gingerbread)
+
+Para visualizar os anúncios *vídeo*:
+
+* `ampiri-sdk-mediation-adcolony` [AdColony](https://github.com/AdColony/AdColony-Android-SDK) v2.3.6, API 14: Android 4.0 (Ice Cream Sandwich)
+* `ampiri-sdk-mediation-unityads` [Unity Ads](https://github.com/Applifier/unity-ads-sdk) v2.0.4, API 9: Android 2.3 (Gingerbread)
+* `ampiri-sdk-mediation-chartboost` [Chartboost](https://answers.chartboost.com/hc/en-us/articles/201219545-Download-Integrate-the-Chartboost-SDK-for-Android) v6.5.1, API 9: Android 2.3 (Gingerbread)
+* `ampiri-sdk-mediation-nativex` [NativeX](https://github.com/nativex/NativeX-Android-SDK) v5.5.8, API 11: Android 3.0 (Honeycomb)
+* `ampiri-sdk-mediation-vungle` [Vungle](https://v.vungle.com/sdk) v4.0.2, API 11: Android 3.0 (Honeycomb)
+
+Para visualizar os anúncios *nativo*:
+
+* `ampiri-sdk-mediation-admob` [Google Mobile Ads](https://developers.google.com/admob/android/quick-start) v9.8.0, API 9: Android 2.3 (Gingerbread)
+* `ampiri-sdk-mediation-mopub` [MoPub](https://github.com/mopub/mopub-android-sdk) v4.9.0, API 9: Android 2.3 (Gingerbread)
+* `ampiri-sdk-mediation-facebook` [Facebook Audience](https://developers.facebook.com/docs/audience-network) v4.16.1, API 11: Android 3.0 (Honeycomb)
+* `ampiri-sdk-mediation-applovin` [AppLovin](https://github.com/AppLovin/Android-Demo-App) v6.3.2, API 9: Android 2.3 (Gingerbread)
+* `ampiri-sdk-mediation-baidu` [Baidu](http://mssp.baidu.com/app/static/main.html#/sdk) v5.6, API 8: Android 2.2 (Froyo)
+
+
+> Não podemos garantir um funcionamento estável do SDK se forem utilizadas outras versões destas bibliotecas de rede.
+
+Deve-se configurar cada rede externa no site da Ampiri, caso contrário, não serão utilizadas para visualização dos anúncios.
+
+### Eclipse Integration ###
+
+Desde que a Google tornou obsoleto o suporte ao Eclipse [deprecated] (https://developer.android.com/studio/tools/sdk/eclipse-adt.html), recomendamos o uso do Android Studio para a integração do SDK.
+
+### Evitar o limite de 65K ###
+
+Caso haja erro de dex quando adicionar SDKs e adaptadores de rede de terceiros, pode ser necessário ativar o multidexing no seu arquivo build.gradle.
+
+```
+defaultConfig {
+  ...
+  multiDexEnabled true
+  ...
+}
+```
+
+Então adicione ao seu manifest a `MultiDexApplication` classe da sua biblioteca de suporte multidex para o elemento da aplicação:
+
+```
+<application
+  ...
+  android:name="android.support.multidex.MultiDexApplication">
+  ...
+</application>
+```
+
+Por favor consultar a documentação Android [aqui](https://developer.android.com/tools/building/multidex.html).
+
+## Documentação
+
+A documentação está disponível em [HOWTO](HOWTO.md)
