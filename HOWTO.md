@@ -1,5 +1,6 @@
 # Ampiri Android SDK 3.x Integration Guide
 
+* [Ampiri Support](#ampiri-support)
 * [Updating your Android Manifest](#updating-your-android-manifest)
 * [Standard banners](#standard-banners)
 * [Interstitials](#interstitial-ads)
@@ -12,6 +13,16 @@
 * [Ad networks settings](#ad-networks-settings)
 * [Log](#log)
 * [Debug mode](#debug-mode)
+
+## Ampiri Support
+
+Additional documentation for integrating the Ampiri SDK with your Android app can be found by clicking the links. 
+
+- [Ampiri.com Tutorials](http://www.ampiri.com/tutorials/) - Tutorials and Sign Up to Ampiri
+- [Publisher's Self-Serve UI User Guide](https://ampiri.zendesk.com/hc/en-us/articles/213857245-Publisher-s-Self-Serve-UI-User-Guide) - Publisher's Interface
+- [Ampiri SDK Android Quickstart](https://ampiri.zendesk.com/hc/en-us/articles/213431769-Ampiri-SDK-Android-Quickstart) - Basic Integration
+- Ampiri SDK Reference Manual Coming Soon!
+
 
 ## Updating your Android Manifest
 
