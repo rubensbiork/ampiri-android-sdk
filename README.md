@@ -4,7 +4,14 @@
 
 Boost your app's revenue streams and save time: sign up for an account at [Ampiri.com](https://ampiri.com)
 
-There is the integration tutorial video on [ampiri.com/tutorials](http://www.ampiri.com/tutorials/)
+## Ampiri Support
+
+Additional documentation for integrating the Ampiri SDK with your Android app can be found by clicking the links. 
+
+- [Ampiri.com Tutorials](http://www.ampiri.com/tutorials/) - Tutorials and Sign Up to Ampiri
+- [Publisher's Self-Serve UI User Guide](https://ampiri.zendesk.com/hc/en-us/articles/213857245-Publisher-s-Self-Serve-UI-User-Guide) - Publisher's Interface
+- [Ampiri SDK Android Quickstart](https://ampiri.zendesk.com/hc/en-us/articles/213431769-Ampiri-SDK-Android-Quickstart) - Basic Integration
+- Ampiri SDK Reference Manual Coming Soon!
 
 ## Requirements and Dependencies ##
 
