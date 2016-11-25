@@ -89,7 +89,7 @@ public abstract class InfeedActivity extends AdCallbackActivity {
     }
 
     private static final class MainAdapter extends ArrayAdapter<String> {
-        private static final int SIZE = 10;
+        private static final int SIZE = 30;
 
         private MainAdapter(@NonNull final Context context) {
             super(context, android.R.layout.simple_list_item_1, android.R.id.text1, build(context));

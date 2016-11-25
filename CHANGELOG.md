@@ -1,3 +1,15 @@
+## Version 3.3.2 (November 25, 2016)
+- Improvements:
+    - Cached data source is independent from activity's lifecycle
+    - Ads are shown in in-feed right after the first ad is loaded
+- Updated the following dependencies:
+    - support-annotations JAR to 25.0.1
+    - support-v4 AAR to 25.0.1
+    - Facebook Audience Network SDK to 4.17.0
+- Fixed:
+    - Bug when banner was considered as shown, but was invisible on the screen
+    - Miscellaneous bug fixes
+
 ## Version 3.3.1 (October 27, 2016)
 - Updated the following dependencies:
     - Google Play Services to 9.8.0
