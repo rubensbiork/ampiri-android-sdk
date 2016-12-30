@@ -1,3 +1,17 @@
+## Version 3.4 (December 31, 2016)
+- Server Native Ad Video support
+- Improvements:
+    - Possibility to show standard banner's view only when the ad was loaded
+- Updated the following dependencies:
+    - Google Play Services to 10.0.1
+    - support-annotations JAR to 25.1.0
+    - support-v4 AAR to 25.1.0
+    - Facebook Audience Network SDK to 4.18.0
+    - MoPub SDK to 4.11.0
+- Removed joor dependency
+- Fixed:
+    - Miscellaneous bug fixes
+
 ## Version 3.3.2 (November 25, 2016)
 - Improvements:
     - Cached data source is independent from activity's lifecycle

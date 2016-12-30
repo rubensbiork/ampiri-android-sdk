@@ -16,10 +16,9 @@ Additional documentation for integrating the Ampiri SDK with your Android app ca
 ## Requirements and Dependencies ##
 
 * Android 2.3 (API Version 9) and up
-* support-annotations, v25.0.1
-* support-v4, v25.0.1
-* joor, v0.9.6
-* **Recommended** Google Play Services 9.8.0
+* support-annotations, v25.1.0
+* support-v4, v25.1.0
+* **Recommended** Google Play Services 10.0.1
 
 We strongly recommend compiling your app using **Google Play services**, in order to use the `Android Advertising ID` instead of the `Device ID`,
 as required by Google. Failing to correctly use the `Android Advertising ID` may result in your submission to the Play Store being rejected.
@@ -33,15 +32,17 @@ Please ask your account manager for further details. If the publisher uses the I
 ## New in this Version
 Please view the [changelog](CHANGELOG.md) for a complete list of additions, fixes, and enhancements in the latest release.
 
+- Server Native Ad Video support
 - Improvements:
-    - Cached data source is independent from activity's lifecycle
-    - Ads are shown in in-feed right after the first ad is loaded
+    - Possibility to show standard banner's view only when the ad was loaded
 - Updated the following dependencies:
-    - support-annotations JAR to 25.0.1
-    - support-v4 AAR to 25.0.1
-    - Facebook Audience Network SDK to 4.17.0
+    - Google Play Services to 10.0.1
+    - support-annotations JAR to 25.1.0
+    - support-v4 AAR to 25.1.0
+    - Facebook Audience Network SDK to 4.18.0
+    - MoPub SDK to 4.11.0
+- Removed joor dependency
 - Fixed:
-    - Bug when banner was considered as shown, but was invisible on the screen
     - Miscellaneous bug fixes
 
 
@@ -62,19 +63,19 @@ repositories {
 }
 
 dependencies {
-  compile 'com.ampiri.sdk:ampiri-sdk:3.3.2'
-  compile 'com.ampiri.sdk:ampiri-sdk-mediation-adcolony:3.3.2'
-  compile 'com.ampiri.sdk:ampiri-sdk-mediation-admob:3.3.2'
-  compile 'com.ampiri.sdk:ampiri-sdk-mediation-unityads:3.3.2'
-  compile 'com.ampiri.sdk:ampiri-sdk-mediation-applovin:3.3.2'
-  compile 'com.ampiri.sdk:ampiri-sdk-mediation-chartboost:3.3.2'
-  compile 'com.ampiri.sdk:ampiri-sdk-mediation-facebook:3.3.2'
-  compile 'com.ampiri.sdk:ampiri-sdk-mediation-mopub:3.3.2'
-  compile 'com.ampiri.sdk:ampiri-sdk-mediation-nativex:3.3.2'
-  compile 'com.ampiri.sdk:ampiri-sdk-mediation-vungle:3.3.2'
-  compile 'com.ampiri.sdk:ampiri-sdk-mediation-baidu:3.3.2'
+  compile 'com.ampiri.sdk:ampiri-sdk:3.4.0'
+  compile 'com.ampiri.sdk:ampiri-sdk-mediation-adcolony:3.4.0'
+  compile 'com.ampiri.sdk:ampiri-sdk-mediation-admob:3.4.0'
+  compile 'com.ampiri.sdk:ampiri-sdk-mediation-unityads:3.4.0'
+  compile 'com.ampiri.sdk:ampiri-sdk-mediation-applovin:3.4.0'
+  compile 'com.ampiri.sdk:ampiri-sdk-mediation-chartboost:3.4.0'
+  compile 'com.ampiri.sdk:ampiri-sdk-mediation-facebook:3.4.0'
+  compile 'com.ampiri.sdk:ampiri-sdk-mediation-mopub:3.4.0'
+  compile 'com.ampiri.sdk:ampiri-sdk-mediation-nativex:3.4.0'
+  compile 'com.ampiri.sdk:ampiri-sdk-mediation-vungle:3.4.0'
+  compile 'com.ampiri.sdk:ampiri-sdk-mediation-baidu:3.4.0'
 
-  compile 'com.google.android.gms:play-services-ads:9.8.0'
+  compile 'com.google.android.gms:play-services-ads:10.0.1'
 }
 ```
 
@@ -92,28 +93,27 @@ repositories {
 }
 
 dependencies {
-  compile(name: 'ampiri-sdk', version:'3.3.2', ext: 'aar')
-  compile(name: 'ampiri-sdk-mediation', version:'3.3.2', ext: 'aar')
-  compile(name: 'ampiri-sdk-mediation-adcolony', version:'3.3.2', ext: 'aar')
-  compile(name: 'ampiri-sdk-mediation-admob', version:'3.3.2', ext: 'aar')
-  compile(name: 'ampiri-sdk-mediation-applovin', version:'3.3.2', ext: 'aar')
-  compile(name: 'ampiri-sdk-mediation-unityads', version:'3.3.2', ext: 'aar')
-  compile(name: 'ampiri-sdk-mediation-chartboost', version:'3.3.2', ext: 'aar')
-  compile(name: 'ampiri-sdk-mediation-facebook', version:'3.3.2', ext: 'aar')
-  compile(name: 'ampiri-sdk-mediation-mopub', version:'3.3.2', ext: 'aar')
-  compile(name: 'ampiri-sdk-mediation-nativex', version:'3.3.2', ext: 'aar')
-  compile(name: 'ampiri-sdk-mediation-vungle', version:'3.3.2', ext: 'aar')
-  compile(name: 'ampiri-sdk-mediation-baidu', version:'3.3.2', ext: 'aar')
-  compile(name: 'ampiri-sdk-mraid', version:'3.3.2', ext: 'aar')
-  compile(name: 'ampiri-sdk-vast', version:'3.3.2', ext: 'aar')
+  compile(name: 'ampiri-sdk', version:'3.4.0', ext: 'aar')
+  compile(name: 'ampiri-sdk-mediation', version:'3.4.0', ext: 'aar')
+  compile(name: 'ampiri-sdk-mediation-adcolony', version:'3.4.0', ext: 'aar')
+  compile(name: 'ampiri-sdk-mediation-admob', version:'3.4.0', ext: 'aar')
+  compile(name: 'ampiri-sdk-mediation-applovin', version:'3.4.0', ext: 'aar')
+  compile(name: 'ampiri-sdk-mediation-unityads', version:'3.4.0', ext: 'aar')
+  compile(name: 'ampiri-sdk-mediation-chartboost', version:'3.4.0', ext: 'aar')
+  compile(name: 'ampiri-sdk-mediation-facebook', version:'3.4.0', ext: 'aar')
+  compile(name: 'ampiri-sdk-mediation-mopub', version:'3.4.0', ext: 'aar')
+  compile(name: 'ampiri-sdk-mediation-nativex', version:'3.4.0', ext: 'aar')
+  compile(name: 'ampiri-sdk-mediation-vungle', version:'3.4.0', ext: 'aar')
+  compile(name: 'ampiri-sdk-mediation-baidu', version:'3.4.0', ext: 'aar')
+  compile(name: 'ampiri-sdk-mraid', version:'3.4.0', ext: 'aar')
+  compile(name: 'ampiri-sdk-vast', version:'3.4.0', ext: 'aar')
 
-  compile 'com.google.android.gms:play-services-ads:9.8.0'
-  compile 'com.facebook.android:audience-network-sdk:4.17.0'
-  compile 'com.mopub:mopub-sdk:4.9.0@aar', {
+  compile 'com.google.android.gms:play-services-ads:10.0.1'
+  compile 'com.facebook.android:audience-network-sdk:4.18.0'
+  compile ('com.mopub:mopub-sdk:4.11.0@aar') {
     transitive = true
   }
   compile 'com.google.code.gson:gson:2.8.0'
-  compile 'org.jooq:joor:0.9.6'
 }
 ```
 
@@ -132,16 +132,16 @@ Ampiri supports the following ad networks on the client-side:
 
 To show *standard* banner ads:
 
-* `ampiri-sdk-mediation-admob` [Google Mobile Ads](https://developers.google.com/admob/android/quick-start) v9.8.0, API 9: Android 2.3 (Gingerbread)
-* `ampiri-sdk-mediation-mopub` [MoPub](https://github.com/mopub/mopub-android-sdk) v4.9.0, API 9: Android 2.3 (Gingerbread)
-* `ampiri-sdk-mediation-facebook` [Facebook Audience](https://developers.facebook.com/docs/audience-network) v4.17.0, API 11: Android 3.0 (Honeycomb)
+* `ampiri-sdk-mediation-admob` [Google Mobile Ads](https://developers.google.com/admob/android/quick-start) v10.0.1, API 9: Android 2.3 (Gingerbread)
+* `ampiri-sdk-mediation-mopub` [MoPub](https://github.com/mopub/mopub-android-sdk) v4.11.0, API 9: Android 2.3 (Gingerbread)
+* `ampiri-sdk-mediation-facebook` [Facebook Audience](https://developers.facebook.com/docs/audience-network) v4.18.0, API 11: Android 3.0 (Honeycomb)
 
 To show *interstitial* ads:
 
-* `ampiri-sdk-mediation-admob` [Google Mobile Ads](https://developers.google.com/admob/android/quick-start) v9.8.0, API 9: Android 2.3 (Gingerbread)
-* `ampiri-sdk-mediation-mopub` [MoPub](https://github.com/mopub/mopub-android-sdk) v4.9.0, API 9: Android 2.3 (Gingerbread)
+* `ampiri-sdk-mediation-admob` [Google Mobile Ads](https://developers.google.com/admob/android/quick-start) v10.0.1, API 9: Android 2.3 (Gingerbread)
+* `ampiri-sdk-mediation-mopub` [MoPub](https://github.com/mopub/mopub-android-sdk) v4.11.0, API 9: Android 2.3 (Gingerbread)
 * `ampiri-sdk-mediation-chartboost` [Chartboost](https://answers.chartboost.com/hc/en-us/articles/201219545-Download-Integrate-the-Chartboost-SDK-for-Android) v6.5.1, API 9: Android 2.3 (Gingerbread)
-* `ampiri-sdk-mediation-facebook` [Facebook Audience](https://developers.facebook.com/docs/audience-network) v4.17.0, API 11: Android 3.0 (Honeycomb)
+* `ampiri-sdk-mediation-facebook` [Facebook Audience](https://developers.facebook.com/docs/audience-network) v4.18.0, API 11: Android 3.0 (Honeycomb)
 * `ampiri-sdk-mediation-nativex` [NativeX](https://github.com/nativex/NativeX-Android-SDK) v5.5.8, API 11: Android 3.0 (Honeycomb)
 * `ampiri-sdk-mediation-applovin` [AppLovin](https://github.com/AppLovin/Android-Demo-App) v6.3.2, API 9: Android 2.3 (Gingerbread)
 
@@ -155,9 +155,9 @@ To show *video* ads:
 
 To show *native* ads:
 
-* `ampiri-sdk-mediation-admob` [Google Mobile Ads](https://developers.google.com/admob/android/quick-start) v9.8.0, API 9: Android 2.3 (Gingerbread)
-* `ampiri-sdk-mediation-mopub` [MoPub](https://github.com/mopub/mopub-android-sdk) v4.9.0, API 9: Android 2.3 (Gingerbread)
-* `ampiri-sdk-mediation-facebook` [Facebook Audience](https://developers.facebook.com/docs/audience-network) v4.17.0, API 11: Android 3.0 (Honeycomb)
+* `ampiri-sdk-mediation-admob` [Google Mobile Ads](https://developers.google.com/admob/android/quick-start) v10.0.1, API 9: Android 2.3 (Gingerbread)
+* `ampiri-sdk-mediation-mopub` [MoPub](https://github.com/mopub/mopub-android-sdk) v4.11.0, API 9: Android 2.3 (Gingerbread)
+* `ampiri-sdk-mediation-facebook` [Facebook Audience](https://developers.facebook.com/docs/audience-network) v4.18.0, API 11: Android 3.0 (Honeycomb)
 * `ampiri-sdk-mediation-applovin` [AppLovin](https://github.com/AppLovin/Android-Demo-App) v6.3.2, API 9: Android 2.3 (Gingerbread)
 * `ampiri-sdk-mediation-baidu` [Baidu](http://mssp.baidu.com/app/static/main.html#/sdk) v5.6, API 8: Android 2.2 (Froyo)
 

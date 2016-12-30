@@ -86,6 +86,8 @@ standardAd.setAutorefreshEnabled(false);
 
 By default, auto-update is switched on. The auto-update period is set up via the admin panel.
 
+From version 3.4 onwards, the SDK’s interface includes showAd() method. It is strongly recommended to call this method after the standard banner’s view became visible, as it will then trigger an impression event.
+
 ## Interstitial Ads
 
 > Note: All SDK method calls should be done from the main thread (Main thread, UI thread).
