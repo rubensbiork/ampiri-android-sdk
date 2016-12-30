@@ -1,4 +1,4 @@
-## Version 3.4 (December 31, 2016)
+## Version 3.4 (December 30, 2016)
 - Server Native Ad Video support
 - Improvements:
     - Possibility to show standard banner's view only when the ad was loaded
