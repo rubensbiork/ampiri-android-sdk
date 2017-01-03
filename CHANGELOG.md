@@ -8,7 +8,6 @@
     - support-v4 AAR to 25.1.0
     - Facebook Audience Network SDK to 4.18.0
     - MoPub SDK to 4.11.0
-- Removed joor dependency
 - Fixed:
     - Miscellaneous bug fixes
 
