@@ -18,6 +18,7 @@ Additional documentation for integrating the Ampiri SDK with your Android app ca
 * Android 2.3 (API Version 9) and up
 * support-annotations, v25.1.0
 * support-v4, v25.1.0
+* joor, v0.9.6
 * **Recommended** Google Play Services 10.0.1
 
 We strongly recommend compiling your app using **Google Play services**, in order to use the `Android Advertising ID` instead of the `Device ID`,
@@ -41,7 +42,6 @@ Please view the [changelog](CHANGELOG.md) for a complete list of additions, fixe
     - support-v4 AAR to 25.1.0
     - Facebook Audience Network SDK to 4.18.0
     - MoPub SDK to 4.11.0
-- Removed joor dependency
 - Fixed:
     - Miscellaneous bug fixes
 
@@ -114,6 +114,7 @@ dependencies {
     transitive = true
   }
   compile 'com.google.code.gson:gson:2.8.0'
+  compile 'org.jooq:joor:0.9.6'
 }
 ```
 
