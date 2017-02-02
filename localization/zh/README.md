@@ -11,10 +11,9 @@
 ## 需求和依赖 ##
 
 * Android 2.3 (API Version 9) and up
-* Support-annotations, v25.0.1
-* Support-v4, v25.0.1
-* Joor, v0.9.6
-* **Recommended** Google Play Services 9.8.0
+* Support-annotations, v25.1.1
+* Support-v4, v25.1.1
+* **Recommended** Google Play Services 10.0.1
 
 我们强烈建议使用**Google Play services**编译你的app，从而按照Google的要求使用`Android Advertising ID`代替`Device ID`。没有正确使用`Android Advertising ID`可能导致你向Play Store的提交被拒绝。
 
@@ -24,19 +23,17 @@
 
 请向你的帐户管理员了解进一步细节。如果发行商使用来自示例的ID，则不会付费。
 
-## New in this Version
-- 改进
-    - cached data source 是独立于 activity's lifecycle
-    - 在infeed里，第一个广告加载后会直接显示。
-    
-- 更新
-    - support-annotations JAR 到 25.0.1
-    - support-v4 AAR 到 25.0.1
-    - Facebook Audience Network SDK 到 4.17.0
+## 版本更新
+- DoubleClick AdX 支持
+- 更新依赖:
+  - support-annotations JAR 到 25.1.1
+  - support-v4 AAR 到 25.1.1
+  - AppLovin SDK 到 6.4.2
+  - Chartboost SDK 到 6.6.1
+  - NativeX SDK 到 5.5.9
+  - Vungle SDK 到 4.0.3
 - 修改:
-    - 当横幅被视为如图所示但是在屏幕上看不见的错误。
-    - 其他错误修复
-
+  - 其他错误修复
 
 ## 初始化 ##
 

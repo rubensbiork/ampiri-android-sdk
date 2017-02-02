@@ -487,6 +487,30 @@ AdEventCallback adListener = new AdEventCallback() {
 
 ## Activity lifecycle events handling
 
+Ampiri SDK should be notified of when your `Activity` is resumed, paused, and destroyed by overriding the lifecycle methods and calling the appropriate methods
+ on `Ampiri` class. The analytics SDK should be initialised and started before requiring for ads. To ensure that the metrics are not over-counted, it is
+ highly recommended that the Ampiri SDK be called in the `Application` class.
+
+```java
+public class YourApplication extends Application {
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        Ampiri.onApplicationCreated(this);
+        //...
+    }
+    //...
+}
+```
+
+Don't forget to add application name to your `AndroidManifest.xml` file.
+
+```xml
+    <application android:name=".YourApplication">
+        <!-- activities goes here -->
+    </application>
+```
+
 `onPause()`, `onResume()` and `onDestroy()` methods should be called depending on the activity lifecycle events.
 
 Example:
@@ -518,6 +542,38 @@ protected void onDestroy() {
     nativeAd.onActivityDestroyed();
 }
 ```
+
+### API level 9 until 13
+
+If your app `minSdkVersion` in gradle is between `9` and `13`, consider updating it to at least `14` to simplify the integration process in the long term.
+Consult the official Android [dashboard](http://developer.android.com/about/dashboards/index.html) to know the latest market share of the major versions.
+
+To provide proper analytics it is required to call certain Ampiri SDK methods every time any Activity resumes or pauses. In order to do so you should
+follow these steps for each Activity of your app:
+
+* In your Activity's `onResume` method call `Ampiri.onResume`. Create the method if needed.
+* In your Activity's `onPause` method call `Ampiri.onPause`. Create the method if needed.
+
+After these steps your activity should look like this:
+
+```java
+import com.ampiri.sdk.Ampiri;
+// ...
+public class YourActivity extends Activity {
+    protected void onResume() {
+        super.onResume();
+        Ampiri.onActivityResumed(this);
+    }
+    protected void onPause() {
+        super.onPause();
+        Ampiri.onActivityPaused(this);
+    }
+    // ...
+}
+```
+
+Repeat these steps for **every** Activity of your app. Don't forget these steps when you create new Activities in the future. Depending on your coding
+style you might want to implement this in a common superclass of all your Activities.
 
 ## User Data
 

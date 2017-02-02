@@ -1,3 +1,15 @@
+## Version 3.5 (February 2, 2017)
+- DoubleClick AdX support
+- Updated the following dependencies:
+    - support-annotations JAR to 25.1.1
+    - support-v4 AAR to 25.1.1
+    - AppLovin SDK to 6.4.2
+    - Chartboost SDK to 6.6.1
+    - NativeX SDK to 5.5.9
+    - Vungle SDK to 4.0.3
+- Fixed:
+    - Miscellaneous bug fixes
+
 ## Version 3.4 (December 30, 2016)
 - Server Native Ad Video support
 - Improvements:
@@ -8,6 +20,7 @@
     - support-v4 AAR to 25.1.0
     - Facebook Audience Network SDK to 4.18.0
     - MoPub SDK to 4.11.0
+- Removed joor dependency
 - Fixed:
     - Miscellaneous bug fixes
 
