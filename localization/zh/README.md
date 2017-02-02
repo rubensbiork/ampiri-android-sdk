@@ -52,17 +52,19 @@ repositories {
 }
 
 dependencies {
-  compile 'com.ampiri.sdk:ampiri-sdk:3.3.1'
-  compile 'com.ampiri.sdk:ampiri-sdk-mediation-adcolony:3.3.2'
-  compile 'com.ampiri.sdk:ampiri-sdk-mediation-admob:3.3.2'
-  compile 'com.ampiri.sdk:ampiri-sdk-mediation-unityads:3.3.2'
-  compile 'com.ampiri.sdk:ampiri-sdk-mediation-applovin:3.3.2'
-  compile 'com.ampiri.sdk:ampiri-sdk-mediation-chartboost:3.3.2'
-  compile 'com.ampiri.sdk:ampiri-sdk-mediation-facebook:3.3.2'
-  compile 'com.ampiri.sdk:ampiri-sdk-mediation-mopub:3.3.2'
-  compile 'com.ampiri.sdk:ampiri-sdk-mediation-nativex:3.3.2'
-  compile 'com.ampiri.sdk:ampiri-sdk-mediation-vungle:3.3.2'
-  compile 'com.google.android.gms:play-services-ads:9.8.0'
+  compile 'com.ampiri.sdk:ampiri-sdk:3.5.0'
+  compile 'com.ampiri.sdk:ampiri-sdk-mediation-adcolony:3.5.0'
+  compile 'com.ampiri.sdk:ampiri-sdk-mediation-admob:3.5.0'
+  compile 'com.ampiri.sdk:ampiri-sdk-mediation-unityads:3.5.0'
+  compile 'com.ampiri.sdk:ampiri-sdk-mediation-applovin:3.5.0'
+  compile 'com.ampiri.sdk:ampiri-sdk-mediation-chartboost:3.5.0'
+  compile 'com.ampiri.sdk:ampiri-sdk-mediation-facebook:3.5.0'
+  compile 'com.ampiri.sdk:ampiri-sdk-mediation-mopub:3.5.0'
+  compile 'com.ampiri.sdk:ampiri-sdk-mediation-nativex:3.5.0'
+  compile 'com.ampiri.sdk:ampiri-sdk-mediation-vungle:3.5.0'
+  compile 'com.ampiri.sdk:ampiri-sdk-mediation-baidu:3.5.0'
+
+  compile 'com.google.android.gms:play-services-ads:10.0.1'
 }
 ```
 
@@ -80,27 +82,27 @@ repositories {
 }
 
 dependencies {
-  compile(name: 'ampiri-sdk', version:'3.3.2', ext: 'aar')
-  compile(name: 'ampiri-sdk-mediation', version:'3.3.2', ext: 'aar')
-  compile(name: 'ampiri-sdk-mediation-adcolony', version:'3.3.2', ext: 'aar')
-  compile(name: 'ampiri-sdk-mediation-admob', version:'3.3.2', ext: 'aar')
-  compile(name: 'ampiri-sdk-mediation-applovin', version:'3.3.2', ext: 'aar')
-  compile(name: 'ampiri-sdk-mediation-unityads', version:'3.3.2', ext: 'aar')
-  compile(name: 'ampiri-sdk-mediation-chartboost', version:'3.3.2', ext: 'aar')
-  compile(name: 'ampiri-sdk-mediation-facebook', version:'3.3.2', ext: 'aar')
-  compile(name: 'ampiri-sdk-mediation-mopub', version:'3.3.2', ext: 'aar')
-  compile(name: 'ampiri-sdk-mediation-nativex', version:'3.3.2', ext: 'aar')
-  compile(name: 'ampiri-sdk-mediation-vungle', version:'3.3.2', ext: 'aar')
-  compile(name: 'ampiri-sdk-mraid', version:'3.3.2', ext: 'aar')
-  compile(name: 'ampiri-sdk-vast', version:'3.3.2', ext: 'aar')
-  
-  compile 'com.google.android.gms:play-services-ads:9.8.0'
-  compile 'com.facebook.android:audience-network-sdk:4.17.0'
-  compile 'com.mopub:mopub-sdk:4.9.0@aar', {
+  compile(name: 'ampiri-sdk', version:'3.5.0', ext: 'aar')
+  compile(name: 'ampiri-sdk-mediation', version:'3.5.0', ext: 'aar')
+  compile(name: 'ampiri-sdk-mediation-adcolony', version:'3.5.0', ext: 'aar')
+  compile(name: 'ampiri-sdk-mediation-admob', version:'3.5.0', ext: 'aar')
+  compile(name: 'ampiri-sdk-mediation-applovin', version:'3.5.0', ext: 'aar')
+  compile(name: 'ampiri-sdk-mediation-unityads', version:'3.5.0', ext: 'aar')
+  compile(name: 'ampiri-sdk-mediation-chartboost', version:'3.5.0', ext: 'aar')
+  compile(name: 'ampiri-sdk-mediation-facebook', version:'3.5.0', ext: 'aar')
+  compile(name: 'ampiri-sdk-mediation-mopub', version:'3.5.0', ext: 'aar')
+  compile(name: 'ampiri-sdk-mediation-nativex', version:'3.5.0', ext: 'aar')
+  compile(name: 'ampiri-sdk-mediation-vungle', version:'3.5.0', ext: 'aar')
+  compile(name: 'ampiri-sdk-mediation-baidu', version:'3.5.0', ext: 'aar')
+  compile(name: 'ampiri-sdk-mraid', version:'3.5.0', ext: 'aar')
+  compile(name: 'ampiri-sdk-vast', version:'3.5.0', ext: 'aar')
+
+  compile 'com.google.android.gms:play-services-ads:10.0.1'
+  compile 'com.facebook.android:audience-network-sdk:4.18.0'
+  compile ('com.mopub:mopub-sdk:4.11.0@aar') {
     transitive = true
   }
   compile 'com.google.code.gson:gson:2.8.0'
-  compile 'org.jooq:joor:0.9.6'
 }
 ```
 
@@ -118,34 +120,33 @@ Ampiri 在客户端一侧支持以下广告网络：
 
 为了显示 *standard* 标准横幅广告：
 
-* `ampiri-sdk-mediation-admob` [Google Mobile Ads](https://developers.google.com/admob/android/quick-start) v9.8.0, API 9: Android 2.3 (Gingerbread)
-* `ampiri-sdk-mediation-mopub` [MoPub](https://github.com/mopub/mopub-android-sdk) v4.9.0, API 9: Android 2.3 (Gingerbread)
-* `ampiri-sdk-mediation-facebook` [Facebook Audience](https://developers.facebook.com/docs/audience-network) v4.17.0, API 11: Android 3.0 (Honeycomb)
+* `ampiri-sdk-mediation-admob` [Google Mobile Ads](https://developers.google.com/admob/android/quick-start) v10.0.1, API 9: Android 2.3 (Gingerbread)
+* `ampiri-sdk-mediation-mopub` [MoPub](https://github.com/mopub/mopub-android-sdk) v4.11.0, API 9: Android 2.3 (Gingerbread)
+* `ampiri-sdk-mediation-facebook` [Facebook Audience](https://developers.facebook.com/docs/audience-network) v4.18.0, API 11: Android 3.0 (Honeycomb)
 
 为了显示  *interstitial* 插屏广告：
 
-* `ampiri-sdk-mediation-admob` [Google Mobile Ads](https://developers.google.com/admob/android/quick-start) v9.8.0, API 9: Android 2.3 (Gingerbread)
-* `ampiri-sdk-mediation-mopub` [MoPub](https://github.com/mopub/mopub-android-sdk) v4.9.0, API 9: Android 2.3 (Gingerbread)
-* `ampiri-sdk-mediation-chartboost` [Chartboost](https://answers.chartboost.com/hc/en-us/articles/201219545-Download-Integrate-the-Chartboost-SDK-for-Android) v6.5.1, API 9: Android 2.3 (Gingerbread)
-* `ampiri-sdk-mediation-facebook` [Facebook Audience](https://developers.facebook.com/docs/audience-network) v4.17.0, API 11: Android 3.0 (Honeycomb)
-* `ampiri-sdk-mediation-nativex` [NativeX](https://github.com/nativex/NativeX-Android-SDK) v5.5.8, API 11: Android 3.0 (Honeycomb)
-* `ampiri-sdk-mediation-applovin` [AppLovin](https://github.com/AppLovin/Android-Demo-App) v6.3.2, API 9: Android 2.3 (Gingerbread)
+* `ampiri-sdk-mediation-admob` [Google Mobile Ads](https://developers.google.com/admob/android/quick-start) v10.0.1, API 9: Android 2.3 (Gingerbread)
+* `ampiri-sdk-mediation-mopub` [MoPub](https://github.com/mopub/mopub-android-sdk) v4.11.0, API 9: Android 2.3 (Gingerbread)
+* `ampiri-sdk-mediation-chartboost` [Chartboost](https://answers.chartboost.com/hc/en-us/articles/201219545-Download-Integrate-the-Chartboost-SDK-for-Android) v6.6.1, API 9: Android 2.3 (Gingerbread)
+* `ampiri-sdk-mediation-facebook` [Facebook Audience](https://developers.facebook.com/docs/audience-network) v4.18.0, API 11: Android 3.0 (Honeycomb)
+* `ampiri-sdk-mediation-nativex` [NativeX](https://github.com/nativex/NativeX-Android-SDK) v5.5.9, API 11: Android 3.0 (Honeycomb)
+* `ampiri-sdk-mediation-applovin` [AppLovin](https://github.com/AppLovin/Android-Demo-App) v6.4.2, API 9: Android 2.3 (Gingerbread)
 
 为了显示 *video* 视频广告：
 
-
 * `ampiri-sdk-mediation-adcolony` [AdColony](https://github.com/AdColony/AdColony-Android-SDK) v2.3.6, API 14: Android 4.0 (Ice Cream Sandwich)
-* `ampiri-sdk-mediation-unityads` [Unity Ads](https://github.com/Applifier/unity-ads-sdk) v1.5.6, API 9: Android 2.3 (Gingerbread)
-* `ampiri-sdk-mediation-chartboost` [Chartboost](https://answers.chartboost.com/hc/en-us/articles/201219545-Download-Integrate-the-Chartboost-SDK-for-Android) v6.5.1, API 9: Android 2.3 (Gingerbread)
-* `ampiri-sdk-mediation-nativex` [NativeX](https://github.com/nativex/NativeX-Android-SDK) v5.5.8, API 11: Android 3.0 (Honeycomb)
-* `ampiri-sdk-mediation-vungle` [Vungle](https://v.vungle.com/sdk) v4.0.2, API 11: Android 3.0 (Honeycomb)
+* `ampiri-sdk-mediation-unityads` [Unity Ads](https://github.com/Applifier/unity-ads-sdk) v2.0.4, API 9: Android 2.3 (Gingerbread)
+* `ampiri-sdk-mediation-chartboost` [Chartboost](https://answers.chartboost.com/hc/en-us/articles/201219545-Download-Integrate-the-Chartboost-SDK-for-Android) v6.6.1, API 9: Android 2.3 (Gingerbread)
+* `ampiri-sdk-mediation-nativex` [NativeX](https://github.com/nativex/NativeX-Android-SDK) v5.5.9, API 11: Android 3.0 (Honeycomb)
+* `ampiri-sdk-mediation-vungle` [Vungle](https://v.vungle.com/sdk) v4.0.3, API 11: Android 3.0 (Honeycomb)
 
 为了显示  *native* 原生广告：
 
-* `ampiri-sdk-mediation-admob` [Google Mobile Ads](https://developers.google.com/admob/android/quick-start) v9.8.0, API 9: Android 2.3 (Gingerbread)
-* `ampiri-sdk-mediation-mopub` [MoPub](https://github.com/mopub/mopub-android-sdk) v4.9.0, API 9: Android 2.3 (Gingerbread)
-* `ampiri-sdk-mediation-facebook` [Facebook Audience](https://developers.facebook.com/docs/audience-network) v4.17.0, API 11: Android 3.0 (Honeycomb)
-* `ampiri-sdk-mediation-applovin` [AppLovin](https://github.com/AppLovin/Android-Demo-App) v6.3.2, API 9: Android 2.3 (Gingerbread)
+* `ampiri-sdk-mediation-admob` [Google Mobile Ads](https://developers.google.com/admob/android/quick-start) v10.0.1, API 9: Android 2.3 (Gingerbread)
+* `ampiri-sdk-mediation-mopub` [MoPub](https://github.com/mopub/mopub-android-sdk) v4.11.0, API 9: Android 2.3 (Gingerbread)
+* `ampiri-sdk-mediation-facebook` [Facebook Audience](https://developers.facebook.com/docs/audience-network) v4.18.0, API 11: Android 3.0 (Honeycomb)
+* `ampiri-sdk-mediation-applovin` [AppLovin](https://github.com/AppLovin/Android-Demo-App) v6.4.2, API 9: Android 2.3 (Gingerbread)
 * `ampiri-sdk-mediation-baidu` [Baidu](http://mssp.baidu.com/app/static/main.html#/sdk) v5.6, API 8: Android 2.2 (Froyo)
 
 
@@ -178,6 +179,27 @@ android:name="android.support.multidex.MultiDexApplication">
 ```
 
 请见Android 文档 [这里](https://developer.android.com/tools/building/multidex.html)。
+
+### Android 自动备份 ###
+
+
+借助Android Marshmallow，Google引入了自动备份功能.所有Ampiri SDK信息存储在共享首选项中
+文件名为com.ampiri.sdk.insights.v1.xml。您应该排除这些文件，以便不备份它们
+
+您可以通过自定义具有以下内容的资源XML文件（即`res / xml / backup_config.xml`）来实现此目的：
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<full-backup-content>
+    <exclude domain="sharedpref" path="com.ampiri.sdk.insights.v1.xml" />
+</full-backup-content>
+```
+
+然后在`AndroidManifest.xml`中的标记中引用它:
+
+```xml
+<application ...  android:fullBackupContent="@xml/backup_config">
+```
 
 ## 文档
 
