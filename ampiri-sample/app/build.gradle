@@ -42,15 +42,16 @@ repositories {
 }
 
 dependencies {
-    compile 'com.ampiri.sdk:ampiri-sdk:3.5.0'
-    compile 'com.ampiri.sdk:ampiri-sdk-mediation-adcolony:3.5.0'
-    compile 'com.ampiri.sdk:ampiri-sdk-mediation-admob:3.5.0'
-    compile 'com.ampiri.sdk:ampiri-sdk-mediation-applovin:3.5.0'
-    compile 'com.ampiri.sdk:ampiri-sdk-mediation-baidu:3.5.0'
-    compile 'com.ampiri.sdk:ampiri-sdk-mediation-chartboost:3.5.0'
-    compile 'com.ampiri.sdk:ampiri-sdk-mediation-facebook:3.5.0'
-    compile 'com.ampiri.sdk:ampiri-sdk-mediation-mopub:3.5.0'
-    compile 'com.ampiri.sdk:ampiri-sdk-mediation-nativex:3.5.0'
-    compile 'com.ampiri.sdk:ampiri-sdk-mediation-unityads:3.5.0'
-    compile 'com.ampiri.sdk:ampiri-sdk-mediation-vungle:3.5.0'
+    compile 'com.ampiri.sdk:ampiri-sdk:3.6.0'
+    compile 'com.ampiri.sdk:ampiri-sdk-mediation-adcolony:3.6.0'
+    compile 'com.ampiri.sdk:ampiri-sdk-mediation-admob:3.6.0'
+    compile 'com.ampiri.sdk:ampiri-sdk-mediation-applovin:3.6.0'
+    compile 'com.ampiri.sdk:ampiri-sdk-mediation-baidu:3.6.0'
+    compile 'com.ampiri.sdk:ampiri-sdk-mediation-chartboost:3.6.0'
+    compile 'com.ampiri.sdk:ampiri-sdk-mediation-facebook:3.6.0'
+    compile 'com.ampiri.sdk:ampiri-sdk-mediation-inlocomedia:3.6.0'
+    compile 'com.ampiri.sdk:ampiri-sdk-mediation-mopub:3.6.0'
+    compile 'com.ampiri.sdk:ampiri-sdk-mediation-nativex:3.6.0'
+    compile 'com.ampiri.sdk:ampiri-sdk-mediation-unityads:3.6.0'
+    compile 'com.ampiri.sdk:ampiri-sdk-mediation-vungle:3.6.0'
 }

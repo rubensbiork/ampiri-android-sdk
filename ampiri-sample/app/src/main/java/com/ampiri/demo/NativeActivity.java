@@ -62,6 +62,7 @@ public class NativeActivity extends AdCallbackActivity {
 
     @Override
     public void onAdLoaded() {
+        super.onAdLoaded();
         if (adContainerView != null) {
             adContainerView.removeAllViews();
             if (nativeAd != null) {

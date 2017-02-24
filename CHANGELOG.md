@@ -1,5 +1,15 @@
+## Version 3.6 (February 24, 2017)
+- DoubleClick AdX support for Native Ads
+- InLocoMedia v2.5.0 support for Standard, Fullscreen and Native Ads
+- Updated the following dependencies:
+    - support-annotations JAR to 25.2.0
+    - support-v4 AAR to 25.2.0
+    - Unity Ads SDK to 2.0.8
+- Fixed:
+    - Miscellaneous bug fixes
+
 ## Version 3.5 (February 2, 2017)
-- DoubleClick AdX support
+- DoubleClick AdX support for Standard and Fullscreen banners
 - Updated the following dependencies:
     - support-annotations JAR to 25.1.1
     - support-v4 AAR to 25.1.1

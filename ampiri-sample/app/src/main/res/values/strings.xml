@@ -9,6 +9,7 @@
     <string name="ad_native_infeed_feed_card">Ampiri Infeed Ad Sample</string>
     <string name="ad_native_infeed_story_card">Ampiri Infeed Story Card Ad Sample</string>
     <string name="ad_native_infeed_video_card">Ampiri Infeed Video Card Ad Sample</string>
+    <string name="ad_native_view_pager">Ampiri View Pager Ad Sample</string>
 
     <string name="auto_refresh">Auto update</string>
 

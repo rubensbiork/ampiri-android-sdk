@@ -2,12 +2,13 @@ package com.ampiri.demo;
 
 import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
+import android.support.v4.app.Fragment;
 import android.widget.Toast;
 
 import com.ampiri.sdk.listeners.AdEventCallback;
 import com.ampiri.sdk.mediation.ResponseStatus;
 
-public abstract class AdCallbackActivity extends AdLifecycleActivity implements AdEventCallback {
+public abstract class AdCallbackFragment extends Fragment implements AdEventCallback {
 
     @Override
     public void onAdLoaded() {
@@ -40,6 +41,6 @@ public abstract class AdCallbackActivity extends AdLifecycleActivity implements 
     }
 
     private void showMsg(@StringRes final int resId, @Nullable final Object... formatArgs) {
-        Toast.makeText(getApplicationContext(), getString(resId, formatArgs), Toast.LENGTH_LONG).show();
+        Toast.makeText(getContext(), getString(resId, formatArgs), Toast.LENGTH_LONG).show();
     }
 }

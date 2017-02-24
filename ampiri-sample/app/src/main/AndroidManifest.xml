@@ -53,6 +53,9 @@
         <activity
             android:name=".VideoCardInfeedActivity"
             android:label="@string/ad_native_infeed_video_card"/>
+        <activity
+            android:name=".ViewPagerActivity"
+            android:label="@string/ad_native_view_pager"/>
     </application>
 
 </manifest>
