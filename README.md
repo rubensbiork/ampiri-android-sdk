@@ -640,4 +640,4 @@ AdEventCallback adListener = new AdEventCallback() {
 6. In the Android Studio main menu, select **Run** and click *Run* to compile and run the App.
 7. In the Android emulator (or your device) where the app is running with Ampiri, select the Ad Type from Step 4 and you will see the event register in the Ampiri Publishers's Self Serve UI under *Reporting*.
 
-[For advanced SDK topics, click here.](CONFIGURATION.md)
+[For advanced SDK topics, click here.](CONFIGURATIONS.md)
