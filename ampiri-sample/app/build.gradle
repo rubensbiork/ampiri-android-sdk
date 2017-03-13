@@ -31,7 +31,10 @@ android {
         abortOnError false
         checkAllWarnings true
         warningsAsErrors true
-        disable 'AllowBackup', 'InvalidPackage'
+        disable 'AllowBackup', 'InvalidPackage', 'UnpackedNativeCode'
+    }
+    dexOptions {
+        javaMaxHeapSize "2g"
     }
 }
 repositories {
@@ -42,16 +45,16 @@ repositories {
 }
 
 dependencies {
-    compile 'com.ampiri.sdk:ampiri-sdk:3.6.0'
-    compile 'com.ampiri.sdk:ampiri-sdk-mediation-adcolony:3.6.0'
-    compile 'com.ampiri.sdk:ampiri-sdk-mediation-admob:3.6.0'
-    compile 'com.ampiri.sdk:ampiri-sdk-mediation-applovin:3.6.0'
-    compile 'com.ampiri.sdk:ampiri-sdk-mediation-baidu:3.6.0'
-    compile 'com.ampiri.sdk:ampiri-sdk-mediation-chartboost:3.6.0'
-    compile 'com.ampiri.sdk:ampiri-sdk-mediation-facebook:3.6.0'
-    compile 'com.ampiri.sdk:ampiri-sdk-mediation-inlocomedia:3.6.0'
-    compile 'com.ampiri.sdk:ampiri-sdk-mediation-mopub:3.6.0'
-    compile 'com.ampiri.sdk:ampiri-sdk-mediation-nativex:3.6.0'
-    compile 'com.ampiri.sdk:ampiri-sdk-mediation-unityads:3.6.0'
-    compile 'com.ampiri.sdk:ampiri-sdk-mediation-vungle:3.6.0'
+    compile 'com.ampiri.sdk:ampiri-sdk:3.7.0'
+    compile 'com.ampiri.sdk:ampiri-sdk-mediation-adcolony:3.7.0'
+    compile 'com.ampiri.sdk:ampiri-sdk-mediation-admob:3.7.0'
+    compile 'com.ampiri.sdk:ampiri-sdk-mediation-applovin:3.7.0'
+    compile 'com.ampiri.sdk:ampiri-sdk-mediation-baidu:3.7.0'
+    compile 'com.ampiri.sdk:ampiri-sdk-mediation-chartboost:3.7.0'
+    compile 'com.ampiri.sdk:ampiri-sdk-mediation-facebook:3.7.0'
+    compile 'com.ampiri.sdk:ampiri-sdk-mediation-inlocomedia:3.7.0'
+    compile 'com.ampiri.sdk:ampiri-sdk-mediation-mopub:3.7.0'
+    compile 'com.ampiri.sdk:ampiri-sdk-mediation-nativex:3.7.0'
+    compile 'com.ampiri.sdk:ampiri-sdk-mediation-unityads:3.7.0'
+    compile 'com.ampiri.sdk:ampiri-sdk-mediation-vungle:3.7.0'
 }

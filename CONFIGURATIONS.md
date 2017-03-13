@@ -6,9 +6,9 @@ Here you can find advanced SDK topics.
 
 * [Ampiri Support](#ampiri-support)
 * [Eclipse Integration](#eclipse-integration)
-* [Ad Network Setting](#ad-network-settings)
+* [Ad Networks Setting](#ad-networks-settings)
 * [Avoiding the 65K Limit](#avoiding-the-65k-limit)
-* [Log](#Log)
+* [Log](#log)
 * [Debug Mode](#debug-mode)
 
 ## Ampiri Support
@@ -82,7 +82,7 @@ setprop log.tag.VAST DEBUG
 
 ## Debug Mode
 
-If you want to log debug information, please install `AmpiriLogger.setDebugMode(true)` (false by default), then you will see the logs under `Ampiri_SDK` tag.
+If you want to log debug information, please install ``Ampiri.setDebugMode(true)`` (false by default), then you will see the logs under `Ampiri_SDK` tag.
 It is recommended that this option should be used for integration test purposes.
 
 ## Eclipse Integration ##

@@ -8,15 +8,16 @@ Boost your app's revenue streams and save time: sign up for an account at [Ampir
 
 * [Ampiri Support](#ampiri-support)
 * [Supported Ad Networks and Ad Types](#supported-ad-networks-and-ad-types)
-* [Step 1 - Requirements](#step-1-requirements-and-dependencies)
-* [Step 2 - Add the Ampiri SDK and 3rd-party Networks to your Project](#step-2-add-the-ampiri-sdk-and-to-your-project)
-* [Step 3 - Update your Android Manifest](#step-3-update-your-android-manifest)
-* [Step 4 - Banner Layout and Activity](#step-4-banner-layout-and-activty)
-* [Step 5 - Interstitial Layout and Activity](#step-5-interstitial-layout-and-activty)
-* [Step 6 - Video Layout and Activity](#step-6-video-layout-and-activty)
-* [Step 7 - Native and In-Feed Templates and UI](#step-7-native-and-in-feed-templates-and-ui)
-* [Step 8 - Ad Events Handling (Callbacks)](#step-8-ad-events-handling-callbacks)
-* [Demo App/ Testing](#demo-app-/-testing)
+* [Requirements and Dependencies](#requirements-and-dependencies)
+* [Add the Ampiri SDK and 3rd-party Networks to your Project](#add-the-ampiri-sdk-and-3rd-party-networks-to-your-project)
+* [Modify your Android Manifest](#modify-your-android-manifest)
+* [Banner Initialization](#banner-initialization)
+* [Interstitial Initialization and Activity](#interstitial-initialization-and-activity)
+* [Video Initialization and Activity](#video-initialization-and-activity)
+* [Native and In-Feed, Templates and UI](#native-and-in-feed-templates-and-ui)
+* [Ad Events Handling (Callbacks)](#ad-events-handling-callbacks)
+* [Activity lifecycle events handling](#activity-lifecycle-events-handling)
+* [Demo (Sample) App/ Testing](#demo-sample-app-testing)
 
 ## Ampiri Support
 
@@ -37,8 +38,8 @@ To show *standard banner* ads:
 | Specification | Network | Version |
 |----------|----------|----------|
 |`ampiri-sdk-mediation-admob`|[Google Mobile Ads](https://developers.google.com/admob/android/quick-start)|v10.0.1, API 9: Android 2.3 (Gingerbread)|
-|`ampiri-sdk-mediation-mopub`|[MoPub](https://github.com/mopub/mopub-android-sdk)|v4.11.0, API 9: Android 2.3 (Gingerbread)|
-|`ampiri-sdk-mediation-facebook`| [Facebook Audience](https://developers.facebook.com/docs/audience-network)|v4.18.0, API 11: Android 3.0 (Honeycomb)|
+|`ampiri-sdk-mediation-mopub`|[MoPub](https://github.com/mopub/mopub-android-sdk)|v4.12.0, API 16: Android 4.1 (JELLY_BEAN)|
+|`ampiri-sdk-mediation-facebook`| [Facebook Audience](https://developers.facebook.com/docs/audience-network)|v4.20.0, API 15: Android 4.0.3 (ICE_CREAM_SANDWICH_MR1)|
 |`ampiri-sdk-mediation-inlocomedia`| [InLocoMedia](http://docs.inlocomedia.com)| v2.5.0, API 14: Android 4.0 (ICE_CREAM_SANDWICH)|
 
 To show *interstitial* ads:
@@ -46,9 +47,9 @@ To show *interstitial* ads:
 | Specification | Network | Version |
 |----------|----------|----------|
 |`ampiri-sdk-mediation-admob`|[Google Mobile Ads](https://developers.google.com/admob/android/quick-start)|v10.0.1, API 9: Android 2.3 (Gingerbread)|
-|`ampiri-sdk-mediation-mopub`|[MoPub](https://github.com/mopub/mopub-android-sdk)|v4.11.0, API 9: Android 2.3 (Gingerbread)|
+|`ampiri-sdk-mediation-mopub`|[MoPub](https://github.com/mopub/mopub-android-sdk)|v4.12.0, API 16: Android 4.1 (JELLY_BEAN)|
 |`ampiri-sdk-mediation-chartboost`|[Chartboost](https://answers.chartboost.com/hc/en-us/articles/201219545-Download-Integrate-the-Chartboost-SDK-for-Android)|v6.6.1, API 9: Android 2.3 (Gingerbread)|
-|`ampiri-sdk-mediation-facebook`|[Facebook Audience](https://developers.facebook.com/docs/audience-network)|v4.18.0, API 11: Android 3.0 (Honeycomb)|
+|`ampiri-sdk-mediation-facebook`|[Facebook Audience](https://developers.facebook.com/docs/audience-network)|v4.20.0, API 15: Android 4.0.3 (ICE_CREAM_SANDWICH_MR1)|
 |`ampiri-sdk-mediation-nativex`|[NativeX](https://github.com/nativex/NativeX-Android-SDK)|v5.5.9, API 11: Android 3.0 (Honeycomb)|
 |`ampiri-sdk-mediation-applovin`|[AppLovin](https://github.com/AppLovin/Android-Demo-App)|v6.4.2, API 9: Android 2.3 (Gingerbread)|
 |`ampiri-sdk-mediation-inlocomedia`| [InLocoMedia](http://docs.inlocomedia.com)| v2.5.0, API 14: Android 4.0 (ICE_CREAM_SANDWICH)|
@@ -68,8 +69,8 @@ To show *native* ads:
 | Specification | Network | Version |
 |----------|----------|----------|
 |`ampiri-sdk-mediation-admob`|[Google Mobile Ads](https://developers.google.com/admob/android/quick-start)|v10.0.1, API 9: Android 2.3 (Gingerbread)|
-|`ampiri-sdk-mediation-mopub`|[MoPub](https://github.com/mopub/mopub-android-sdk)|v4.11.0, API 9: Android 2.3 (Gingerbread)|
-|`ampiri-sdk-mediation-facebook`|[Facebook Audience](https://developers.facebook.com/docs/audience-network)|v4.18.0, API 11: Android 3.0 (Honeycomb)|
+|`ampiri-sdk-mediation-mopub`|[MoPub](https://github.com/mopub/mopub-android-sdk)|v4.12.0, API 16: Android 4.1 (JELLY_BEAN)|
+|`ampiri-sdk-mediation-facebook`|[Facebook Audience](https://developers.facebook.com/docs/audience-network)|v4.20.0, API 15: Android 4.0.3 (ICE_CREAM_SANDWICH_MR1)|
 |`ampiri-sdk-mediation-applovin`|[AppLovin](https://github.com/AppLovin/Android-Demo-App)|v6.4.2, API 9: Android 2.3 (Gingerbread)|
 |`ampiri-sdk-mediation-baidu`|[Baidu](http://mssp.baidu.com/app/static/main.html#/sdk)|v5.6, API 8: Android 2.2 (Froyo)|
 |`ampiri-sdk-mediation-inlocomedia`| [InLocoMedia](http://docs.inlocomedia.com)| v2.5.0, API 14: Android 4.0 (ICE_CREAM_SANDWICH)|
@@ -78,7 +79,7 @@ To show *native* ads:
 
 You must set up each 3rd-party network on the Ampiri website, otherwise they will not be used for showing ads.
 
-## Step 1 - Requirements and Dependencies ##
+## Requirements and Dependencies ##
 
 * Android 2.3 (API Version 9) and up
 * support-annotations, v25.2.0
@@ -90,7 +91,7 @@ instead of the`Device ID`, as required by Google. Failing to correctly use the `
 
 >NOTE: You must have a different **adUnitId** for every ad space placement in your app. If you use the same ID for multiple placements or the IDs from the testing/demo examples, reporting errors will occur and there will be no payout. Please ask your account manager for further details.
 
-## Step 2 - Add the Ampiri SDK and 3rd-party Networks to your Project ##
+## Add the Ampiri SDK and 3rd-party Networks to your Project ##
 The Ampiri SDK is available via:
 
 1. jCenter AAR (**Recommended**)
@@ -104,18 +105,18 @@ repositories {
 }
 
 dependencies {
-  compile 'com.ampiri.sdk:ampiri-sdk:3.6.0'
-  compile 'com.ampiri.sdk:ampiri-sdk-mediation-adcolony:3.6.0'
-  compile 'com.ampiri.sdk:ampiri-sdk-mediation-admob:3.6.0'
-  compile 'com.ampiri.sdk:ampiri-sdk-mediation-unityads:3.6.0'
-  compile 'com.ampiri.sdk:ampiri-sdk-mediation-applovin:3.6.0'
-  compile 'com.ampiri.sdk:ampiri-sdk-mediation-chartboost:3.6.0'
-  compile 'com.ampiri.sdk:ampiri-sdk-mediation-facebook:3.6.0'
-  compile 'com.ampiri.sdk:ampiri-sdk-mediation-inlocomedia:3.6.0'
-  compile 'com.ampiri.sdk:ampiri-sdk-mediation-mopub:3.6.0'
-  compile 'com.ampiri.sdk:ampiri-sdk-mediation-nativex:3.6.0'
-  compile 'com.ampiri.sdk:ampiri-sdk-mediation-vungle:3.6.0'
-  compile 'com.ampiri.sdk:ampiri-sdk-mediation-baidu:3.6.0'
+  compile 'com.ampiri.sdk:ampiri-sdk:3.7.0'
+  compile 'com.ampiri.sdk:ampiri-sdk-mediation-adcolony:3.7.0'
+  compile 'com.ampiri.sdk:ampiri-sdk-mediation-admob:3.7.0'
+  compile 'com.ampiri.sdk:ampiri-sdk-mediation-unityads:3.7.0'
+  compile 'com.ampiri.sdk:ampiri-sdk-mediation-applovin:3.7.0'
+  compile 'com.ampiri.sdk:ampiri-sdk-mediation-chartboost:3.7.0'
+  compile 'com.ampiri.sdk:ampiri-sdk-mediation-facebook:3.7.0'
+  compile 'com.ampiri.sdk:ampiri-sdk-mediation-inlocomedia:3.7.0'
+  compile 'com.ampiri.sdk:ampiri-sdk-mediation-mopub:3.7.0'
+  compile 'com.ampiri.sdk:ampiri-sdk-mediation-nativex:3.7.0'
+  compile 'com.ampiri.sdk:ampiri-sdk-mediation-vungle:3.7.0'
+  compile 'com.ampiri.sdk:ampiri-sdk-mediation-baidu:3.7.0'
 
   compile 'com.google.android.gms:play-services-ads:10.0.1'
 }
@@ -135,26 +136,32 @@ repositories {
 }
 
 dependencies {
-  compile(name: 'ampiri-sdk', version:'3.6.0', ext: 'aar')
-  compile(name: 'ampiri-sdk-mediation', version:'3.6.0', ext: 'aar')
-  compile(name: 'ampiri-sdk-mediation-adcolony', version:'3.6.0', ext: 'aar')
-  compile(name: 'ampiri-sdk-mediation-admob', version:'3.6.0', ext: 'aar')
-  compile(name: 'ampiri-sdk-mediation-applovin', version:'3.6.0', ext: 'aar')
-  compile(name: 'ampiri-sdk-mediation-unityads', version:'3.6.0', ext: 'aar')
-  compile(name: 'ampiri-sdk-mediation-chartboost', version:'3.6.0', ext: 'aar')
-  compile(name: 'ampiri-sdk-mediation-facebook', version:'3.6.0', ext: 'aar')
-  compile(name: 'ampiri-sdk-mediation-inlocomedia', version:'3.6.0', ext: 'aar')
-  compile(name: 'ampiri-sdk-mediation-mopub', version:'3.6.0', ext: 'aar')
-  compile(name: 'ampiri-sdk-mediation-nativex', version:'3.6.0', ext: 'aar')
-  compile(name: 'ampiri-sdk-mediation-vungle', version:'3.6.0', ext: 'aar')
-  compile(name: 'ampiri-sdk-mediation-baidu', version:'3.6.0', ext: 'aar')
-  compile(name: 'ampiri-sdk-mraid', version:'3.6.0', ext: 'aar')
-  compile(name: 'ampiri-sdk-vast', version:'3.6.0', ext: 'aar')
+  compile(name: 'ampiri-sdk', version:'3.7.0', ext: 'aar')
+  compile(name: 'ampiri-sdk-mediation', version:'3.7.0', ext: 'aar')
+  compile(name: 'ampiri-sdk-mediation-adcolony', version:'3.7.0', ext: 'aar')
+  compile(name: 'ampiri-sdk-mediation-admob', version:'3.7.0', ext: 'aar')
+  compile(name: 'ampiri-sdk-mediation-applovin', version:'3.7.0', ext: 'aar')
+  compile(name: 'ampiri-sdk-mediation-unityads', version:'3.7.0', ext: 'aar')
+  compile(name: 'ampiri-sdk-mediation-chartboost', version:'3.7.0', ext: 'aar')
+  compile(name: 'ampiri-sdk-mediation-facebook', version:'3.7.0', ext: 'aar')
+  compile(name: 'ampiri-sdk-mediation-inlocomedia', version:'3.7.0', ext: 'aar')
+  compile(name: 'ampiri-sdk-mediation-mopub', version:'3.7.0', ext: 'aar')
+  compile(name: 'ampiri-sdk-mediation-nativex', version:'3.7.0', ext: 'aar')
+  compile(name: 'ampiri-sdk-mediation-vungle', version:'3.7.0', ext: 'aar')
+  compile(name: 'ampiri-sdk-mediation-baidu', version:'3.7.0', ext: 'aar')
+  compile(name: 'ampiri-sdk-mraid', version:'3.7.0', ext: 'aar')
+  compile(name: 'ampiri-sdk-vast', version:'3.7.0', ext: 'aar')
 
   compile 'com.google.android.gms:play-services-ads:10.0.1'
-  compile 'com.facebook.android:audience-network-sdk:4.18.0'
-  compile ('com.mopub:mopub-sdk:4.11.0@aar') {
+  compile 'com.facebook.android:audience-network-sdk:4.20.0'
+  compile('com.mopub:mopub-sdk-banner:4.12.0@aar') {
     transitive = true
+  }
+  compile('com.mopub:mopub-sdk-interstitial:4.12.0@aar') {
+      transitive = true
+  }
+  compile('com.mopub:mopub-sdk-native-static:4.12.0@aar') {
+        transitive = true
   }
   compile 'com.inlocomedia.android:android-sdk:2.5.0'
   compile 'com.google.code.gson:gson:2.8.0'
@@ -168,7 +175,7 @@ Then add follow rows in your _app_ module `proguard-rules.pro` file:
 -dontwarn com.ampiri.**
 ```
 
-## Step 3 - Modify your Android Manifest ##
+## Modify your Android Manifest ##
 
 Under the main `<manifest>` element, add the following permissions.
 
@@ -194,7 +201,7 @@ ad assets available even after the user closes the app.
 
 Please see the Android documentation [here](https://developer.android.com/studio/build/shrink-code.html).
 
-## Step 4 - Banner Initialization ##
+## Banner Initialization ##
 Add a banner to layout file, e.g.:
 ```xml
 <FrameLayout
@@ -229,7 +236,7 @@ By default, auto-update is switched on. The auto-update period is set up via the
 
 From version 3.4 onwards, the SDK’s interface includes the `showAd()` method. It is strongly recommended to call this method after the standard banner’s view became visible, as it will then trigger an impression event.
 
-## Step 5 - Interstitial Initialization and Activity ##
+## Interstitial Initialization and Activity ##
 
 > Note: All SDK method calls should be done from the main thread (Main thread, UI thread).
 
@@ -247,7 +254,7 @@ When the banner download is completed, you can display the banner by calling `sh
 interstitialAd.showAd();
 ```
 
-To learn about download completion, subscribe to banner events (see [Step 8 - Ad Events Handling](#step-8-ad-events-handling)) or call method `isReady()`.
+To learn about download completion, subscribe to banner events (see [Ad Events Handling](#ad-events-handling-callbacks)) or call method `isReady()`.
 ```java
 interstitialAd.isReady();
 ```
@@ -272,7 +279,7 @@ If you want full control over when and where to show full screen banners, use th
 3. When you want to show the banner, check that it is ready and show: `if (interstitialAd.isReady()) interstitialAd.showAd()`
 4. Start loading next banner in `onAdClosed()` event handler of `AdEventCallback`
 
-## Step 6 - Video Initialization and Activity ##
+## Video Initialization and Activity ##
 
 
 > Note: All SDK method calls should be done from the main thread (Main thread, UI thread).
@@ -299,12 +306,12 @@ When the video download is completed, you can display it by calling the `showAd(
 videoAd.showAd();
 ```
 
-To learn about download completion, subscribe to video banner events (see [Ad events handling](#ad-events-handling) section) or call method `isReady()`.
+To learn about download completion, subscribe to video banner events (see [Ad Events Handling](#ad-events-handling-callbacks) section) or call method `isReady()`.
 ```java
 videoAd.isReady();
 ```
 
-## Step 7 - Native and In-Feed, Templates and UI ##
+## Native and In-Feed, Templates and UI ##
 
 >Note: All SDK method calls should be done from the main thread (Main thread, UI thread).
 
@@ -441,7 +448,7 @@ ignored. In this case, only the last request will be processed.
 
 When banner download is completed, you can display the banner by calling `showAd()` method.
 
-To learn about download completion, subscribe to ad events (see [Ad events handling](#ad-events-handling) section) or call method `isReady()`.
+To learn about download completion, subscribe to ad events (see [Ad Events Handling](#ad-events-handling-callbacks) section) or call method `isReady()`.
 ```java
 nativeAd.isReady();
 ```
@@ -592,10 +599,10 @@ After calling the `loadAd()` method, the in-feed ad download starts. If you call
 
 When in-feed ad download is completed, it will show automatically.
 
-To learn about download completion, subscribe to ad events (see [Ad events handling](#ad-events-handling) section).
+To learn about download completion, subscribe to ad events (see [Ad Events Handling](#ad-events-handling-callbacks) section).
 
 
-## Step 8 - Ad Events Handling (Callbacks)
+## Ad Events Handling (Callbacks)
 
 To receive events from ad, you should implement an event listener interface `AdEventCallback`.
 
@@ -628,6 +635,40 @@ AdEventCallback adListener = new AdEventCallback() {
 };
 ```
 
+## Activity lifecycle events handling
+
+`onPause()`, `onResume()` and `onDestroy()` methods should be called depending on the activity lifecycle events.
+
+Example:
+```java
+@Override
+protected void onPause() {
+    super.onPause();
+    interstitialAd.onActivityPaused();
+    standardAd.onActivityPaused();
+    videoAd.onActivityPaused();
+    nativeAd.onActivityPaused();
+}
+
+@Override
+protected void onResume() {
+    super.onResume();
+    interstitialAd.onActivityResumed();
+    standardAd.onActivityResumed();
+    videoAd.onActivityResumed();
+    nativeAd.onActivityResumed();
+}
+
+@Override
+protected void onDestroy() {
+    super.onDestroy();
+    interstitialAd.onActivityDestroyed();
+    standardAd.onActivityDestroyed();
+    videoAd.onActivityDestroyed();
+    nativeAd.onActivityDestroyed();
+}
+```
+
 ## Demo (Sample) App/ Testing
 
 ### Steps
@@ -636,8 +677,8 @@ AdEventCallback adListener = new AdEventCallback() {
 2. Import the Ampiri Demo (Sample App) into Android Studio under *File > New > Import Project*.
 3. In the Ampiri UI, set the status of **the Ad Unit you want to use** to *Test*.
 4. In the Ampiri UI, click the "Click to Copy Ad Unit ID" button to copy the placement ID to the clipboard.
-5. In Android Studio, in the Java activity of the Ad Type of **the Ad Unit you want to use**, paste the Ad Unit ID from Step 4.
+5. In Android Studio, in the Java activity of the Ad Type of **the Ad Unit you want to use**, paste the Ad Unit ID from initialisation step.
 6. In the Android Studio main menu, select **Run** and click *Run* to compile and run the App.
-7. In the Android emulator (or your device) where the app is running with Ampiri, select the Ad Type from Step 4 and you will see the event register in the Ampiri Publishers's Self Serve UI under *Reporting*.
+7. In the Android emulator (or your device) where the app is running with Ampiri, select the Ad Type from initialisation  and you will see the event register in the Ampiri Publishers's Self Serve UI under *Reporting*.
 
 [For advanced SDK topics, click here.](CONFIGURATIONS.md)

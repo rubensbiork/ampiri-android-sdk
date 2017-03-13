@@ -1,3 +1,12 @@
+## Version 3.7 (March TODO, 2017)
+- Updated the following dependencies:
+    - Facebook Audience Network SDK to 4.20.0
+    - MoPub SDK to 4.12.0
+- Removed:    
+    - `AmpiriLogger` class. To show logs use `Ampiri.setDebugMode(true)` instead.
+- Fixed:
+    - Miscellaneous bug fixes
+
 ## Version 3.6 (February 24, 2017)
 - DoubleClick AdX support for Native Ads
 - InLocoMedia v2.5.0 support for Standard, Fullscreen and Native Ads
