@@ -1,4 +1,4 @@
-## Version 3.7 (March TODO, 2017)
+## Version 3.7 (March 13, 2017)
 - Updated the following dependencies:
     - Facebook Audience Network SDK to 4.20.0
     - MoPub SDK to 4.12.0
