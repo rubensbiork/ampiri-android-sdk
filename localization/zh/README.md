@@ -2,21 +2,22 @@
 
 # Ampiri SDK 集成 
 
-提升收入和节省时间：请在[Ampiri.com]（https://ampiri.com）注册帐户
+提升收入和节省时间：请在[Ampiri.com](https://ampiri.com)注册帐户
 
 ## Contents
 
-* [Ampiri支持](#Ampiri支持)
+* [Ampiri支持](#ampiri支持)
 * [平台和广告类支持](#平台和广告类支持)
 * [需求和依赖](#需求和依赖)
-* [添加AmpiriSDK和第三方平台到项目](#添加AmpiriSDK和第三方平台到项目)
-* [更新Android Manifest](#更新Android Manifest)
+* [添加AmpiriSDK和第三方平台到项目](#添加ampirisdk和第三方平台到项目)
+* [更新Android Manifest](#更新android-manifest)
 * [标准横幅广告初始化和活动](#标准横幅广告初始化)
 * [插屏广告初始化和活动](#插屏广告初始化和活动)
 * [视频广告初始化和活动](#视频广告初始化和活动)
-* [原生和Feed广告，模版和UI](#原生和Feed广告-模版和UI)
+* [原生和Feed广告，模版和UI](#原生和feed广告模版和ui)
 * [广告回调](#广告回调)
-* [Demo（示例）应用/测试](#Demo-示例-应用/测试)
+* [活动生命周期](#活动生命周期)
+* [Demo（示例）应用/测试](#demo示例应用测试)
 
 ## Ampiri支持
 通过单击链接可以找到有关将Ampiri SDK与Android应用集成的其他文档。
@@ -257,28 +258,28 @@ interstitialAd.showAd();
 ```java
 interstitialAd.isReady();
 ```
-如果您的申请工作流程允许在任何时间和任何位置显示全屏横幅广告，那么还有两种方法可以在加载完成后或在调用方法设置延迟后正确显示。
+如果您的申请工作流程允许在任何时间和任何位置显示全屏插屏广告，那么还有两种方法可以在加载完成后或在调用方法设置延迟后正确显示。
 
-如果需要加载全屏横幅广告，并在加载后立即显示，则使用：
+如果需要加载全屏插屏广告，并在加载后立即显示，则使用：
 ```java
 interstitialAd.loadAndShow()
 ```
-如果需要加载全屏横幅广告，并在调用方法设定延迟后显示，则使用：
+如果需要加载全屏插屏广告，并在调用方法设定延迟后显示，则使用：
 ```java
 interstitialAd.loadAndShowWithDelay()
 ```
 通过Admin UI接口指定延迟间隔。
 
-如果你想要完全控制全屏横幅广告显示的时间和位置，使用以下步骤：
+如果你想要完全控制全屏插屏广告显示的时间和位置，使用以下步骤：
 
 1. 提前调用 `interstitialAd.loadAd()`
-2. 设置 `AdEventCallback` 处理横幅广告事件。
-3. 当你希望显示横幅广告时，检查是否准备就绪，并显示：
+2. 设置 `AdEventCallback` 处理插屏广告事件。
+3. 当你希望显示插屏广告时，检查是否准备就绪，并显示：
 ```
 if (interstitialAd.isReady()) 
     interstitialAd.showAd() 
 ```
-4. 在AdEventCallback的事件处理器 onAdClosed()中开始加载下一个横幅广告。
+4. 在AdEventCallback的事件处理器 onAdClosed()中开始加载下一个插屏广告。
 
 ## 视频广告初始化和活动 ##
 > 注意：所有SDK方法调用都应当从主线程进行（主线程，UI线程）。
@@ -626,6 +627,40 @@ AdEventCallback adListener = new AdEventCallback() {
     public void onAdCompleted() {
     }
 };
+```
+
+## 活动生命周期
+
+`onPause()`, `onResume()` 和 `onDestroy()` 方法应该根据活动生命周期事件来调用。
+
+例如：
+```java
+@Override
+protected void onPause() {
+    super.onPause();
+    interstitialAd.onActivityPaused();
+    standardAd.onActivityPaused();
+    videoAd.onActivityPaused();
+    nativeAd.onActivityPaused();
+}
+
+@Override
+protected void onResume() {
+    super.onResume();
+    interstitialAd.onActivityResumed();
+    standardAd.onActivityResumed();
+    videoAd.onActivityResumed();
+    nativeAd.onActivityResumed();
+}
+
+@Override
+protected void onDestroy() {
+    super.onDestroy();
+    interstitialAd.onActivityDestroyed();
+    standardAd.onActivityDestroyed();
+    videoAd.onActivityDestroyed();
+    nativeAd.onActivityDestroyed();
+}
 ```
 
 ## Demo（示例）应用/测试

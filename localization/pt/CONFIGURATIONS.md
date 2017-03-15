@@ -5,12 +5,12 @@ Aqui você pode encontrar tópicos avançados sobre o Ampiri SDK.
 ## Conteúdo
 
 * [Suporte Ampiri](#Suporte-Ampiri)
-* [Suporte Para Redes e Tipos de Anúncios](#Suporte-Para-Redes-e-Tipos-de-Anúncios)
-* [Integração com Eclipse](#Integração-com-Eclipse)
+* [Dados do Usuário](#Dados-do-Usuário)
 * [Configurações de rede de anúncios](#Configurações-de-rede-de-anúncios)
-* [Evitando o limite de 65K](#Evitando-o-limite-de-65K)
 * [Log](#Log)
 * [Modo Debug](#Modo-Debug)
+* [Integração com Eclipse](#Integração-com-Eclipse)
+* [Evitando o limite de 65K](#Evitando-o-limite-de-65K)
 
 ## Suporte Ampiri ##
 
@@ -22,54 +22,6 @@ Documentos adicionais sobre a integração do Ampiri SDK com o seu Android app p
 - [Manual de Integração Ampiri SDK Android](https://ampiri.zendesk.com/hc/en-us/articles/115000510445-Ampiri-SDK-Android-Integration-Manual) - Manual de Integração Ampiri SDK
 - [Zendesk Support](https://ampiri.zendesk.com/hc/en-us) - Suporte e FAQ
 
-## Suporte Para Redes e Tipos de Anúncios ##
-
-Ampiri supports the following ad networks on the client-side:
-
-Para mostrar anúncio de *banner padrão*:
-
-| Especificação | Rede | Versão |
-|----------|----------|----------|
-|`ampiri-sdk-mediation-admob`|[Google Mobile Ads](https://developers.google.com/admob/android/quick-start)|v10.0.1, API 9: Android 2.3 (Gingerbread)|
-|`ampiri-sdk-mediation-mopub`|[MoPub](https://github.com/mopub/audience-network)|v4.12.0, API 9: Android 2.3 (Gingerbread)|
-|`ampiri-sdk-mediation-facebook`| [Facebook Audience](https://developers.facebook.com/docs/audience-network)|v4.20.0, API 11: Android 3.0 (Honeycomb)|
-|`ampiri-sdk-mediation-inlocomedia`| [InLocoMedia](http://docs.inlocomedia.com)| v2.5.0, API 14: Android 4.0 (ICE_CREAM_SANDWICH)|
-
-Para mostrar anúncio *intersticial*:
-
-| Especificação | Rede | Versão |
-|----------|----------|----------|
-|`ampiri-sdk-mediation-admob`|[Google Mobile Ads](https://developers.google.com/admob/android/quick-start)|v10.0.1, API 9: Android 2.3 (Gingerbread)|
-|`ampiri-sdk-mediation-mopub`|[MoPub](https://github.com/mopub/audience-network)|v4.12.0, API 9: Android 2.3 (Gingerbread)|
-|`ampiri-sdk-mediation-chartboost`|[Chartboost](https://answers.chartboost.com/hc/en-us/articles/201219545-Download-Integrate-the-Chartboost-SDK-for-Android)|v6.6.1, API 9: Android 2.3 (Gingerbread)|
-|`ampiri-sdk-mediation-facebook`|[Facebook Audience](https://developers.facebook.com/docs/audience-network)|v4.20.0, API 11: Android 3.0 (Honeycomb)|
-|`ampiri-sdk-mediation-nativex`|[NativeX](https://github.com/nativex/NativeX-Android-SDK)|v5.5.9, API 11: Android 3.0 (Honeycomb)|
-|`ampiri-sdk-mediation-applovin`|[AppLovin](https://github.com/AppLovin/Android-Demo-App)|v6.4.2, API 9: Android 2.3 (Gingerbread)|
-
-Para mostrar anúncio de *vídeo*:
-
-| Especificação | Rede | Versão |
-|----------|----------|----------|
-|`ampiri-sdk-mediation-adcolony`|[AdColony](https://github.com/AdColony/AdColony-Android-SDK)|v2.3.6, API 14: Android 4.0 (Ice Cream Sandwich)|
-|`ampiri-sdk-mediation-unityads`|[Unity Ads](https://github.com/Applifier/unity-ads-sdk)|v2.0.8, API 9: Android 2.3 (Gingerbread)|
-|`ampiri-sdk-mediation-chartboost`|[Chartboost](https://answers.chartboost.com/hc/en-us/articles/201219545-Download-Integrate-the-Chartboost-SDK-for-Android)|v6.6.1, API 9: Android 2.3 (Gingerbread)|
-|`ampiri-sdk-mediation-nativex`|[NativeX](https://github.com/nativex/NativeX-Android-SDK)|v5.5.9, API 11: Android 3.0 (Honeycomb)|
-|`ampiri-sdk-mediation-vungle`|[Vungle](https://v.vungle.com/sdk)|v4.0.3, API 11: Android 3.0 (Honeycomb)|
-
-Para mostrar anúncio *nativo*:
-
-| Especificação | Rede | Versão |
-|----------|----------|----------|
-|`ampiri-sdk-mediation-admob`|[Google Mobile Ads](https://developers.google.com/admob/android/quick-start)|v10.0.1, API 9: Android 2.3 (Gingerbread)|
-|`ampiri-sdk-mediation-mopub`|[MoPub](https://github.com/mopub/audience-network)|v4.12.0, API 9: Android 2.3 (Gingerbread)|
-|`ampiri-sdk-mediation-facebook`|[Facebook Audience](https://developers.facebook.com/docs/audience-network)|v4.20.0, API 11: Android 3.0 (Honeycomb)|
-|`ampiri-sdk-mediation-applovin`|[AppLovin](https://github.com/AppLovin/Android-Demo-App)|v6.4.2, API 9: Android 2.3 (Gingerbread)|
-|`ampiri-sdk-mediation-baidu`|[Baidu](http://mssp.baidu.com/app/static/main.html#/sdk)|v5.6, API 8: Android 2.2 (Froyo)|
-
-> Não podemos garantir um funcionamento estável do SDK se você usar outra versão destas bibliotecas.
-
-Você precisa configurar cada rede de terceiro no site da Ampiri, caso contrário elas não irão ser usadas para mostrar anúncios.
-
 ## Dados do Usuário
 
 Para transmitir as informações de uso ao Ampiri SDK, deve-se usar os seguintes métodos estáticos:
@@ -79,7 +31,7 @@ Ampiri.setUserGender(UserData.Gender.FEMALE);
 Ampiri.setUserInterests(Arrays.asList("football", "auto", "cats")); // Apenas exemplos. Por favor define interesses reais.
 ```
 
-## Ad Networks Settings
+## Configurações de rede de anúncios
 
 ### AdMob
 

@@ -16,6 +16,7 @@ Turbine o faturamento do seu app e poupe tempo: crie uma conta em [Ampiri.com](h
 * [Vídeo](#Vídeo)
 * [Templates Nativo e In-Feed](#Templates-Nativo-e-In-Feed)
 * [Manipulação de Eventos (Callbacks)](#Manipulação-de-Eventos-(Callbacks))
+* [Manuseamento de eventos de ciclo de vida útil da atividade](#Manuseamento-de-eventos-de-ciclo-de-vida-útil-da-atividade)
 * [Demo App / Testes](#Demo-App-/-Testes)
 
 ## Suporte Ampiri
@@ -635,6 +636,42 @@ AdEventCallback adListener = new AdEventCallback() {
 };
 ```
 
+## Manuseamento de eventos de ciclo de vida útil da atividade
+
+Os métodos `onPause()`, `onResume()` e `onDestroy()` devem ser ativados dependendo dos eventos do ciclo de vida útil da atividade.
+
+Exemplo:
+
+```java
+@Override
+protected void onPause() {
+    super.onPause();
+    interstitialAd.onActivityPaused();
+    standardAd.onActivityPaused();
+    videoAd.onActivityPaused();
+    nativeAd.onActivityPaused();
+}
+
+@Override
+protected void onResume() {
+    super.onResume();
+    interstitialAd.onActivityResumed();
+    standardAd.onActivityResumed();
+    videoAd.onActivityResumed();
+    nativeAd.onActivityResumed();
+}
+
+@Override
+protected void onDestroy() {
+    super.onDestroy();
+    interstitialAd.onActivityDestroyed();
+    standardAd.onActivityDestroyed();
+    videoAd.onActivityDestroyed();
+    nativeAd.onActivityDestroyed();
+}
+```
+
+
 ## Demo App / Testes
 
 ### Passos
@@ -646,3 +683,5 @@ AdEventCallback adListener = new AdEventCallback() {
 5. No Android Studio, em Java activity do Ad Type do **Ad Unit que você quer usar**, cole o Ad Unit ID do Passo 4.
 6. No menu principal do Android Studio, selecione **Run** e clique *Run* para compilar e rodar o App.
 7. No Android emulator (ou no seu device) onde o app está rodando com Ampiri, selecione o Ad Type do Passo 4 e você vai ver um evento registrado na Ampiri UI na seção *Reporting*.
+
+[Para tópicos avançados do SDK, clique aqui.](CONFIGURATIONS.md)

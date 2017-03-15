@@ -5,12 +5,12 @@ Here you can find advanced SDK topics.
 ## Contents
 
 * [Ampiri 支持](#ampiri-支持)
-* [平台和广告类支持](#平台和广告类支持)
-* [Eclipse 集成](#Eclipse-集成)
+* [用户数据](#用户数据)
 * [广告平台测试设置](#广告平台测试设置)
-* [避免65k限制](#避免65k限制)
 * [日志](#日志)
 * [调试模式](#调试模式)
+* [Eclipse 集成](#eclipse-集成)
+* [避免65k限制](#避免65k限制)
 
 ## Ampiri 支持
 
@@ -21,56 +21,6 @@ Here you can find advanced SDK topics.
 - [Ampiri SDK Android Quickstart](https://ampiri.zendesk.com/hc/en-us/articles/213431769-Ampiri-SDK-Android-Quickstart) - 基本集合
 - [Ampiri SDK Android Integration Manual](https://ampiri.zendesk.com/hc/en-us/articles/115000510445-Ampiri-SDK-Android-Integration-Manual) - 参考手册
 - [Zendesk Support](https://ampiri.zendesk.com/hc/en-us) - 支持和常见问题
-
-## 平台和广告类支持 ##
-
-Ampiri 在客户端一侧支持以下广告平台：
-
-为了显示标准横幅广告：
-
-| 特定  | 平台  | 版本  |
-|----------|----------|----------|
-|`ampiri-sdk-mediation-admob`|[Google Mobile Ads](https://developers.google.com/admob/android/quick-start)|v10.0.1, API 9: Android 2.3 (Gingerbread)|
-|`ampiri-sdk-mediation-mopub`|[MoPub](https://github.com/mopub/mopub-android-sdk)|v4.12.0, API 9: Android 2.3 (Gingerbread)|
-|`ampiri-sdk-mediation-facebook`| [Facebook Audience](https://developers.facebook.com/docs/audience-network)|v4.20.0, API 11: Android 3.0 (Honeycomb)|
-|`ampiri-sdk-mediation-inlocomedia`| [InLocoMedia](http://docs.inlocomedia.com)| v2.5.0, API 14: Android 4.0 (ICE_CREAM_SANDWICH)|
-
-为了显示插屏广告：
-
-| 特定  | 平台  | 版本  |
-|----------|----------|----------|
-|`ampiri-sdk-mediation-admob`|[Google Mobile Ads](https://developers.google.com/admob/android/quick-start)|v10.0.1, API 9: Android 2.3 (Gingerbread)|
-|`ampiri-sdk-mediation-mopub`|[MoPub](https://github.com/mopub/mopub-android-sdk)|v4.12.0, API 9: Android 2.3 (Gingerbread)|
-|`ampiri-sdk-mediation-chartboost`|[Chartboost](https://answers.chartboost.com/hc/en-us/articles/201219545-Download-Integrate-the-Chartboost-SDK-for-Android)|v6.6.1, API 9: Android 2.3 (Gingerbread)|
-|`ampiri-sdk-mediation-facebook`|[Facebook Audience](https://developers.facebook.com/docs/audience-network)|v4.20.0, API 11: Android 3.0 (Honeycomb)|
-|`ampiri-sdk-mediation-nativex`|[NativeX](https://github.com/nativex/NativeX-Android-SDK)|v5.5.9, API 11: Android 3.0 (Honeycomb)|
-|`ampiri-sdk-mediation-applovin`|[AppLovin](https://github.com/AppLovin/Android-Demo-App)|v6.4.2, API 9: Android 2.3 (Gingerbread)|
-|`ampiri-sdk-mediation-inlocomedia`| [InLocoMedia](http://docs.inlocomedia.com)| v2.5.0, API 14: Android 4.0 (ICE_CREAM_SANDWICH)|
-
-为了显示视频广告：
-
-| 特定  | 平台  | 版本  |
-|----------|----------|----------|
-|`ampiri-sdk-mediation-adcolony`|[AdColony](https://github.com/AdColony/AdColony-Android-SDK)|v2.3.6, API 14: Android 4.0 (Ice Cream Sandwich)|
-|`ampiri-sdk-mediation-unityads`|[Unity Ads](https://github.com/Applifier/unity-ads-sdk)|v2.0.8, API 9: Android 2.3 (Gingerbread)|
-|`ampiri-sdk-mediation-chartboost`|[Chartboost](https://answers.chartboost.com/hc/en-us/articles/201219545-Download-Integrate-the-Chartboost-SDK-for-Android)|v6.6.1, API 9: Android 2.3 (Gingerbread)|
-|`ampiri-sdk-mediation-nativex`|[NativeX](https://github.com/nativex/NativeX-Android-SDK)|v5.5.9, API 11: Android 3.0 (Honeycomb)|
-|`ampiri-sdk-mediation-vungle`|[Vungle](https://v.vungle.com/sdk)|v4.0.3, API 11: Android 3.0 (Honeycomb)|
-
-为了显示原生广告：
-
-| 特定  | 平台  | 版本  |
-|----------|----------|----------|
-|`ampiri-sdk-mediation-admob`|[Google Mobile Ads](https://developers.google.com/admob/android/quick-start)|v10.0.1, API 9: Android 2.3 (Gingerbread)|
-|`ampiri-sdk-mediation-mopub`|[MoPub](https://github.com/mopub/mopub-android-sdk)|v4.12.0, API 9: Android 2.3 (Gingerbread)|
-|`ampiri-sdk-mediation-facebook`|[Facebook Audience](https://developers.facebook.com/docs/audience-network)|v4.20.0, API 11: Android 3.0 (Honeycomb)|
-|`ampiri-sdk-mediation-applovin`|[AppLovin](https://github.com/AppLovin/Android-Demo-App)|v6.4.2, API 9: Android 2.3 (Gingerbread)|
-|`ampiri-sdk-mediation-baidu`|[Baidu](http://mssp.baidu.com/app/static/main.html#/sdk)|v5.6, API 8: Android 2.2 (Froyo)|
-|`ampiri-sdk-mediation-inlocomedia`| [InLocoMedia](http://docs.inlocomedia.com)| v2.5.0, API 14: Android 4.0 (ICE_CREAM_SANDWICH)|
-
-> 如果您使用其他版本的网络库，我们不能保证SDK的稳定功能。
-
-您必须在Ampiri网站上设置每个第三方平台，否则它们不会用于展示广告。
 
 ## 用户数据
 
