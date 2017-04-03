@@ -6,8 +6,8 @@ Turbine o faturamento do seu app e poupe tempo: crie uma conta em [Ampiri.com](h
 
 ## Conteúdo
 
-* [Suporte Ampiri](#Suporte-Ampiri)
-* [Suporte Para Redes e Tipos de Anúncios](#Suporte-Para-Redes-e-Tipos-de-Anúncios)
+* [Suporte Ampiri](#suporte-ampiri)
+* [Suporte Para Redes e Tipos de Anúncios](#suporte-para-redes-e-tipos-de-anúncios)
 * [Requisitos e Dependências](#Requisitos-e-Dependências)
 * [Adicione o Ampiri SDK e Outras Redes ao seu Projeto](#Adicione-o-Ampiri-SDK-e-Outras-Redes-ao-seu-Projeto)
 * [Atualize seu Android Manifest](#Atualize-seu-Android-Manifest)
@@ -19,7 +19,7 @@ Turbine o faturamento do seu app e poupe tempo: crie uma conta em [Ampiri.com](h
 * [Manuseamento de eventos de ciclo de vida útil da atividade](#Manuseamento-de-eventos-de-ciclo-de-vida-útil-da-atividade)
 * [Demo App / Testes](#Demo-App-/-Testes)
 
-## Suporte Ampiri
+## Suporte Ampiri ##
 
 Documentos adicionais sobre a integração do Ampiri SDK com o seu Android app pode ser encontrado clicando nos links.
 
